@@ -1,0 +1,125 @@
+"""
+Reach-oriented captions.
+
+Instagram allows max 5 hashtags per post, and its search now leans on
+keywords in the caption text itself, so each caption has:
+  1. a hook line packed with searchable words (optical illusion, brain test…)
+  2. one or two lines explaining the effect (keeps people watching / rewatching)
+  3. a comment prompt + a share/save prompt (the signals that push reach)
+  4. exactly 5 hashtags: 2 broad, 2 niche for the style, 1 brand tag
+Templates rotate by seed so consecutive posts never repeat word-for-word.
+"""
+import random
+
+BRAND_TAG = "#opticpop"
+
+STYLE = {
+    "spin": {
+        "hooks": [
+            "Which way is the {s} spinning? 👀 Optical illusion brain test",
+            "This {s} spins LEFT for some people and RIGHT for others 🌀",
+            "Your brain picks the direction — optical illusion test",
+            "Can you make the {s} switch direction? 🤯 Brain teaser",
+        ],
+        "body": [
+            "It's a flat silhouette with zero depth cues, so your brain has to "
+            "guess which side is in front — and it can guess either way. "
+            "Watch the outlines flip it, then try switching it with your mind.",
+            "Same video, two directions. Once you see it flip, try blinking or "
+            "looking at the feet to switch it back.",
+        ],
+        "ask": [
+            "Which way did you see FIRST? Comment ⬅️ or ➡️",
+            "Did it switch for you? Tell me how long it took 👇",
+        ],
+        "tags": ["#spinningdancer", "#brainteaser", "#perception",
+                 "#visualillusion", "#mindtrick"],
+    },
+    "stereogram": {
+        "hooks": [
+            "Hidden 3D image 👁️ Can you find it? Magic Eye test",
+            "Only 1 in 3 people can see what's hidden here 👁️ Magic Eye",
+            "There's a 3D picture inside this pattern. Can you see it?",
+        ],
+        "body": [
+            "Bring your phone close, relax your eyes like you're looking far "
+            "behind the screen, then slowly pull back until it pops out.",
+            "Don't focus on the pattern — look THROUGH it. Give it 10 seconds, "
+            "the answer is at the end.",
+        ],
+        "ask": [
+            "Did you get it before the answer? No spoilers in the comments 🤫",
+            "Comment what you saw (no spoilers!) 👇",
+        ],
+        "tags": ["#magiceye", "#stereogram", "#hiddenimage", "#eyetest",
+                 "#3dart"],
+    },
+    "crosseye": {
+        "hooks": [
+            "Cross your eyes and this pops out in 3D 🤯",
+            "3D without glasses 👀 Cross-eye illusion",
+        ],
+        "body": [
+            "Slowly cross your eyes until a third picture appears between the "
+            "two. Hold it there — it floats right out of the screen.",
+            "Line up the two white dots by crossing your eyes. The middle "
+            "image turns 3D.",
+        ],
+        "ask": ["Did it work for you? 👇", "First try or did it take a while?"],
+        "tags": ["#crosseye", "#stereoscopic", "#3d", "#eyetest", "#3dart"],
+    },
+    "chromo": {
+        "hooks": [
+            "Is the shape floating above your screen? 🔴🔵",
+            "Red and blue at different depths — color illusion",
+        ],
+        "body": [
+            "Your eye focuses red and blue light at slightly different depths, "
+            "so one color seems to hover above the other. It's called "
+            "chromostereopsis. Turn your brightness up.",
+        ],
+        "ask": ["Which color looks closer to you? 👇",
+                "Does it float for you or not at all?"],
+        "tags": ["#colorillusion", "#chromostereopsis", "#eyetest",
+                 "#perception", "#science"],
+    },
+    "blackhole": {
+        "hooks": [
+            "Stare at the dot until the end… then it moves on its own 🌀",
+            "This picture keeps moving after it STOPS 😵 Illusion test",
+        ],
+        "body": [
+            "It's the motion aftereffect: the neurons that detect motion get "
+            "tired, so when the video stops, the opposite ones take over and "
+            "the still image seems to spin backwards.",
+            "Don't look away during the countdown. When it freezes, look at "
+            "your hand or the wall — they'll ripple too.",
+        ],
+        "ask": ["Did it work on you? 👇",
+                "How long did the effect last for you?"],
+        "tags": ["#motionaftereffect", "#trippy", "#hypnotic", "#brainteaser",
+                 "#perception"],
+    },
+}
+STYLE["dancer"] = STYLE["dots"] = STYLE["spin"]
+
+SHARE = [
+    "Send this to a friend and see if they see it the same way 👀",
+    "Save it and try it again later — it changes 🔁",
+    "Tag someone who needs to try this",
+    "Share it with someone who says illusions don't work on them",
+]
+BROAD = ["#opticalillusion", "#illusion"]
+
+
+def build(style, subject, seed):
+    r = random.Random(seed)
+    s = STYLE[style]
+    subj = "dancer" if subject.startswith("ballerina") else subject
+    if subj in ("sphere", "cylinder", "torus", "helix"):
+        subj = subj if style != "dots" else f"{subj} of dots"
+    hook = r.choice(s["hooks"]).format(s=subj)
+    tags = BROAD + r.sample(s["tags"], 2) + [BRAND_TAG]
+    text = (f"{hook}\n\n{r.choice(s['body'])}\n\n{r.choice(s['ask'])}\n"
+            f"{r.choice(SHARE)}\n\n{' '.join(tags)}")
+    return text, tags
