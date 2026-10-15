@@ -101,8 +101,38 @@ STYLE = {
                  "#perception"],
     },
 }
+STYLE["pointspin"] = {
+    "hooks": [
+        "Your brain decides which way {s} spins 🌀",
+        "Can you reverse the spin of {s} with your mind? 🤯",
+        "Left or right? {S} spins both ways — you just can't see it yet",
+        "Most people can't make {s} switch direction. Can you?",
+    ],
+    "body": [
+        "Try to reverse it with your mind. Some people switch it in seconds, "
+        "others never manage it.\nTip: pretend the dots on the far side are "
+        "the ones facing you.",
+        "It's made only of dots with no depth cues, so your brain has to "
+        "guess which side is in front. Blink, look at the edge, and try to "
+        "flip it.",
+        "Nothing changes in the video — the switch happens in your head. "
+        "Focus on one dot near the edge and follow it.",
+        "Watch it for a few seconds, then look slightly above it. For a lot "
+        "of people that's the moment it suddenly reverses.",
+    ],
+    "ask": ["Which way did it spin for you first? ⬅️ or ➡️",
+            "Did you manage to switch it? How long did it take? 👇",
+            "Comment the second it flips for you 👇"],
+    "tags": ["#brainteaser", "#mindtrick", "#perception", "#visualillusion",
+             "#trippy"],
+}
 STYLE["dancer"] = STYLE["dots"] = STYLE["spin"]
+SUBJECT = {"rainbow sphere": "this rainbow sphere", "arrow band": "this arrow loop",
+           "crown": "this crown of lights", "dark star": "this red planet",
+           "arrow ring": "this arrow ring", "cube": "this cube",
+           "DNA helix": "this DNA", "planet": "this planet"}
 
+FOLLOW = "Follow @opticpop for a new illusion every day ✨"
 SHARE = [
     "Send this to a friend and see if they see it the same way 👀",
     "Save it and try it again later — it changes 🔁",
@@ -118,8 +148,11 @@ def build(style, subject, seed):
     subj = "dancer" if subject.startswith("ballerina") else subject
     if subj in ("sphere", "cylinder", "torus", "helix"):
         subj = subj if style != "dots" else f"{subj} of dots"
-    hook = r.choice(s["hooks"]).format(s=subj)
+    if style == "pointspin":
+        subj = SUBJECT.get(subject, "this shape")
+    hook = r.choice(s["hooks"]).format(s=subj, S=subj[:1].upper() + subj[1:])
     tags = BROAD + r.sample(s["tags"], 2) + [BRAND_TAG]
+    cta = FOLLOW if style == "pointspin" else r.choice(SHARE)
     text = (f"{hook}\n\n{r.choice(s['body'])}\n\n{r.choice(s['ask'])}\n"
-            f"{r.choice(SHARE)}\n\n{' '.join(tags)}")
+            f"{cta}\n\n{' '.join(tags)}")
     return text, tags
