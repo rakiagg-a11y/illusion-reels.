@@ -62,7 +62,7 @@ def polyline_pts(pts, per_unit=900):
 
 def streak_sphere(rng):
     """Sphere textured with short rainbow streaks (dashes)."""
-    n, k = 4200, 9
+    n, k = 4200, 26
     v = rng.normal(size=(n, 3))
     v /= np.linalg.norm(v, axis=1, keepdims=True)
     # streak direction: random tangent, biased diagonally for a "flow" look
@@ -82,7 +82,7 @@ def streak_sphere(rng):
     # thin grey rim so the sphere's edge reads clearly (rotation-invariant)
     a = np.linspace(0, 2 * np.pi, 2500)
     rim = np.c_[np.cos(a), np.sin(a), np.zeros_like(a)] * 0.81
-    return (pts * 0.8, c * 1.3, np.full(len(pts), 0.6),
+    return (pts * 0.8, c * 1.3, np.full(len(pts), 0.45),
             {"static": (rim, np.full((len(rim), 3), 0.5)), "tilt": 0.0})
 
 
@@ -294,7 +294,9 @@ class Scene:
         self.period = rng.uniform(5.5, 8.0)
         self.direction = 1 if rng.random() < 0.5 else -1
 
-    def frame(self, th):
+    def splat(self, th, buf):
+        """Add one sub-frame at angle th into buf, with bilinear splatting
+        so points move smoothly between pixels."""
         c, s = math.cos(th), math.sin(th)
         P = self.P
         x = P[:, 0] * c + P[:, 2] * s
@@ -303,19 +305,41 @@ class Scene:
         y = P[:, 1] * ct + z * st          # look slightly from above
         X, Y, Cw = [x], [y], [self.Cw]
         if self.static is not None:
-            sp, sc = self.static
-            X.append(sp[:, 0]); Y.append(sp[:, 1]); Cw.append(sc)
+            sp, scol = self.static
+            X.append(sp[:, 0]); Y.append(sp[:, 1]); Cw.append(scol)
         x, y, Cw = np.concatenate(X), np.concatenate(Y), np.vstack(Cw)
-        px = (W / 2 + x * self.scale).astype(int)
-        py = (H / 2 - y * self.scale).astype(int)
-        ok = (px >= 0) & (px < W) & (py >= 0) & (py < H)
+        fx = W / 2 + x * self.scale
+        fy = H / 2 - y * self.scale
+        x0, y0 = np.floor(fx).astype(int), np.floor(fy).astype(int)
+        ax, ay = (fx - x0)[:, None], (fy - y0)[:, None]
+        for dx, dy, wgt in ((0, 0, (1 - ax) * (1 - ay)), (1, 0, ax * (1 - ay)),
+                            (0, 1, (1 - ax) * ay), (1, 1, ax * ay)):
+            px, py = x0 + dx, y0 + dy
+            ok = (px >= 0) & (px < W) & (py >= 0) & (py < H)
+            idx = py[ok] * W + px[ok]
+            cw = (Cw * wgt)[ok]
+            flat = buf.reshape(-1, 3)
+            for ch in range(3):                      # bincount >> add.at
+                flat[:, ch] += np.bincount(idx, cw[:, ch], minlength=W * H)
+
+    def frame(self, th, dth=0.0, sub=4, shutter=0.5):
+        """Render angle th; with dth, average `sub` angles across the frame
+        interval for a light motion blur."""
         buf = np.zeros((H, W, 3), np.float32)
-        np.add.at(buf, (py[ok], px[ok]), Cw[ok])
-        core = gaussian_filter(buf, sigma=(1.1, 1.1, 0))
-        glow = gaussian_filter(buf[::2, ::2], sigma=(5, 5, 0))
-        glow = np.repeat(np.repeat(glow, 2, 0), 2, 1)[:H, :W]
-        img = 1 - np.exp(-(core * 3.2 + glow * 4.0) * 1.6)  # soft tone-map
-        return (np.clip(img, 0, 1) * 255).astype(np.uint8)
+        angles = [th] if dth == 0 or sub <= 1 else \
+            [th + dth * shutter * (k / (sub - 1) - 0.5) for k in range(sub)]
+        for a in angles:
+            self.splat(a, buf)
+        buf /= len(angles)
+        core = gaussian_filter(buf, sigma=(0.8, 0.8, 0))
+        g1 = gaussian_filter(buf[::2, ::2], sigma=(3, 3, 0))
+        g2 = gaussian_filter(buf[::4, ::4], sigma=(6, 6, 0))
+        up = lambda g, k: np.repeat(np.repeat(g, k, 0), k, 1)[:H, :W]
+        img = core * 3.6 + up(g1, 2) * 3.0 + up(g2, 4) * 2.2   # layered bloom
+        img = 1 - np.exp(-img * 1.7)                           # soft tone-map
+        lum = img.mean(2, keepdims=True)
+        img = np.clip(lum + (img - lum) * 1.25, 0, 1)          # punchier colour
+        return (img * 255).astype(np.uint8)
 
 
 def render(obj, seed, out, seconds=15, handle="@opticpop"):
@@ -330,8 +354,8 @@ def render(obj, seed, out, seconds=15, handle="@opticpop"):
         stdin=subprocess.PIPE)
     wm = watermark(handle)
     for i in range(int(seconds * FPS)):
-        th = sc.direction * 2 * np.pi * i / FPS / sc.period
-        frame = sc.frame(th)
+        step = sc.direction * 2 * np.pi / FPS / sc.period
+        frame = sc.frame(step * i, dth=step)
         if wm is not None:
             frame = np.maximum(frame, wm)
         ff.stdin.write(frame.tobytes())
