@@ -31,7 +31,8 @@ All four fall inside the 08:00–23:00 Israel window.
    Check that it returns HTTP 200 before scheduling.
 7. Schedule each one with Metricool `createScheduledPost`, using:
    - blogId `7443198`
-   - provider `instagram`, `instagramData.type` = `REEL`, `showReelOnFeed` = true
+   - providers `instagram` and `facebook` (the OpticPop page);
+     `instagramData.type` = `REEL`, `showReelOnFeed` = true; `facebookData.type` = `REEL`
    - the `full_caption` as text
    - the slot time above, timezone `Asia/Jerusalem`
    - `autoPublish` = true
