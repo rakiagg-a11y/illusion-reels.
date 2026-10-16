@@ -268,6 +268,90 @@ def Rx(a):
     return np.array([[1, 0, 0], [0, c, -s], [0, s, c]])
 
 
+def text_mask_points(text, n, rng, height=0.32):
+    """Sample n points uniformly inside the glyphs of `text` (bold font).
+    Returns x, y in object units, centred, plus the outline points."""
+    from PIL import Image, ImageDraw, ImageFont
+    font = ImageFont.truetype(
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 220)
+    lines = text.split("\n")
+    tmp = ImageDraw.Draw(Image.new("L", (10, 10)))
+    w = int(max(tmp.textlength(l, font=font) for l in lines)) + 40
+    h = 260 * len(lines) + 20
+    im = Image.new("L", (w, h), 0)
+    d = ImageDraw.Draw(im)
+    for i, l in enumerate(lines):
+        lw = tmp.textlength(l, font=font)
+        d.text(((w - lw) / 2, 10 + i * 260), l, font=font, fill=255)
+    m = np.asarray(im) > 128
+    ys, xs = np.nonzero(m)
+    k = rng.integers(0, len(xs), n)
+    px = xs[k] + rng.random(n)
+    py = ys[k] + rng.random(n)
+    # outline: mask pixels with an empty neighbour
+    edge = m & ~(np.roll(m, 1, 0) & np.roll(m, -1, 0) &
+                 np.roll(m, 1, 1) & np.roll(m, -1, 1))
+    ey, ex = np.nonzero(edge)
+    sc = height * len(lines) / h * (h / (260 * len(lines)))
+    cx, cy = w / 2, h / 2
+    to = lambda X, Y: ((X - cx) * sc / 1.0, -(Y - cy) * sc / 1.0)
+    fx, fy = to(px, py)
+    gx, gy = to(ex + 0.5, ey + 0.5)
+    span = max(np.abs(fx).max(), 1e-6)
+    return fx, fy, gx, gy, span
+
+
+def spin_text(text, rng):
+    """Extruded neon dot lettering that spins both ways ("your name")."""
+    fx, fy, gx, gy, span = text_mask_points(text, 26000, rng)
+    k = 0.85 / span                       # fit width to ~1.7 units
+    fx, fy, gx, gy = fx * k, fy * k, gx * k, gy * k
+    depth = 0.07
+    fz = rng.uniform(-depth, depth, len(fx))
+    hue0 = rng.random()
+    C = hue_rgb(hue0 + 0.25 * (fx - fx.min()) / (np.ptp(fx) + 1e-9), 0.85,
+                rng.uniform(0.4, 1.0, len(fx)))
+    E = np.vstack([np.c_[gx, gy, np.full_like(gx, z)] for z in (-depth, depth)])
+    CE = np.tile(hue_rgb(np.array([hue0 + 0.1]), 0.6, 1.0), (len(E), 1)) * 1.3
+    P = np.vstack([np.c_[fx, fy, fz], E])
+    return P, np.vstack([C, CE]), np.r_[np.full(len(fx), 0.5),
+                                         np.full(len(E), 0.35)], {"tilt": 0.12}
+
+
+def hidden_word(text, rng):
+    """A spinning cylinder of random-looking dots whose dots line up into
+    `text` at one angle (and mirrored half a turn later). Pause in time."""
+    R, Hh = 0.85, 0.6
+    fx, fy, gx, gy, span = text_mask_points(text.replace(" ", "\n"), 26000,
+                                            rng)
+    k = min(0.7 / span, (Hh * 0.85) / max(np.abs(fy).max(), 1e-6))
+    fx, fy = fx * k, fy * k
+    # each word dot gets a random depth inside the cylinder along the view
+    zmax = np.sqrt(np.clip(R ** 2 - fx ** 2, 0, None))
+    fz = rng.uniform(-1, 1, len(fx)) * zmax
+    # decoys fill the cylinder; their density per height band tops up the
+    # word's own dots so every row has the same count and no band gives the
+    # word away while it's scrambled
+    bins = np.linspace(-Hh, Hh, 81)
+    cw, _ = np.histogram(fy, bins)
+    target = cw.max() + 120
+    D = []
+    for b in range(len(cw)):
+        m = target - cw[b]
+        a = rng.uniform(0, 2 * np.pi, m)
+        r = R * np.sqrt(rng.random(m))
+        D.append(np.c_[r * np.cos(a), rng.uniform(bins[b], bins[b + 1], m),
+                       r * np.sin(a)])
+    D = np.vstack(D)
+    # spread word dots across the same disc shape as the decoys
+    P = np.vstack([np.c_[fx, fy, fz], D])
+    hue = rng.random()
+    C = hue_rgb(hue + rng.normal(0, 0.07, len(P)), 0.75,
+                rng.uniform(0.45, 1.0, len(P)))
+    return P, C, np.full(len(P), 0.22), {"tilt": 0.0, "revs": 1,
+                                         "phase": math.pi / 2, "dir": 1}
+
+
 OBJECTS = {
     "rainbow sphere": streak_sphere,
     "arrow band": band_arrows,
@@ -282,17 +366,25 @@ OBJECTS = {
 
 # ---------------------------------------------------------------- render
 class Scene:
-    def __init__(self, obj, seed):
+    def __init__(self, obj, seed, seconds=15, text=None):
         rng = np.random.default_rng(seed)
-        P, C, wts, meta = OBJECTS[obj](rng)
+        if obj == "spin text":
+            P, C, wts, meta = spin_text(text or "OPTICPOP", rng)
+        elif obj == "hidden word":
+            P, C, wts, meta = hidden_word(text or "FOUND ME", rng)
+        else:
+            P, C, wts, meta = OBJECTS[obj](rng)
         self.tilt = meta.get("tilt", 0.3)
         P = P - np.array([0, (P[:, 1].max() + P[:, 1].min()) / 2, 0])
         rad = np.sqrt((P ** 2).sum(1)).max()
         self.scale = min(0.44 * W / rad, 0.36 * H / rad)
         self.P, self.Cw = P, C * wts[:, None]
         self.static = meta.get("static")
-        self.period = rng.uniform(5.5, 8.0)
-        self.direction = 1 if rng.random() < 0.5 else -1
+        # whole number of turns in the clip -> the reel loops seamlessly
+        revs = meta.get("revs") or int(rng.choice([2, 3]))
+        self.period = seconds / revs
+        self.direction = meta.get("dir") or (1 if rng.random() < 0.5 else -1)
+        self.phase = meta.get("phase", 0.0)
 
     def splat(self, th, buf):
         """Add one sub-frame at angle th into buf, with bilinear splatting
@@ -342,8 +434,8 @@ class Scene:
         return (img * 255).astype(np.uint8)
 
 
-def render(obj, seed, out, seconds=15, handle="@opticpop"):
-    sc = Scene(obj, seed)
+def render(obj, seed, out, seconds=15, handle="@opticpop", text=None):
+    sc = Scene(obj, seed, seconds, text)
     ff = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo",
          "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
@@ -355,13 +447,14 @@ def render(obj, seed, out, seconds=15, handle="@opticpop"):
     wm = watermark(handle)
     for i in range(int(seconds * FPS)):
         step = sc.direction * 2 * np.pi / FPS / sc.period
-        frame = sc.frame(step * i, dth=step)
+        frame = sc.frame(sc.phase + step * i, dth=step)
         if wm is not None:
             frame = np.maximum(frame, wm)
         ff.stdin.write(frame.tobytes())
     ff.stdin.close()
     ff.wait()
-    return {"style": "pointspin", "subject": obj, "seed": seed}
+    return {"style": "pointspin", "subject": obj, "seed": seed,
+            "text": text}
 
 
 def watermark(handle):

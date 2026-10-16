@@ -127,6 +127,35 @@ STYLE["pointspin"] = {
              "#trippy"],
 }
 STYLE["dancer"] = STYLE["dots"] = STYLE["spin"]
+
+SPECIAL = {
+    "hidden word": {
+        "hooks": ["There's a hidden word inside this cloud 👀 Can you catch it?",
+                  "Pause at the right moment to read the secret message 🔍",
+                  "Only sharp eyes will read what's hiding in here 👁️"],
+        "body": ["For a split second all the dots line up and spell something. "
+                 "Watch closely — or pause the video at the right moment.",
+                 "It looks like random noise, but once per turn the dots snap "
+                 "into a word. Tap and hold to pause when you see it."],
+        "ask": ["Comment the word when you find it (no peeking at the "
+                "comments first 🤫)",
+                "What does it say? First correct answer gets pinned 📌"],
+        "tags": ["#hiddenmessage", "#eyetest", "#brainteaser", "#canyouseeit",
+                 "#visualillusion"],
+    },
+    "spin text": {
+        "hooks": ["Which way is {t} spinning? 🌀",
+                  "Can you make {t} spin the other way? 🤯"],
+        "body": ["Same trick as the spinning dancer: no depth cues, so your "
+                 "brain picks the direction. Try to flip it.",
+                 "It reads backwards half the time — but which way is it "
+                 "actually turning? Your brain decides."],
+        "ask": ["Want YOUR name spinning next? Comment it below 👇",
+                "Drop your name in the comments and we'll make it spin 👇"],
+        "tags": ["#yourname", "#brainteaser", "#mindtrick", "#perception",
+                 "#visualillusion"],
+    },
+}
 SUBJECT = {"rainbow sphere": "this rainbow sphere", "arrow band": "this arrow loop",
            "crown": "this crown of lights", "dark star": "this red planet",
            "arrow ring": "this arrow ring", "cube": "this cube",
@@ -142,8 +171,15 @@ SHARE = [
 BROAD = ["#opticalillusion", "#illusion"]
 
 
-def build(style, subject, seed):
+def build(style, subject, seed, text=None):
     r = random.Random(seed)
+    if subject in SPECIAL:
+        sp = SPECIAL[subject]
+        t = (text or "OPTICPOP").replace("\n", " ")
+        hook = r.choice(sp["hooks"]).format(t=t)
+        tags = BROAD + r.sample(sp["tags"], 2) + [BRAND_TAG]
+        return (f"{hook}\n\n{r.choice(sp['body'])}\n\n{r.choice(sp['ask'])}\n"
+                f"{FOLLOW}\n\n{' '.join(tags)}"), tags
     s = STYLE[style]
     subj = "dancer" if subject.startswith("ballerina") else subject
     if subj in ("sphere", "cylinder", "torus", "helix"):

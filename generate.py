@@ -21,17 +21,17 @@ STYLES = ["pointspin"]
 LEGACY = ["dancer", "stereogram", "blackhole", "dots", "crosseye", "chromo"]
 
 
-def run(style, seed, out, handle, obj=None):
+def run(style, seed, out, handle, obj=None, text=None):
     if style == "pointspin":
         objs = list(pointcloud.OBJECTS)
         obj = obj or objs[seed % len(objs)]
-        meta = pointcloud.render(obj, seed, out, 15, handle)
+        meta = pointcloud.render(obj, seed, out, 15, handle, text)
     elif style in ("dancer", "dots"):
         meta = spin.render(style, seed, 15, handle, out)
     else:
         meta = getattr(more, f"render_{style}")(seed, out, handle)
     meta["full_caption"], meta["hashtags"] = captions.build(
-        style, meta.get("subject", ""), seed)
+        style, meta.get("subject", ""), seed, meta.get("text"))
     meta.pop("caption", None)
     with open(out.rsplit(".", 1)[0] + ".json", "w") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
@@ -44,7 +44,9 @@ if __name__ == "__main__":
     ap.add_argument("--seed", type=int)
     ap.add_argument("--out", default="reel.mp4")
     ap.add_argument("--handle", default="@opticpop")
-    ap.add_argument("--obj", choices=list(pointcloud.OBJECTS))
+    ap.add_argument("--obj", choices=list(pointcloud.OBJECTS) +
+                    ["spin text", "hidden word"])
+    ap.add_argument("--text", help="word for 'spin text' / 'hidden word'")
     ap.add_argument("--slot", type=int, default=0,
                     help="post number within the day (0-3); picks the style")
     a = ap.parse_args()
@@ -52,5 +54,5 @@ if __name__ == "__main__":
     style = a.style if a.style != "auto" else STYLES[(day * 4 + a.slot) % len(STYLES)]
     seed = a.seed if a.seed is not None else random.randrange(1_000_000)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
-    print(json.dumps(run(style, seed, a.out, a.handle, a.obj), ensure_ascii=False,
+    print(json.dumps(run(style, seed, a.out, a.handle, a.obj, a.text), ensure_ascii=False,
                      indent=2))
