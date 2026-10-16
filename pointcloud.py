@@ -386,9 +386,10 @@ class Scene:
         self.direction = meta.get("dir") or (1 if rng.random() < 0.5 else -1)
         self.phase = meta.get("phase", 0.0)
 
-    def splat(self, th, buf):
+    def splat(self, th, buf, ss=1):
         """Add one sub-frame at angle th into buf, with bilinear splatting
-        so points move smoothly between pixels."""
+        so points move smoothly between pixels. ss = supersampling factor
+        (buf is (H*ss, W*ss, 3))."""
         c, s = math.cos(th), math.sin(th)
         P = self.P
         x = P[:, 0] * c + P[:, 2] * s
@@ -400,19 +401,20 @@ class Scene:
             sp, scol = self.static
             X.append(sp[:, 0]); Y.append(sp[:, 1]); Cw.append(scol)
         x, y, Cw = np.concatenate(X), np.concatenate(Y), np.vstack(Cw)
-        fx = W / 2 + x * self.scale
-        fy = H / 2 - y * self.scale
+        Wb, Hb = W * ss, H * ss
+        fx = Wb / 2 + x * self.scale * ss
+        fy = Hb / 2 - y * self.scale * ss
         x0, y0 = np.floor(fx).astype(int), np.floor(fy).astype(int)
         ax, ay = (fx - x0)[:, None], (fy - y0)[:, None]
         for dx, dy, wgt in ((0, 0, (1 - ax) * (1 - ay)), (1, 0, ax * (1 - ay)),
                             (0, 1, (1 - ax) * ay), (1, 1, ax * ay)):
             px, py = x0 + dx, y0 + dy
-            ok = (px >= 0) & (px < W) & (py >= 0) & (py < H)
-            idx = py[ok] * W + px[ok]
+            ok = (px >= 0) & (px < Wb) & (py >= 0) & (py < Hb)
+            idx = py[ok] * Wb + px[ok]
             cw = (Cw * wgt)[ok]
             flat = buf.reshape(-1, 3)
             for ch in range(3):                      # bincount >> add.at
-                flat[:, ch] += np.bincount(idx, cw[:, ch], minlength=W * H)
+                flat[:, ch] += np.bincount(idx, cw[:, ch], minlength=Wb * Hb)
 
     def frame(self, th, dth=0.0, sub=4, shutter=0.5):
         """Render angle th; with dth, average `sub` angles across the frame
@@ -434,6 +436,25 @@ class Scene:
         return (img * 255).astype(np.uint8)
 
 
+    def frame_crisp(self, th, ss=2, dot=1.1, gain=2.2):
+        """Sharp mode: render at ss x resolution with round, solid dots and
+        only a faint glow, then downsample. Individual particles stay
+        distinct (and survive Instagram's compression) instead of melting
+        into a soft haze."""
+        buf = np.zeros((H * ss, W * ss, 3), np.float32)
+        self.splat(th, buf, ss)
+        dots = gaussian_filter(buf, sigma=(dot * ss, dot * ss, 0))
+        dots *= gain * (2 * np.pi * (dot * ss) ** 2) / 4   # keep each dot bright
+        small = dots.reshape(H, ss, W, ss, 3).mean((1, 3))  # box downsample
+        glow = gaussian_filter(small[::2, ::2], sigma=(4, 4, 0))
+        glow = np.repeat(np.repeat(glow, 2, 0), 2, 1)[:H, :W]
+        img = small + glow * 0.6
+        img = 1 - np.exp(-img * 2.2)
+        lum = img.mean(2, keepdims=True)
+        img = np.clip(lum + (img - lum) * 1.35, 0, 1)
+        return (img * 255).astype(np.uint8)
+
+
 def render(obj, seed, out, seconds=15, handle="@opticpop", text=None):
     sc = Scene(obj, seed, seconds, text)
     ff = subprocess.Popen(
@@ -447,7 +468,7 @@ def render(obj, seed, out, seconds=15, handle="@opticpop", text=None):
     wm = watermark(handle)
     for i in range(int(seconds * FPS)):
         step = sc.direction * 2 * np.pi / FPS / sc.period
-        frame = sc.frame(sc.phase + step * i, dth=step)
+        frame = sc.frame_crisp(sc.phase + step * i)   # sharp 4K-supersampled
         if wm is not None:
             frame = np.maximum(frame, wm)
         ff.stdin.write(frame.tobytes())
