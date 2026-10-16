@@ -216,11 +216,11 @@ SHORT_TAGS = ["#opticalillusion", "#illusion", "#brainteaser", "#opticpop"]
 
 
 def build_short(style, subject, seed):
-    """One-line caption that fits before Instagram's 'more' cut-off."""
+    """Hook on one short line (fully visible before 'more'), then the five
+    hashtags on their own lines: hidden behind 'more' but still indexed."""
     r = random.Random(seed)
     hooks = SHORT_HOOKS.get(subject) or SHORT_HOOKS["pointspin"]
-    text = r.choice(hooks)
-    for t in SHORT_TAGS:                         # add tags while they fit
-        if len(text) + 1 + len(t) <= SHORT_LIMIT:
-            text += " " + t
-    return text
+    hook = r.choice(hooks)
+    pool = (SPECIAL.get(subject) or STYLE.get(style) or STYLE["pointspin"])
+    tags = BROAD + r.sample(pool["tags"], 2) + [BRAND_TAG]
+    return f"{hook}\n.\n{' '.join(tags)}"
