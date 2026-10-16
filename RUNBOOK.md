@@ -6,12 +6,13 @@ This file is the instruction set for the daily scheduled task.
 
 | Slot | Israel | Who it reaches                         |
 |------|--------|----------------------------------------|
-| 0    | 09:00  | Europe morning (UK 07:00, CET 08:00)   |
-| 1    | 15:00  | Europe lunch, US East Coast morning    |
-| 2    | 19:00  | Europe evening, US East Coast lunch    |
-| 3    | 22:30  | US East afternoon, US West lunch       |
+| 0    | 08:50  | Europe morning (UK 07:00, CET 08:00)   |
+| 1    | 14:50  | Europe lunch, US East Coast morning    |
+| 2    | 18:50  | Europe evening, US East Coast lunch    |
+| 3    | 22:20  | US East afternoon, US West lunch       |
 
-All four fall inside the 08:00–23:00 Israel window.
+Scheduled 10 minutes before the target hour (09:00 / 15:00 / 19:00 / 22:30)
+because upload + processing takes ~5–10 minutes. All inside 08:00–23:00 Israel.
 
 ## Steps
 
