@@ -464,9 +464,10 @@ def watermark(handle):
     im = Image.new("RGB", (W, H), (0, 0, 0))
     d = ImageDraw.Draw(im)
     f = ImageFont.truetype(
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 34)
     w = d.textlength(handle, font=f)
-    d.text(((W - w) / 2, H - 150), handle, font=f, fill=(70, 70, 78))
+    # top of the frame, just below Instagram's Reels header bar
+    d.text(((W - w) / 2, 250), handle, font=f, fill=(95, 95, 105))
     return np.asarray(im)
 
 
