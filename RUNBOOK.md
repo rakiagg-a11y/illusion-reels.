@@ -29,18 +29,25 @@ All four fall inside the 08:00–23:00 Israel window.
 6. Each video's public URL is
    `https://raw.githubusercontent.com/rakiagg-a11y/illusion-reels./main/videos/<YYYY-MM-DD>/reel<slot>.mp4`.
    Check that it returns HTTP 200 before scheduling.
-7. Schedule each one with Metricool `createScheduledPost`, using:
-   - blogId `7443198`
-   - providers `instagram` and `facebook` (the OpticPop page);
-     `instagramData.type` = `REEL`, `showReelOnFeed` = true; `facebookData.type` = `REEL`
-   - the `full_caption` as text
-   - the slot time above, timezone `Asia/Jerusalem`
-   - `autoPublish` = true
-   - `instagramData.audioConfiguration.audioId` = a track from the list below,
-     a different one for each slot, rotating so the same track isn't used two days running.
+7. Schedule each reel as TWO Metricool posts (`createScheduledPost`, blogId `7443198`,
+   same video URL, same `full_caption` text, same slot time, timezone `Asia/Jerusalem`):
+   - **Facebook, automatic:** providers `[{"network":"facebook"}]`,
+     `facebookData.type` = `REEL`, `autoPublish` = true.
+   - **Instagram, manual (Creator account):** providers `[{"network":"instagram"}]`,
+     `instagramData.type` = `REEL`, `showReelOnFeed` = true, `autoPublish` = **false**,
+     and NO `audioConfiguration`. Metricool sends Rakia a push notification at the slot
+     time; she adds a trending song in the Instagram app and publishes.
 8. If any step fails, do not schedule a broken post. Report what failed.
 
-## Music (Instagram commercial library, dark / cinematic)
+## Music
+
+@opticpop is a Creator account, so music is added by hand in the Instagram app.
+Songs the reference page uses most: Little Dark Age (MGMT), Coward (Hans Zimmer),
+Gabriel (Felsmann + Tiley), Return to Sender (John Luther), Credits Song for My Death
+(vivivivivi), Dark Fantasy (MPDV), Want To Love (Aloboi), around the world (slowed + reverb).
+
+The list below is the Instagram commercial library, only usable if the account is
+switched back to Business:
 
 | audioId            | Track                                   |
 |--------------------|-----------------------------------------|
