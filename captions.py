@@ -192,3 +192,35 @@ def build(style, subject, seed, text=None):
     text = (f"{hook}\n\n{r.choice(s['body'])}\n\n{r.choice(s['ask'])}\n"
             f"{cta}\n\n{' '.join(tags)}")
     return text, tags
+
+
+# ------------------------------------------------------------------ short
+# Reels show only ~1 line (about 50-55 characters, depends on the phone)
+# before "more", and a line break cuts it off earlier. Short captions are a
+# single line that fits entirely in that space.
+SHORT_LIMIT = 52
+SHORT_HOOKS = {
+    "pointspin": ["Reverse the spin with your mind 🌀",
+                  "Which way is it spinning? 🌀",
+                  "Can you make it spin the other way?",
+                  "Left or right? Your brain decides 🌀",
+                  "Most people can't flip this one 🤯",
+                  "Make it switch direction 🌀"],
+    "hidden word": ["Pause it to read the hidden word 👀",
+                    "Find the hidden word 👀",
+                    "There's a word in here. Find it 🔍"],
+    "spin text": ["Which way is it spinning? 🌀",
+                  "Comment your name, we'll spin it 🌀"],
+}
+SHORT_TAGS = ["#opticalillusion", "#illusion", "#brainteaser", "#opticpop"]
+
+
+def build_short(style, subject, seed):
+    """One-line caption that fits before Instagram's 'more' cut-off."""
+    r = random.Random(seed)
+    hooks = SHORT_HOOKS.get(subject) or SHORT_HOOKS["pointspin"]
+    text = r.choice(hooks)
+    for t in SHORT_TAGS:                         # add tags while they fit
+        if len(text) + 1 + len(t) <= SHORT_LIMIT:
+            text += " " + t
+    return text

@@ -33,7 +33,8 @@ All four fall inside the 08:00–23:00 Israel window.
    same video URL, same `full_caption` text, same slot time, timezone `Asia/Jerusalem`):
    - **Facebook, automatic:** providers `[{"network":"facebook"}]`,
      `facebookData.type` = `REEL`, `autoPublish` = true.
-   - **Instagram, manual (Creator account):** providers `[{"network":"instagram"}]`,
+   - **Instagram, manual (Creator account):** use `short_caption` (one line, fits
+     before Instagram's "more"), providers `[{"network":"instagram"}]`,
      `instagramData.type` = `REEL`, `showReelOnFeed` = true, `autoPublish` = **false**,
      and NO `audioConfiguration`. Metricool sends Rakia a push notification at the slot
      time; she adds a trending song in the Instagram app and publishes.

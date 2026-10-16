@@ -32,6 +32,8 @@ def run(style, seed, out, handle, obj=None, text=None):
         meta = getattr(more, f"render_{style}")(seed, out, handle)
     meta["full_caption"], meta["hashtags"] = captions.build(
         style, meta.get("subject", ""), seed, meta.get("text"))
+    meta["short_caption"] = captions.build_short(
+        style, meta.get("subject", ""), seed)
     meta.pop("caption", None)
     with open(out.rsplit(".", 1)[0] + ".json", "w") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
