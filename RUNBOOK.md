@@ -27,7 +27,9 @@ All four fall inside the 08:00–23:00 Israel window.
 4. Delete video folders older than 14 days under `videos/` (Metricool keeps its own copy).
 5. Commit and push to `main`.
 6. Each video's public URL is
-   `https://raw.githubusercontent.com/rakiagg-a11y/illusion-reels./main/videos/<YYYY-MM-DD>/reel<slot>.mp4`.
+   `https://raw.githubusercontent.com/rakiagg-a11y/illusion-reels./<commit-sha>/videos/<YYYY-MM-DD>/reel<slot>.mp4`
+   (use the pushed commit's SHA, not `main`: GitHub caches `main` for a few minutes,
+   so a re-rendered file could otherwise be fetched in its old version).
    Check that it returns HTTP 200 before scheduling.
 7. Schedule each reel as TWO Metricool posts (`createScheduledPost`, blogId `7443198`,
    same video URL, same `full_caption` text, same slot time, timezone `Asia/Jerusalem`):
