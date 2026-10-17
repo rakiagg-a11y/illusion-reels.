@@ -5,7 +5,7 @@ of single spinning objects. Return a JSON array of 4–20 concept objects matchi
 samples/director_v2/concepts.json. Do not return commands, code, file paths or publication actions.
 
 For every concept define:
-- id, title, theme (emotion, identity, duality, geometry), premise, hook (max 52 characters),
+- id, title, theme (paired_objects, emotion, identity, duality, geometry), premise, hook (max 52 characters),
   viewer_experience;
 - illusion: mechanism, cue_withheld, question, observable_event;
 - visual_identity: background=black, projection=orthographic, surface=additive_dots,
@@ -22,7 +22,13 @@ No unsupported statistics, promised engagement outcomes or guaranteed perceptual
 Implemented scene grammar:
 version=1, identity as above, layout=orbit or coaxial, entities=list of 2–3 objects.
 Each entity has exactly shape, expression, color, center, scale, turns, phase.
-shape=mask with expression=smile/frown/neutral; or shape=arc with expression=null.
+shape=mask with expression=smile/frown/neutral; or shape=arc/heart/star/crescent/butterfly/ring
+with expression=null. Heart, star, crescent and butterfly are curved open shells;
+ring is a complete torus.
+For paired_objects, use exactly TWO non-face shapes from heart/star/crescent/butterfly/ring.
+Prefer coherent shared rotation (turns=1 for both), vertical staggering, some overlap,
+fine particles and different luminous colors. The illusion target is ambiguous depth
+ordering or perceived rotation, not a guaranteed morph or a third object appearing.
 color=coral/electric_blue/cyan/violet/amber.
 center=[x,y,z] with finite values in -0.65..0.65.
 scale=0.65..1.05. turns is integer -2,-1,1,2. phase is finite degrees -180..180.
@@ -30,7 +36,7 @@ All scenes run two base cycles in 15 seconds. In orbit layout, entity centers ro
 around the common vertical axis; surfaces also rotate at their own turn rate.
 There is no depth sorting, morphing, opaque shading, arbitrary camera, overlay or voiceover.
 
-Use mechanism=transparent_depth_ambiguity for masks or mixed mask/arc scenes.
+Use mechanism=transparent_depth_ambiguity for paired_objects, masks or mixed scenes.
 Use mechanism=overlap_completion only for two equally sized arcs with the same center,
 coaxial layout, phase difference exactly 180 degrees, and distinct turn rates.
 

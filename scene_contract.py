@@ -4,6 +4,8 @@ import math
 COLORS = {"coral": (1.0, .055, .09), "electric_blue": (.07, .2, 1.0),
           "cyan": (.03, .9, 1.0), "violet": (.65, .08, 1.0),
           "amber": (1.0, .38, .035)}
+OBJECT_SHAPES = ("heart", "star", "crescent", "butterfly", "ring")
+SHAPES = ("mask", "arc") + OBJECT_SHAPES
 IDENTITY = {"background": "black", "projection": "orthographic",
             "surface": "additive_dots", "occlusion": "none"}
 
@@ -31,7 +33,7 @@ def validate_scene(scene):
         raise ValueError("a relational scene needs 2-3 entities")
     for entity in entities:
         exact(entity, {"shape", "expression", "color", "center", "scale", "turns", "phase"}, "entity")
-        if entity["shape"] not in ("mask", "arc"):
+        if entity["shape"] not in SHAPES:
             raise ValueError(f"geometry requires extension: {entity['shape']}")
         expressions = ("smile", "frown", "neutral") if entity["shape"] == "mask" else (None,)
         if entity["expression"] not in expressions:

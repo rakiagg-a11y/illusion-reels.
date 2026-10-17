@@ -23,12 +23,14 @@ This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 ## Creative Director — relational concepts (local review only)
 
-Compose transparent masks, expressions and complementary arcs around a perceptual mechanism.
+The default mode composes exactly two non-face objects: hearts, stars, crescents,
+butterflies and rings. Shared rotation and transparent crossing contours follow the
+visual language of the reference mask pair. Mask/arc modes remain available.
 The planner ranks scene relationships and records unsupported ideas as development proposals.
 See [CREATIVE_DIRECTOR.md](CREATIVE_DIRECTOR.md) for Hebrew setup, scene briefs and local previews.
 
 ```bash
-python creative_director.py --theme emotion --out local_demo/concepts
+python creative_director.py --theme paired_objects --out local_demo/concepts
 ```
 
 This uses procedural composition rules; optional external-model proposals can be imported with --ideas.

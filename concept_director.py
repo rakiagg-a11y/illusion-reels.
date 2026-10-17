@@ -3,10 +3,11 @@ import copy
 import hashlib
 import json
 import random
-from scene_contract import IDENTITY, entity, scene, validate_render, validate_scene, mechanism_for
+from scene_contract import IDENTITY, OBJECT_SHAPES, entity, scene, validate_render, validate_scene, mechanism_for
 
 VERSION = 2
-THEMES = {"duality": "duality", "emotion": "emotion", "identity": "identity", "geometry": "geometry",
+THEMES = {"paired_objects": "paired_objects", "objects": "paired_objects",
+          "אובייקטים": "paired_objects", "צמדים": "paired_objects", "duality": "duality", "emotion": "emotion", "identity": "identity", "geometry": "geometry",
           "רגש": "emotion", "זהות": "identity", "ניגודים": "duality", "גאומטריה": "geometry",
           "perception": "duality"}
 WEIGHTS = dict(mechanism=20, relationship=20, identity=15, novelty=15, feasibility=20, theme_fit=10)
@@ -44,7 +45,17 @@ def describe(specification, seed, theme):
     masks = [e for e in entities if e["shape"] == "mask"]
     mechanism = mechanism_for(specification)
     counter = len({e["turns"] for e in entities}) > 1
-    if not masks:
+    objects = [e for e in entities if e["shape"] in OBJECT_SHAPES]
+    if objects:
+        names = [e["shape"] for e in entities]
+        title = "Two rotating " + names[0] + " forms" if len(set(names)) == 1 else "A " + names[0] + " passing through a " + names[1]
+        hook = "Which object is in front?"
+        premise = "Two luminous curved objects rotate through a shared space without hiding each other."
+        experience = "Follow one colored object through the overlap; the near/far interpretation may change."
+        question = "Can you keep the same object in front throughout the turn?"
+        event = "The two silhouettes cross in projection, narrow into side views, then overlap again."
+        withheld = "Occlusion at crossing contours, depth-dependent brightness and perspective size cues"
+    elif not masks:
         title = "The circle that belongs to neither half"
         hook = "One circle, or two passing halves?"
         premise = "Two incomplete luminous arcs intermittently project into a complete outline."
@@ -88,7 +99,7 @@ def describe(specification, seed, theme):
     return idea
 
 
-def generate_concepts(seed=42, theme="duality", count=12):
+def generate_concepts(seed=42, theme="paired_objects", count=12):
     if theme not in THEMES:
         raise ValueError(f"theme must be one of {', '.join(THEMES)}")
     if type(seed) is not int or not 0 <= seed < 1_000_000:
@@ -96,6 +107,8 @@ def generate_concepts(seed=42, theme="duality", count=12):
     if type(count) is not int or not 4 <= count <= 40:
         raise ValueError("count must be an integer in 4-40")
     theme = THEMES[theme]
+    if theme == "paired_objects":
+        return _generate_pairs(seed, count)
     rng = random.Random(seed)
     palettes = [("coral", "electric_blue"), ("cyan", "violet"), ("amber", "electric_blue")]
     mood_pairs = {"emotion": [("smile", "frown"), ("neutral", "frown"), ("smile", "neutral")],
@@ -156,6 +169,39 @@ def generate_concepts(seed=42, theme="duality", count=12):
     return concepts
 
 
+
+def _generate_pairs(seed, count):
+    """Exactly two non-face objects, with the reference's crossing transparent surfaces."""
+    rng = random.Random(seed)
+    anchors = [("heart", "crescent"), ("star", "butterfly"), ("ring", "star")]
+    pairs = [(a,b) for k,a in enumerate(OBJECT_SHAPES) for b in OBJECT_SHAPES[k+1:]]
+    rng.shuffle(pairs)
+    pairs = anchors + [p for p in pairs if p not in anchors]
+    palettes = [("coral", "electric_blue"), ("cyan", "violet"), ("amber", "electric_blue")]
+    ideas, seen = [], set()
+    attempt = 0
+    while len(ideas) < count and attempt < 1000:
+        a,b = pairs[attempt % len(pairs)]
+        k=attempt
+        attempt+=1
+        turns=(1,1) if k < len(pairs) else rng.choice([(1,1),(-1,-1),(1,-1)])
+        spacing=.28 if k < len(pairs) else rng.choice([.20,.28,.38])
+        phase=0 if k < len(pairs) else rng.choice([0,25,-25])
+        colors=palettes[k%len(palettes)]
+        specification=scene([
+            entity(a,None,colors[0],[-.18,spacing,-.32],turns=turns[0]),
+            entity(b,None,colors[1],[.18,-spacing,.32],turns=turns[1],phase=phase)
+        ])
+        idea=describe(specification,rng.randrange(1_000_000),"paired_objects")
+        idea["source"]="paired_object_composition"
+        if idea["novelty_key"] not in seen:
+            ideas.append(idea)
+            seen.add(idea["novelty_key"])
+    if len(ideas)!=count:
+        raise ValueError("could not generate the requested number of distinct pairs")
+    return ideas
+
+
 def evaluate(idea, recent=()):
     try:
         if not isinstance(idea, dict):
@@ -205,7 +251,12 @@ def evaluate(idea, recent=()):
     all_masks = all(e["shape"] == "mask" for e in entities)
     theme_fit = (all_masks if idea["theme"] in ("emotion", "identity") else
                  all(e["shape"] == "arc" for e in entities) if idea["theme"] == "geometry" else True)
-    scores = dict(mechanism=4, relationship=5 if relationships else 4, identity=5,
+    if idea["theme"] == "paired_objects":
+        theme_fit = len(entities) == 2 and all(e["shape"] in OBJECT_SHAPES for e in entities)
+        relationship_score = 5 if not relationships else 4
+    else:
+        relationship_score = 5 if relationships else 4
+    scores = dict(mechanism=4, relationship=relationship_score, identity=5,
                   novelty=1 if key in recent else 4, feasibility=5, theme_fit=5 if theme_fit else 3)
     total = sum(scores[k] * WEIGHTS[k] / 5 for k in scores)
     return dict(eligible=True, status="ready_for_preview", total=total, scores=scores,
@@ -258,7 +309,7 @@ def production_brief(row):
                                       {"seconds": 7.5, "intent": "Exact geometric cycle repeats"},
                                       {"seconds": 15, "intent": "Loop boundary matches opening geometry"}],
                                audio="Silent AAC for production; preview is silent without an audio track"),
-                review_checks=["Verify expression and surface curvature",
+                review_checks=["Verify silhouette recognition and surface curvature",
                                "Check crossing contours and color separation on a phone",
                                "Check whether the intended ambiguity is perceptible",
                                "Check loop boundary and caption fidelity"])

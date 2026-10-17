@@ -153,7 +153,7 @@ def validate_brief(brief):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--theme", default="duality")
+    ap.add_argument("--theme", default="paired_objects")
     ap.add_argument("--mode", choices=["concepts", "catalogue"], default="concepts")
     ap.add_argument("--count", type=int, default=12)
     ap.add_argument("--select", help="concept ID to brief instead of the top-ranked idea")
