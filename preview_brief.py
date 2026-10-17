@@ -16,6 +16,17 @@ def preview(brief, out, ffmpeg="ffmpeg"):
     executable = shutil.which(ffmpeg)
     if executable is None:
         raise ValueError("ffmpeg is required for video preview")
+    if r["style"] == "illusion_lab":
+        from illusion_lab import frame, render
+        from PIL import Image, ImageDraw
+        out.parent.mkdir(parents=True, exist_ok=True)
+        sheet = Image.new("RGB", (360*4,664))
+        for i,t in enumerate((0,3.75,7.5,11.5)):
+            sheet.paste(Image.fromarray(frame(r["scene"],t,360,640)),(i*360,24))
+            ImageDraw.Draw(sheet).text((i*360+8,5),f"{t}s",fill="white")
+        sheet.save(out.with_suffix(".png"))
+        render(r["scene"],r["seed"],out,ffmpeg=executable,width=360,height=640,fps=10)
+        return out
     import pointcloud as pc
     from PIL import Image, ImageDraw
     # Preview only. Restore globals so imported callers retain production dimensions.

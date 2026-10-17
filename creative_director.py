@@ -134,6 +134,9 @@ def production_brief(row):
 
 
 def validate_brief(brief):
+    if isinstance(brief, dict) and brief.get("schema_version") == 3:
+        from illusion_library import validate_brief as validate_library_brief
+        return validate_library_brief(brief)
     if isinstance(brief, dict) and brief.get("schema_version") == 2:
         from concept_director import validate_brief as validate_concept_brief
         return validate_concept_brief(brief)

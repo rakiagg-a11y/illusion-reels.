@@ -21,12 +21,17 @@ STYLES = ["pointspin"]
 LEGACY = ["dancer", "stereogram", "blackhole", "dots", "crosseye", "chromo"]
 
 
-def run(style, seed, out, handle, obj=None, text=None, scene=None, creative_caption=None):
-    if style == "opticpop":
+def run(style, seed, out, handle, obj=None, text=None, scene=None, creative_caption=None, ffmpeg=None):
+    if style == "illusion_lab":
+        from illusion_library import validate_scene
+        validate_scene(scene)
+        import illusion_lab
+        meta = illusion_lab.render(scene, seed, out, 15, handle, **({"ffmpeg":ffmpeg} if ffmpeg is not None else {}))
+    elif style == "opticpop":
         from scene_contract import validate_scene
         validate_scene(scene)
         import relational_scene
-        meta = relational_scene.render(scene, seed, out, 15, handle)
+        meta = relational_scene.render(scene, seed, out, 15, handle, **({"ffmpeg":ffmpeg} if ffmpeg is not None else {}))
     elif style == "pointspin":
         objs = list(pointcloud.OBJECTS)
         obj = obj or objs[seed % len(objs)]
@@ -35,7 +40,10 @@ def run(style, seed, out, handle, obj=None, text=None, scene=None, creative_capt
         meta = spin.render(style, seed, 15, handle, out)
     else:
         meta = getattr(more, f"render_{style}")(seed, out, handle)
-    if style == "opticpop":
+    if style == "illusion_lab":
+        from illusion_library import caption, idea_for
+        meta.update(creative_caption or caption(idea_for(scene,seed)))
+    elif style == "opticpop":
         from concept_director import caption, describe
         meta.update(creative_caption or caption(describe(scene, seed, "duality")))
     else:
@@ -51,7 +59,7 @@ def run(style, seed, out, handle, obj=None, text=None, scene=None, creative_capt
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--style", default="auto", choices=STYLES + LEGACY + ["auto", "opticpop"])
+    ap.add_argument("--style", default="auto", choices=STYLES + LEGACY + ["auto", "opticpop", "illusion_lab"])
     ap.add_argument("--seed", type=int)
     ap.add_argument("--out", default="reel.mp4")
     ap.add_argument("--handle", default="@opticpop")
@@ -60,10 +68,10 @@ if __name__ == "__main__":
     ap.add_argument("--text", help="word for 'spin text' / 'hidden word'")
     ap.add_argument("--slot", type=int, default=0,
                     help="post number within the day (0-3); picks the style")
-    ap.add_argument("--scene", help="validated relational scene JSON; requires --style opticpop")
+    ap.add_argument("--scene", help="validated scene JSON; requires --style opticpop or illusion_lab")
     a = ap.parse_args()
-    if (a.style == "opticpop") != bool(a.scene):
-        ap.error("--style opticpop and --scene must be supplied together")
+    if (a.style in ("opticpop", "illusion_lab")) != bool(a.scene):
+        ap.error("--style opticpop/illusion_lab and --scene must be supplied together")
     if a.scene and (a.obj or a.text):
         ap.error("relational scenes do not use --obj or --text")
     specification = None

@@ -46,3 +46,19 @@ python batch_director.py plan --out local_demo/batch_01 --count 6
 
 This produces a review manifest and briefs; it does not record history or publish.
 See the Hebrew guide for the explicit record command.
+
+## Extended illusion library
+
+The local mixed-batch workflow combines existing tilted pairs with MIT-licensed
+ports of Ebbinghaus size context, footsteps motion and impossible Penrose cubes.
+It selects across families and rejects previously rendered structures, including
+color/seed/speed-only repeats. Explicit preview-to-full promotion retains one concept.
+See [CREATIVE_LIBRARY.md](CREATIVE_LIBRARY.md) for Hebrew setup and history handling,
+and [THIRD_PARTY.md](THIRD_PARTY.md) for pinned sources, adaptations and notices.
+
+```bash
+python creative_library.py plan --count 12 --out local_demo/library_plan_01
+python creative_library.py render local_demo/library_plan_01/manifest.json --out local_demo/library_preview_01
+```
+
+Outputs are local review files. The existing auto generation and posting workflow are unchanged.
