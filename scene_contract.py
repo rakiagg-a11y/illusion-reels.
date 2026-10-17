@@ -9,6 +9,9 @@ OBJECT_SHAPES = ("heart", "star", "crescent", "butterfly", "ring",
 SHAPES = ("mask", "arc") + OBJECT_SHAPES
 IDENTITY = {"background": "black", "projection": "orthographic",
             "surface": "additive_dots", "occlusion": "none"}
+# Reference-inspired opposing tilts, in our camera basis (X right, Y up, Z depth).
+# These are an artistic preset, not a recovered motion track from the reference.
+PAIR_ORIENTATIONS = ((-18, 9, -15), (13, -15, 6))
 
 
 def exact(value, keys, label):
@@ -33,7 +36,10 @@ def validate_scene(scene):
     if not isinstance(entities, list) or not 2 <= len(entities) <= 3:
         raise ValueError("a relational scene needs 2-3 entities")
     for entity in entities:
-        exact(entity, {"shape", "expression", "color", "center", "scale", "turns", "phase"}, "entity")
+        keys = {"shape", "expression", "color", "center", "scale", "turns", "phase"}
+        if isinstance(entity, dict) and "orientation" in entity:
+            keys.add("orientation")
+        exact(entity, keys, "entity")
         if entity["shape"] not in SHAPES:
             raise ValueError(f"geometry requires extension: {entity['shape']}")
         expressions = ("smile", "frown", "neutral") if entity["shape"] == "mask" else (None,)
@@ -45,6 +51,12 @@ def validate_scene(scene):
             raise ValueError("turns must be an integer in -2, -1, 1, 2")
         number(entity["scale"], .65, 1.05, "scale")
         number(entity["phase"], -180, 180, "phase")
+        if "orientation" in entity:
+            orientation = entity["orientation"]
+            if not isinstance(orientation, list) or len(orientation) != 3:
+                raise ValueError("orientation must contain three Euler angles in degrees")
+            for angle in orientation:
+                number(angle, -180, 180, "orientation")
         if not isinstance(entity["center"], list) or len(entity["center"]) != 3:
             raise ValueError("center must contain three numbers")
         for c in entity["center"]:
@@ -72,9 +84,12 @@ def validate_render(render):
 
 
 def entity(shape="mask", expression="smile", color="coral", center=None,
-           turns=1, phase=0, scale=.9):
-    return dict(shape=shape, expression=expression, color=color,
-                center=center or [0, 0, 0], turns=turns, phase=phase, scale=scale)
+           turns=1, phase=0, scale=.9, orientation=None):
+    result = dict(shape=shape, expression=expression, color=color,
+                  center=center or [0, 0, 0], turns=turns, phase=phase, scale=scale)
+    if orientation is not None:
+        result["orientation"] = list(orientation)
+    return result
 
 
 def scene(entities, layout="orbit"):

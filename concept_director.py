@@ -3,7 +3,7 @@ import copy
 import hashlib
 import json
 import random
-from scene_contract import IDENTITY, OBJECT_SHAPES, entity, scene, validate_render, validate_scene, mechanism_for
+from scene_contract import IDENTITY, OBJECT_SHAPES, PAIR_ORIENTATIONS, entity, scene, validate_render, validate_scene, mechanism_for
 
 VERSION = 2
 THEMES = {"paired_objects": "paired_objects", "objects": "paired_objects",
@@ -24,6 +24,10 @@ def novelty_key(idea):
         return digest(idea.get("requirements", []))
     geometry = [dict(shape=e["shape"], expression=e["expression"], center=e["center"],
                      turns=e["turns"], phase=e["phase"], scale=e["scale"]) for e in s["entities"]]
+    # Missing and explicit zero orientation retain the historical signature.
+    for source, target in zip(s["entities"], geometry):
+        if any(source.get("orientation", [0, 0, 0])):
+            target["orientation"] = source["orientation"]
     return digest(dict(mechanism=idea["illusion"]["mechanism"], layout=s["layout"], entities=geometry))
 
 
@@ -87,6 +91,8 @@ def describe(specification, seed, theme):
         withheld = "Front/back occlusion, shading differences and perspective size cues"
     motions = ", ".join(f"{e['color']} {e['expression'] or e['shape']} at {e['turns']} relative turns" for e in entities)
     premise += " Motion: " + motions + "."
+    if any(any(e.get("orientation", [0, 0, 0])) for e in entities):
+        premise += " Each object spins about its own tilted axis against a fixed camera."
     idea = dict(id="", title=title, theme=theme, premise=premise, hook=hook,
                 viewer_experience=experience,
                 illusion=dict(mechanism=mechanism, cue_withheld=withheld, question=question,
@@ -191,8 +197,8 @@ def _generate_pairs(seed, count):
         phase=0 if k < len(pairs) else rng.choice([0,25,-25])
         colors=palettes[k%len(palettes)]
         specification=scene([
-            entity(a,None,colors[0],[-.18,spacing,-.32],turns=turns[0]),
-            entity(b,None,colors[1],[.18,-spacing,.32],turns=turns[1],phase=phase)
+            entity(a,None,colors[0],[-.18,spacing,-.32],turns=turns[0],orientation=PAIR_ORIENTATIONS[0]),
+            entity(b,None,colors[1],[.18,-spacing,.32],turns=turns[1],phase=phase,orientation=PAIR_ORIENTATIONS[1])
         ])
         idea=describe(specification,rng.randrange(1_000_000),"paired_objects")
         idea["source"]="paired_object_composition"
@@ -238,6 +244,8 @@ def evaluate(idea, recent=()):
         # Completion is promised only for exact complementary coplanar half rings.
         if illusion["mechanism"] == "overlap_completion":
             a, b, *extra = idea["scene"]["entities"]
+            if a.get("orientation", [0, 0, 0]) != b.get("orientation", [0, 0, 0]):
+                raise ValueError("completion needs matching orientation of both half rings")
             if extra or idea["scene"]["layout"] != "coaxial" or a["center"] != b["center"] or a["scale"] != b["scale"]:
                 raise ValueError("completion needs two equally sized coaxial arcs with a shared center")
             if abs(a["phase"] - b["phase"]) != 180 or a["turns"] == b["turns"]:

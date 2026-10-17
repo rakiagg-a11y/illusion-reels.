@@ -177,6 +177,16 @@ def geometry(rng, shape, expression=None):
         return ring(rng)
     return object_shell(rng,shape)
 
+def orientation_matrix(degrees):
+    """Row-vector rigid transform: fixed X, then Y, then Z, after local Y spin."""
+    x, y, z = np.radians(degrees)
+    cx, sx, cy, sy, cz, sz = math.cos(x), math.sin(x), math.cos(y), math.sin(y), math.cos(z), math.sin(z)
+    rx = np.array([[1, 0, 0], [0, cx, sx], [0, -sx, cx]])
+    ry = np.array([[cy, 0, -sy], [0, 1, 0], [sy, 0, cy]])
+    rz = np.array([[cz, sz, 0], [-sz, cz, 0], [0, 0, 1]])
+    return rx @ ry @ rz
+
+
 class Scene(pc.Scene):
     """A scene graph of independently turning surfaces; never depth-sorted."""
     def __init__(self, specification, seed, seconds=15):
@@ -190,7 +200,8 @@ class Scene(pc.Scene):
             points *= e["scale"]
             center = np.array(e["center"], dtype=float)
             bound = max(bound, np.linalg.norm(points, axis=1).max() + np.linalg.norm(center))
-            self.layers.append((points, center, e["turns"], math.radians(e["phase"])))
+            base = orientation_matrix(e.get("orientation", [0, 0, 0]))
+            self.layers.append((points, center, e["turns"], math.radians(e["phase"]), base))
             colors.append(weights[:, None] * np.array(COLORS[e["color"]]))
         self.Cw = np.vstack(colors)
         self.P = self.positions(0)
@@ -200,9 +211,9 @@ class Scene(pc.Scene):
 
     def positions(self, angle):
         result = []
-        for points, center, turns, phase in self.layers:
+        for points, center, turns, phase, base in self.layers:
             offset = rotate(center[None, :], angle)[0] if self.specification["layout"] == "orbit" else center
-            result.append(rotate(points, angle * turns + phase) + offset)
+            result.append(rotate(points, angle * turns + phase) @ base + offset)
         return np.vstack(result)
 
     def splat(self, th, buf, ss=1):

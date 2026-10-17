@@ -25,7 +25,9 @@ This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 The default mode composes exactly two non-face objects: hearts, stars, crescents,
 butterflies, rings, leaves, diamonds, lightning bolts, flowers and hourglasses. Shared rotation and transparent crossing contours follow the
-visual language of the reference mask pair. Mask/arc modes remain available.
+visual language of the reference mask pair. Each object has its own fixed 3D tilt;
+the default pair has about 37 degrees between spin axes against a fixed camera.
+Mask/arc modes remain available. Older briefs without orientation preserve their original motion.
 The planner ranks scene relationships and records unsupported ideas as development proposals.
 See [CREATIVE_DIRECTOR.md](CREATIVE_DIRECTOR.md) for Hebrew setup, scene briefs and local previews.
 

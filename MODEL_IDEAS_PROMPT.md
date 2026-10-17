@@ -21,24 +21,34 @@ No unsupported statistics, promised engagement outcomes or guaranteed perceptual
 
 Implemented scene grammar:
 version=1, identity as above, layout=orbit or coaxial, entities=list of 2–3 objects.
-Each entity has exactly shape, expression, color, center, scale, turns, phase.
+Each entity has shape, expression, color, center, scale, turns, phase, and optionally orientation.
+No other entity fields are supported.
 shape=mask with expression=smile/frown/neutral; or shape=arc/heart/star/crescent/butterfly/ring/leaf/diamond/lightning/flower/hourglass
 with expression=null. Heart, star, crescent and butterfly are curved open shells;
 ring is a complete torus.
 For paired_objects, use exactly TWO non-face shapes from heart/star/crescent/butterfly/ring/leaf/diamond/lightning/flower/hourglass.
-Prefer coherent shared rotation (turns=1 for both), vertical staggering, some overlap,
+Prefer coherent shared rotation (turns=1 for both) about differently tilted axes,
+vertical staggering, some overlap,
 fine particles and different luminous colors. The illusion target is ambiguous depth
 ordering or perceived rotation, not a guaranteed morph or a third object appearing.
 color=coral/electric_blue/cyan/violet/amber.
 center=[x,y,z] with finite values in -0.65..0.65.
 scale=0.65..1.05. turns is integer -2,-1,1,2. phase is finite degrees -180..180.
+orientation=[x,y,z] is three finite Euler angles in degrees, each -180..180.
+Camera coordinates: X right, Y up, Z depth. The transform applies local Y spin
+(including phase), then fixed-axis X, Y, Z orientation in that order, then the center offset.
+Orientation therefore tilts the spin axis itself, rather than just shifting yaw phase.
+Omission is equivalent to [0,0,0], preserving older briefs.
+The paired_objects preset is [-18,9,-15] for the first object and [13,-15,6]
+for the second: approximately 37 degrees between their spin axes. This is an
+artistic reference-inspired preset, not a reconstruction of the reference's continuous motion.
 All scenes run two base cycles in 15 seconds. In orbit layout, entity centers rotate
 around the common vertical axis; surfaces also rotate at their own turn rate.
 There is no depth sorting, morphing, opaque shading, arbitrary camera, overlay or voiceover.
 
 Use mechanism=transparent_depth_ambiguity for paired_objects, masks or mixed scenes.
 Use mechanism=overlap_completion only for two equally sized arcs with the same center,
-coaxial layout, phase difference exactly 180 degrees, and distinct turn rates.
+coaxial layout, matching orientation, phase difference exactly 180 degrees, and distinct turn rates.
 
 For ambitious unsupported concepts, preserve the idea with scene=null and a nonempty
 requirements list naming missing geometry or renderer capabilities. Such ideas remain
