@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "status": "needs_human_review",
+  "publishing_allowed": false,
+  "idea": {
+    "id": "227ce94754a4f917",
+    "title": "A smile passing through a frown",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: coral smile at 1 relative turns, electric_blue frown at 1 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "frown",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 670487,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "bc1aada883b0acad"
+  },
+  "render": {
+    "style": "opticpop",
+    "seed": 670487,
+    "seconds": 15,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "frown",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "eligible": true,
+    "status": "ready_for_preview",
+    "total": 89.0,
+    "scores": {
+      "mechanism": 4,
+      "relationship": 4,
+      "identity": 5,
+      "novelty": 4,
+      "feasibility": 5,
+      "theme_fit": 5
+    },
+    "reasons": [
+      "Geometry, motion, palette and compositing are supported by relational_scene.Scene",
+      "Color and caption changes alone do not count as concept novelty",
+      "No match in supplied scene history",
+      "Perceptual strength and narrative fidelity require human review"
+    ],
+    "missing_capabilities": []
+  },
+  "caption": {
+    "full_caption": "Which face is in front?\n\nFollow one expression as the masks overlap; the near/far interpretation may change.\n\nCan you keep the same face in front throughout the loop?\n\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+    "short_caption": "Which face is in front?\n.\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+    "hashtags": [
+      "#opticalillusion",
+      "#perception",
+      "#visualillusion",
+      "#generativeart",
+      "#opticpop"
+    ]
+  },
+  "direction": {
+    "hook_placement": "Caption only; no on-screen hook",
+    "beats": [
+      {
+        "seconds": 0,
+        "intent": "Establish distinct colored surfaces"
+      },
+      {
+        "seconds": 1.875,
+        "intent": "Surfaces pass through narrow profiles"
+      },
+      {
+        "seconds": 3.75,
+        "intent": "Overlapping contours return from the opposite side"
+      },
+      {
+        "seconds": 7.5,
+        "intent": "Exact geometric cycle repeats"
+      },
+      {
+        "seconds": 15,
+        "intent": "Loop boundary matches opening geometry"
+      }
+    ],
+    "audio": "Silent AAC for production; preview is silent without an audio track"
+  },
+  "review_checks": [
+    "Verify expression and surface curvature",
+    "Check crossing contours and color separation on a phone",
+    "Check whether the intended ambiguity is perceptible",
+    "Check loop boundary and caption fidelity"
+  ]
+}

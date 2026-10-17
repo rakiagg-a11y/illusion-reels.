@@ -1,0 +1,690 @@
+[
+  {
+    "id": "227ce94754a4f917",
+    "title": "A smile passing through a frown",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: coral smile at 1 relative turns, electric_blue frown at 1 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "frown",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 670487,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "bc1aada883b0acad"
+  },
+  {
+    "id": "f9e1048bf39614e1",
+    "title": "The face and its untrustworthy echo — different tempos",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: coral neutral at 1 relative turns, electric_blue frown at 2 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "neutral",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.2,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "frown",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.2,
+            0.32
+          ],
+          "turns": 2,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 772246,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "cce952aaa16e5220"
+  },
+  {
+    "id": "e31d5f482b81d348",
+    "title": "The face and its untrustworthy echo — different tempos",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: amber smile at 1 relative turns, electric_blue neutral at 2 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.2,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "neutral",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.2,
+            0.32
+          ],
+          "turns": 2,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 33326,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "d5989b37270aa718"
+  },
+  {
+    "id": "b7140a6c8089c16e",
+    "title": "A smile passing through a frown",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: coral smile at 1 relative turns, electric_blue frown at 1 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.38,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "frown",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.38,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 588508,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "3723e41de90bde13"
+  },
+  {
+    "id": "e4fc7b5009f38014",
+    "title": "The face and its untrustworthy echo — different tempos",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: amber smile at 1 relative turns, electric_blue neutral at 2 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.38,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "neutral",
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.38,
+            0.32
+          ],
+          "turns": 2,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 471029,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "b5dcf2baec0afa63"
+  },
+  {
+    "id": "ab85ab5a5d806564",
+    "title": "The face inside the broken halo",
+    "theme": "emotion",
+    "premise": "A convex face and a broken halo overlap without hiding one another. Motion: coral smile at 1 relative turns, electric_blue arc at 1 relative turns.",
+    "hook": "Is the ring in front of the face?",
+    "viewer_experience": "Track the face and the arc separately, then watch their overlapping contour.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at the face/halo intersection",
+      "question": "Which surface feels closer to you?",
+      "observable_event": "A curved mask passes through the projected outline of an open arc."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "arc",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 356778,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "57c6cb3c37f8956a"
+  },
+  {
+    "id": "d7fc7d02998aeae3",
+    "title": "The face inside the broken halo",
+    "theme": "emotion",
+    "premise": "A convex face and a broken halo overlap without hiding one another. Motion: coral neutral at 1 relative turns, electric_blue arc at 1 relative turns.",
+    "hook": "Is the ring in front of the face?",
+    "viewer_experience": "Track the face and the arc separately, then watch their overlapping contour.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at the face/halo intersection",
+      "question": "Which surface feels closer to you?",
+      "observable_event": "A curved mask passes through the projected outline of an open arc."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "neutral",
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.2,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "arc",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.2,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 97251,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "291b670926350f61"
+  },
+  {
+    "id": "c74f5ebf2305d535",
+    "title": "The circle that belongs to neither half",
+    "theme": "emotion",
+    "premise": "Two incomplete luminous arcs intermittently project into a complete outline. Motion: coral arc at 1 relative turns, electric_blue arc at -1 relative turns.",
+    "hook": "One circle, or two passing halves?",
+    "viewer_experience": "Follow one colored half as the outline closes and opens during the turn.",
+    "illusion": {
+      "mechanism": "overlap_completion",
+      "cue_withheld": "Opaque surface and stable ownership of the shared contour",
+      "question": "When the outline closes, do you see one object or two?",
+      "observable_event": "Complementary semicircles align in projection, then separate into narrow profiles."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "coaxial",
+      "entities": [
+        {
+          "shape": "arc",
+          "expression": null,
+          "color": "coral",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "arc",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "turns": -1,
+          "phase": 180,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 888662,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "f30fff4b039f4f9f"
+  },
+  {
+    "id": "b41fcfe6fb08f557",
+    "title": "The face inside the broken halo",
+    "theme": "emotion",
+    "premise": "A convex face and a broken halo overlap without hiding one another. Motion: amber smile at 1 relative turns, electric_blue arc at -1 relative turns.",
+    "hook": "Is the ring in front of the face?",
+    "viewer_experience": "Track the face and the arc separately, then watch their overlapping contour.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at the face/halo intersection",
+      "question": "Which surface feels closer to you?",
+      "observable_event": "A curved mask passes through the projected outline of an open arc."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.38,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "arc",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.38,
+            0.32
+          ],
+          "turns": -1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 481741,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "75bbc4ad02b8c08c"
+  },
+  {
+    "id": "c3dff57314c14c10",
+    "title": "The face and its untrustworthy echo",
+    "theme": "emotion",
+    "premise": "2 transparent convex masks share the same visual space. Motion: cyan smile at 1 relative turns, violet neutral at 1 relative turns.",
+    "hook": "Which face is in front?",
+    "viewer_experience": "Follow one expression as the masks overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Front/back occlusion, shading differences and perspective size cues",
+      "question": "Can you keep the same face in front throughout the loop?",
+      "observable_event": "Distinct facial contours overlap, separate into profiles, and return."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "mask",
+          "expression": "smile",
+          "color": "cyan",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "mask",
+          "expression": "neutral",
+          "color": "violet",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 648564,
+    "requirements": [],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "48554c2054329cca"
+  },
+  {
+    "id": "232a4e9d46f2baea",
+    "title": "Two profiles hiding a third identity",
+    "theme": "emotion",
+    "premise": "Two side profiles enclose the silhouette of a third frontal face.",
+    "hook": "What changes when the shapes meet?",
+    "viewer_experience": "Two side profiles enclose the silhouette of a third frontal face.",
+    "illusion": {
+      "mechanism": "negative_space_face",
+      "cue_withheld": "Stable contour ownership",
+      "question": "Which interpretation do you see?",
+      "observable_event": "Two side profiles enclose the silhouette of a third frontal face."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": null,
+    "seed": 928463,
+    "requirements": [
+      "profile_contour_geometry",
+      "negative_space_alignment_solver"
+    ],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Development proposal; effect has not been implemented.",
+    "novelty_key": "881c3d858716997f"
+  },
+  {
+    "id": "f67190495c14541e",
+    "title": "The ribbon that changes its inside",
+    "theme": "emotion",
+    "premise": "Two luminous ribbons appear to exchange their inner and outer surfaces.",
+    "hook": "What changes when the shapes meet?",
+    "viewer_experience": "Two luminous ribbons appear to exchange their inner and outer surfaces.",
+    "illusion": {
+      "mechanism": "topology_ambiguity",
+      "cue_withheld": "Stable contour ownership",
+      "question": "Which interpretation do you see?",
+      "observable_event": "Two luminous ribbons appear to exchange their inner and outer surfaces."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": null,
+    "seed": 903565,
+    "requirements": [
+      "ribbon_surface_geometry",
+      "controlled_topology_projection"
+    ],
+    "source": "compositional_rules_v2",
+    "authorship_note": "Development proposal; effect has not been implemented.",
+    "novelty_key": "13741553e4a9a54f"
+  }
+]

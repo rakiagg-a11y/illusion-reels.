@@ -20,3 +20,29 @@ python3 generate.py --style auto --slot 0 --out videos/today/reel0.mp4
 This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 `RUNBOOK.md` describes the daily automated posting.
+
+## Creative Director — relational concepts (local review only)
+
+The default mode composes exactly two non-face objects: hearts, stars, crescents,
+butterflies, rings, leaves, diamonds, lightning bolts, flowers and hourglasses. Shared rotation and transparent crossing contours follow the
+visual language of the reference mask pair. Each object has its own fixed 3D tilt;
+the default pair has about 37 degrees between spin axes against a fixed camera.
+Mask/arc modes remain available. Older briefs without orientation preserve their original motion.
+The planner ranks scene relationships and records unsupported ideas as development proposals.
+See [CREATIVE_DIRECTOR.md](CREATIVE_DIRECTOR.md) for Hebrew setup, scene briefs and local previews.
+
+```bash
+python creative_director.py --theme paired_objects --out local_demo/concepts
+```
+
+This uses procedural composition rules; optional external-model proposals can be imported with --ideas.
+The existing auto generator and daily runbook remain on pointspin.
+
+Local series planning with diverse pairs and explicit review history:
+
+```bash
+python batch_director.py plan --out local_demo/batch_01 --count 6
+```
+
+This produces a review manifest and briefs; it does not record history or publish.
+See the Hebrew guide for the explicit record command.
