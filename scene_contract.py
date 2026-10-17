@@ -4,7 +4,8 @@ import math
 COLORS = {"coral": (1.0, .055, .09), "electric_blue": (.07, .2, 1.0),
           "cyan": (.03, .9, 1.0), "violet": (.65, .08, 1.0),
           "amber": (1.0, .38, .035)}
-OBJECT_SHAPES = ("heart", "star", "crescent", "butterfly", "ring")
+OBJECT_SHAPES = ("heart", "star", "crescent", "butterfly", "ring",
+                 "leaf", "diamond", "lightning", "flower", "hourglass")
 SHAPES = ("mask", "arc") + OBJECT_SHAPES
 IDENTITY = {"background": "black", "projection": "orthographic",
             "surface": "additive_dots", "occlusion": "none"}

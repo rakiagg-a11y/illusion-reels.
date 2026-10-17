@@ -22,10 +22,10 @@ No unsupported statistics, promised engagement outcomes or guaranteed perceptual
 Implemented scene grammar:
 version=1, identity as above, layout=orbit or coaxial, entities=list of 2–3 objects.
 Each entity has exactly shape, expression, color, center, scale, turns, phase.
-shape=mask with expression=smile/frown/neutral; or shape=arc/heart/star/crescent/butterfly/ring
+shape=mask with expression=smile/frown/neutral; or shape=arc/heart/star/crescent/butterfly/ring/leaf/diamond/lightning/flower/hourglass
 with expression=null. Heart, star, crescent and butterfly are curved open shells;
 ring is a complete torus.
-For paired_objects, use exactly TWO non-face shapes from heart/star/crescent/butterfly/ring.
+For paired_objects, use exactly TWO non-face shapes from heart/star/crescent/butterfly/ring/leaf/diamond/lightning/flower/hourglass.
 Prefer coherent shared rotation (turns=1 for both), vertical staggering, some overlap,
 fine particles and different luminous colors. The illusion target is ambiguous depth
 ordering or perceived rotation, not a guaranteed morph or a third object appearing.

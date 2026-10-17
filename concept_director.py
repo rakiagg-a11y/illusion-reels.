@@ -173,10 +173,12 @@ def generate_concepts(seed=42, theme="paired_objects", count=12):
 def _generate_pairs(seed, count):
     """Exactly two non-face objects, with the reference's crossing transparent surfaces."""
     rng = random.Random(seed)
-    anchors = [("heart", "crescent"), ("star", "butterfly"), ("ring", "star")]
+    anchors = [("heart", "crescent"), ("star", "butterfly"), ("ring", "star"),
+               ("leaf", "diamond"), ("lightning", "flower"), ("hourglass", "crescent")]
     pairs = [(a,b) for k,a in enumerate(OBJECT_SHAPES) for b in OBJECT_SHAPES[k+1:]]
     rng.shuffle(pairs)
-    pairs = anchors + [p for p in pairs if p not in anchors]
+    anchor_keys={frozenset(p) for p in anchors}
+    pairs = anchors + [p for p in pairs if frozenset(p) not in anchor_keys]
     palettes = [("coral", "electric_blue"), ("cyan", "violet"), ("amber", "electric_blue")]
     ideas, seen = [], set()
     attempt = 0

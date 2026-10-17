@@ -60,7 +60,22 @@ def outline(shape):
         x = 16 * np.sin(t) ** 3
         y = 13 * np.cos(t) - 5 * np.cos(2*t) - 2 * np.cos(3*t) - np.cos(4*t)
         return np.c_[x / 16 * .77, (y - (y.max()+y.min())/2) / np.ptp(y) * 1.68]
-    if shape == "star":
+    if shape == "leaf":
+        return np.c_[.64*np.sin(t)*np.sqrt(np.abs(np.sin(t))), .84*np.cos(t)]
+    if shape == "flower":
+        r=.64+.17*np.cos(5*(t-math.pi/2))
+        return np.c_[.94*r*np.cos(t),r*np.sin(t)]
+    if shape == "hourglass":
+        y=np.linspace(.8,-.8,700)
+        x=.10+.48*(y/.8)**2
+        bottom=np.c_[np.linspace(x[-1],-x[-1],220),np.full(220,y[-1])]
+        top=np.c_[np.linspace(-x[0],x[0],220),np.full(220,y[0])]
+        return np.vstack([np.c_[x,y],bottom,np.c_[-x[::-1],y[::-1]],top])
+    if shape == "diamond":
+        vertices=np.array([[-.76,.28],[-.43,.76],[.43,.76],[.76,.28],[0,-.84]])
+    elif shape == "lightning":
+        vertices=np.array([[.15,.84],[-.58,-.12],[-.02,-.12],[-.18,-.84],[.60,.18],[.10,.18]])
+    elif shape == "star":
         a = math.pi / 2 + np.arange(10) * math.pi / 5
         r = np.where(np.arange(10) % 2 == 0, 1, .46)
         vertices = np.c_[.79*r*np.cos(a), .84*r*np.sin(a)]
@@ -118,6 +133,25 @@ def object_shell(rng, shape):
         body_y=np.linspace(-.5,.57,500)
         body=np.c_[np.zeros(len(body_y)),body_y,surface(np.zeros(len(body_y)),body_y)+.006]
         rim=np.vstack([rim,body])
+    details=[]
+    def stroke(a,b,n=300):
+        xy=np.asarray(a)+(np.asarray(b)-np.asarray(a))*np.linspace(0,1,n)[:,None]
+        details.append(np.c_[xy,surface(xy[:,0],xy[:,1])+.006])
+    if shape=="leaf":
+        stroke([0,-.72],[0,.73],600)
+        for y0 in (-.32,-.05,.22):
+            for side in (-1,1):
+                stroke([0,y0-.12],[side*.39,y0+.18],180)
+    elif shape=="diamond":
+        for a,b in [([-.76,.28],[.76,.28]),([-.43,.76],[0,-.84]),
+                    ([.43,.76],[0,-.84])]:
+            stroke(a,b)
+    elif shape=="flower":
+        a=np.linspace(0,2*math.pi,550)
+        xy=np.c_[.15*np.cos(a),.15*np.sin(a)]
+        details.append(np.c_[xy,surface(xy[:,0],xy[:,1])+.006])
+    if details:
+        rim=np.vstack([rim,*details])
     return np.vstack([shell,rim]), np.r_[rng.uniform(.025,.095,len(shell)),
                                          np.full(len(rim),.57)]
 
