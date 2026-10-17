@@ -1,29 +1,45 @@
-# Optional external-model ideation contract
+# OpticPop external ideation contract — concept schema v2
 
-Return only a JSON array of 1–20 distinct OpticPop reel concepts.
-Use samples/director/production_brief.json → idea as the object format.
-Each object needs id, title, hook, mechanism, payoff, render, requires_blender=false.
-Keep id stable and unique. Title, hook, mechanism and payoff must be nonempty strings
-up to 240 characters. Avoid invented statistics and promises to pin comments.
+Act as a creative director for relational optical illusions, rather than a selector
+of single spinning objects. Return a JSON array of 4–20 concept objects matching
+samples/director_v2/concepts.json. Do not return commands, code, file paths or publication actions.
 
-Supported render keys, exactly:
-style="pointspin", obj, text, seed (integer 0–999999),
-seconds=15, width=1080, height=1920, fps=30.
+For every concept define:
+- id, title, theme (emotion, identity, duality, geometry), premise, hook (max 52 characters),
+  viewer_experience;
+- illusion: mechanism, cue_withheld, question, observable_event;
+- visual_identity: background=black, projection=orthographic, surface=additive_dots,
+  occlusion=none;
+- scene, seed (integer 0–999999), requirements (list), source, authorship_note. Omit novelty_key; the importer derives it.
 
-Supported obj values:
-rainbow sphere, arrow band, crown, dark star, arrow ring, cube, DNA helix,
-planet, spin text, hidden word.
+Think first about how two or three forms interact, which depth cue is withheld,
+what observable event causes perceptual ambiguity and how the scene loops.
+Vary relationships, interpretations and geometry. Color or copy changes alone are not new ideas.
+Use the reference principles of transparent luminous surfaces, fine particles and
+passing contours. Do not claim an exact reproduction or independently verified originality.
+No unsupported statistics, promised engagement outcomes or guaranteed perceptual effects.
 
-For hidden word use mechanism="anamorphic word alignment".
-All others use mechanism="ambiguous orthographic rotation".
-For spin text and hidden word supply text: 1–12 uppercase ASCII letters,
-digits or spaces, with at least one non-space character.
-For all other objects text=null.
+Implemented scene grammar:
+version=1, identity as above, layout=orbit or coaxial, entities=list of 2–3 objects.
+Each entity has exactly shape, expression, color, center, scale, turns, phase.
+shape=mask with expression=smile/frown/neutral; or shape=arc with expression=null.
+color=coral/electric_blue/cyan/violet/amber.
+center=[x,y,z] with finite values in -0.65..0.65.
+scale=0.65..1.05. turns is integer -2,-1,1,2. phase is finite degrees -180..180.
+All scenes run two base cycles in 15 seconds. In orbit layout, entity centers rotate
+around the common vertical axis; surfaces also rotate at their own turn rate.
+There is no depth sorting, morphing, opaque shading, arbitrary camera, overlay or voiceover.
 
-The renderer supports a rotating point cloud, fixed geometry/colors and silent audio.
-Hidden words align at a particular angle. It does not implement arbitrary masks,
-morphs, camera cuts, overlays, extra objects, color changes, voiceovers, or Blender scenes.
-Hook goes in a caption, not on-screen. Describe the actual supported effect.
-Do not include executable code, commands, file paths or publishing instructions.
-Use different objects and participation prompts; respect supplied recent history.
-The local evaluator validates structural feasibility; a human reviews narrative fidelity.
+Use mechanism=transparent_depth_ambiguity for masks or mixed mask/arc scenes.
+Use mechanism=overlap_completion only for two equally sized arcs with the same center,
+coaxial layout, phase difference exactly 180 degrees, and distinct turn rates.
+
+For ambitious unsupported concepts, preserve the idea with scene=null and a nonempty
+requirements list naming missing geometry or renderer capabilities. Such ideas remain
+development proposals and never receive a renderable production brief.
+Blender may be an optional implementation route; do not require it for supported scenes.
+
+Omit the derived novelty_key field in model output. The importer computes it after
+validating the scene grammar. If a signature is supplied, it must match the actual
+scene; mismatched supplied signatures are rejected.
+Keep requirements empty for implemented scenes.

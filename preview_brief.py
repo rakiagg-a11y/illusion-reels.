@@ -21,25 +21,35 @@ def preview(brief, out, ffmpeg="ffmpeg"):
     # Preview only. Restore globals so imported callers retain production dimensions.
     previous = pc.W, pc.H
     try:
-        pc.W, pc.H = 270, 480
-        scene = pc.Scene(r["obj"], r["seed"], r["seconds"], r["text"])
+        relational = r["style"] == "opticpop"
+        pc.W, pc.H = (360, 640) if relational else (270, 480)
+        if relational:
+            from relational_scene import Scene
+            scene = Scene(r["scene"], r["seed"], r["seconds"])
+        else:
+            scene = pc.Scene(r["obj"], r["seed"], r["seconds"], r["text"])
         out.parent.mkdir(parents=True, exist_ok=True)
-        sheet = Image.new("RGB", (270 * 3, 500))
-        angles = [scene.phase, 0.0, scene.phase + math.pi]
+        angles = [k * math.pi / 2 for k in range(5)] if relational else [scene.phase, 0.0, scene.phase + math.pi]
+        sheet = Image.new("RGB", (pc.W * len(angles), pc.H + 24))
         for k, angle in enumerate(angles):
-            sheet.paste(Image.fromarray(scene.frame_crisp(angle, dot=1.1 * 270 / 1080)), (k * 270, 20))
-        ImageDraw.Draw(sheet).text((6, 3), "Review: opening | alignment | half turn (not a timeline)", fill="white")
+            sheet.paste(Image.fromarray(scene.frame_crisp(angle, dot=1.1 * pc.W / 1080)), (k * pc.W, 24))
+        draw = ImageDraw.Draw(sheet)
+        if relational:
+            for k in range(5):
+                draw.text((k * pc.W + 8, 5), f"{k * scene.period / 4:.3f}s", fill="white")
+        else:
+            draw.text((6, 3), "Opening | alignment | half turn (not a timeline)", fill="white")
         sheet.save(out.with_suffix(".png"))
         with subprocess.Popen(
             [executable, "-n", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
-             "-s", "270x480", "-r", "10", "-i", "-", "-an", "-c:v", "libx264",
+             "-s", f"{pc.W}x{pc.H}", "-r", "10", "-i", "-", "-an", "-c:v", "libx264",
              "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(out)],
             stdin=subprocess.PIPE
         ) as proc:
             try:
                 for i in range(150):
                     angle = scene.phase + scene.direction * 2 * math.pi * (i / 10) / scene.period
-                    proc.stdin.write(scene.frame_crisp(angle, dot=1.1 * 270 / 1080).tobytes())
+                    proc.stdin.write(scene.frame_crisp(angle, dot=1.1 * pc.W / 1080).tobytes())
             finally:
                 proc.stdin.close()
             if proc.wait() != 0:

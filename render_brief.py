@@ -18,6 +18,9 @@ def render_local(brief, out, runner=None):
     out.parent.mkdir(parents=True, exist_ok=True)
     # Fixed duration and dimensions were validated against generate.run.
     # Empty handle also avoids the Linux-only watermark font path on Windows.
+    if spec["style"] == "opticpop":
+        return runner("opticpop", spec["seed"], str(out), "", scene=spec["scene"],
+                      creative_caption=brief["caption"])
     return runner(spec["style"], spec["seed"], str(out), "",
                   obj=spec["obj"], text=spec["text"])
 

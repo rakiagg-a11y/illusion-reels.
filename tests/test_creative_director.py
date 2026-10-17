@@ -89,7 +89,7 @@ class DirectorTests(unittest.TestCase):
     def test_cli_writes_only_local_planning_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = subprocess.run([sys.executable, str(cd.ROOT / "creative_director.py"),
-                                     "--out", tmp], capture_output=True, text=True)
+                                     "--mode", "catalogue", "--out", tmp], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual({p.name for p in Path(tmp).iterdir()},
                              {"ranking.json", "production_brief.json"})

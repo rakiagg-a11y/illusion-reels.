@@ -134,6 +134,9 @@ def production_brief(row):
 
 
 def validate_brief(brief):
+    if isinstance(brief, dict) and brief.get("schema_version") == 2:
+        from concept_director import validate_brief as validate_concept_brief
+        return validate_concept_brief(brief)
     if not isinstance(brief, dict) or type(brief.get("schema_version")) is not int or brief["schema_version"] != VERSION:
         raise ValueError("unsupported brief schema")
     if brief.get("publishing_allowed") is not False or brief.get("status") != "needs_human_review":
@@ -150,7 +153,10 @@ def validate_brief(brief):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--theme", default="perception")
+    ap.add_argument("--theme", default="duality")
+    ap.add_argument("--mode", choices=["concepts", "catalogue"], default="concepts")
+    ap.add_argument("--count", type=int, default=12)
+    ap.add_argument("--select", help="concept ID to brief instead of the top-ranked idea")
     ap.add_argument("--ideas", type=Path, help="optional JSON list from a human or external model")
     ap.add_argument("--recent", type=Path, help="JSON list of recently used object names")
     ap.add_argument("--out", type=Path, default=Path("local_demo"))
@@ -158,18 +164,25 @@ def main():
     if not 0 <= a.seed < 1_000_000 or not 1 <= len(a.theme.strip()) <= 100:
         ap.error("seed must be 0-999999 and theme 1-100 characters")
     try:
-        recent = json.loads(a.recent.read_text(encoding="utf-8")) if a.recent else []
+        recent = json.loads(a.recent.read_text(encoding="utf-8-sig")) if a.recent else []
         if not isinstance(recent, list) or any(not isinstance(x, str) for x in recent):
             raise ValueError("recent history must be a JSON list of subject names")
-        ideas = json.loads(a.ideas.read_text(encoding="utf-8")) if a.ideas else generate_ideas(a.seed, a.theme)
-        rows = rank(ideas, recent)
+        if a.mode == "concepts":
+            from concept_director import generate_concepts, normalize_proposals, rank as rank_concepts, production_brief as concept_brief
+            ideas = json.loads(a.ideas.read_text(encoding="utf-8-sig")) if a.ideas else generate_concepts(a.seed, a.theme, a.count)
+            rows = rank_concepts(normalize_proposals(ideas), recent)
+        else:
+            ideas = json.loads(a.ideas.read_text(encoding="utf-8-sig")) if a.ideas else generate_ideas(a.seed, a.theme)
+            rows = rank(ideas, recent)
         eligible = [r for r in rows if r["evaluation"]["eligible"]]
         a.out.mkdir(parents=True, exist_ok=True)
         (a.out / "ranking.json").write_text(json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
+        if a.select:
+            eligible = [r for r in eligible if r["idea"]["id"] == a.select]
         if not eligible:
             (a.out / "production_brief.json").unlink(missing_ok=True)
             raise ValueError("no feasible ideas; inspect ranking.json")
-        brief = production_brief(eligible[0])
+        brief = concept_brief(eligible[0]) if a.mode == "concepts" else production_brief(eligible[0])
         validate_brief(brief)
         (a.out / "production_brief.json").write_text(json.dumps(brief, ensure_ascii=False, indent=2), encoding="utf-8")
         print(json.dumps(dict(winner=brief["idea"]["title"], score=brief["evaluation"]["total"],

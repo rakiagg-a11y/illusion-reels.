@@ -21,6 +21,15 @@ This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 `RUNBOOK.md` describes the daily automated posting.
 
-## Creative Director (local review only)
+## Creative Director — relational concepts (local review only)
 
-See [CREATIVE_DIRECTOR.md](CREATIVE_DIRECTOR.md) for Hebrew setup, ranking, JSON briefs and a non-publishing preview. Planning: python creative_director.py --out local_demo.
+Compose transparent masks, expressions and complementary arcs around a perceptual mechanism.
+The planner ranks scene relationships and records unsupported ideas as development proposals.
+See [CREATIVE_DIRECTOR.md](CREATIVE_DIRECTOR.md) for Hebrew setup, scene briefs and local previews.
+
+```bash
+python creative_director.py --theme emotion --out local_demo/concepts
+```
+
+This uses procedural composition rules; optional external-model proposals can be imported with --ideas.
+The existing auto generator and daily runbook remain on pointspin.
