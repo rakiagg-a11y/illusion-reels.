@@ -11,10 +11,27 @@ glow so they read like light, not dots of paint.
   python3 pointcloud.py --obj sphere --out test.mp4
 """
 import argparse, math, subprocess, sys
+from pathlib import Path
+import os
 import numpy as np
 from scipy.ndimage import gaussian_filter
 
 W, H, FPS = 1080, 1920, 30
+
+
+def load_font(size, bold=False):
+    """Use the existing Linux font, with a Windows fallback for local review."""
+    from PIL import ImageFont
+    name = "DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf"
+    candidates = [
+        Path("/usr/share/fonts/truetype/dejavu") / name,
+        Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts" /
+        ("arialbd.ttf" if bold else "arial.ttf"),
+    ]
+    for path in candidates:
+        if path.is_file():
+            return ImageFont.truetype(str(path), size)
+    return ImageFont.truetype(name, size)
 
 
 # ---------------------------------------------------------------- helpers
@@ -272,8 +289,7 @@ def text_mask_points(text, n, rng, height=0.32):
     """Sample n points uniformly inside the glyphs of `text` (bold font).
     Returns x, y in object units, centred, plus the outline points."""
     from PIL import Image, ImageDraw, ImageFont
-    font = ImageFont.truetype(
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 220)
+    font = load_font(220, bold=True)
     lines = text.split("\n")
     tmp = ImageDraw.Draw(Image.new("L", (10, 10)))
     w = int(max(tmp.textlength(l, font=font) for l in lines)) + 40
@@ -473,7 +489,8 @@ def render(obj, seed, out, seconds=15, handle="@opticpop", text=None):
             frame = np.maximum(frame, wm)
         ff.stdin.write(frame.tobytes())
     ff.stdin.close()
-    ff.wait()
+    if ff.wait() != 0:
+        raise RuntimeError("ffmpeg pointcloud encoding failed")
     return {"style": "pointspin", "subject": obj, "seed": seed,
             "text": text}
 
@@ -484,8 +501,7 @@ def watermark(handle):
     from PIL import Image, ImageDraw, ImageFont
     im = Image.new("RGB", (W, H), (0, 0, 0))
     d = ImageDraw.Draw(im)
-    f = ImageFont.truetype(
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 34)
+    f = load_font(34)
     w = d.textlength(handle, font=f)
     # top of the frame, just below Instagram's Reels header bar
     d.text(((W - w) / 2, 250), handle, font=f, fill=(95, 95, 105))

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "status": "needs_human_review",
+  "publishing_allowed": false,
+  "idea": {
+    "id": "3c3678c6eec0",
+    "title": "perception: Catch the secret word",
+    "hook": "Pause when the dots form a word",
+    "mechanism": "anamorphic word alignment",
+    "payoff": "Read OPTICPOP at alignment",
+    "render": {
+      "style": "pointspin",
+      "obj": "hidden word",
+      "text": "OPTICPOP",
+      "seed": 776646,
+      "seconds": 15,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30
+    },
+    "requires_blender": false
+  },
+  "evaluation": {
+    "eligible": true,
+    "total": 94.0,
+    "scores": {
+      "feasibility": 5,
+      "hook": 5,
+      "participation": 5,
+      "novelty": 4,
+      "loop": 4
+    },
+    "reasons": [
+      "Existing pointcloud.Scene and generate.run accept this specification",
+      "Subject absent from supplied recent history",
+      "Perceptual effect and text legibility require human preview review"
+    ]
+  },
+  "render": {
+    "style": "pointspin",
+    "obj": "hidden word",
+    "text": "OPTICPOP",
+    "seed": 776646,
+    "seconds": 15,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "caption": {
+    "full_caption": "Only sharp eyes will read what's hiding in here 👁️\n\nFor a split second all the dots line up and spell something. Watch closely — or pause the video at the right moment.\n\nComment the word when you find it (no peeking at the comments first 🤫)\nFollow @opticpop for a new illusion every day ✨\n\n#opticalillusion #illusion #visualillusion #canyouseeit #opticpop",
+    "hashtags": [
+      "#opticalillusion",
+      "#illusion",
+      "#visualillusion",
+      "#canyouseeit",
+      "#opticpop"
+    ],
+    "short_caption": "There's a word in here. Find it 🔍\n.\n#opticalillusion #illusion #visualillusion #canyouseeit #opticpop"
+  },
+  "direction": {
+    "hook_placement": "Caption only; current pointspin renderer has no hook overlay",
+    "opening": "0-3s: establish the rotating dot object",
+    "interaction": "3-12s: inspect alignment or try reversing perceived rotation",
+    "ending": "12-15s: continue rotation into the loop",
+    "audio": "Existing silent AAC track; music is outside this local workflow"
+  },
+  "review_checks": [
+    "Verify effect on a phone",
+    "Check loop seam and text legibility",
+    "Review caption claims and any implied promises before publishing"
+  ]
+}

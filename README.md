@@ -20,3 +20,7 @@ python3 generate.py --style auto --slot 0 --out videos/today/reel0.mp4
 This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 `RUNBOOK.md` describes the daily automated posting.
+
+## Creative Director (local review only)
+
+See [CREATIVE_DIRECTOR.md](CREATIVE_DIRECTOR.md) for Hebrew setup, ranking, JSON briefs and a non-publishing preview. Planning: python creative_director.py --out local_demo.
