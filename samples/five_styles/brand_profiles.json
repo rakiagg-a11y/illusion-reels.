@@ -1,0 +1,58 @@
+{
+  "kind": "opticpop_brand_profiles",
+  "version": 1,
+  "preferred_publishing_provider": "metricool",
+  "publishing_setup_status": "pending_user_account_setup",
+  "profile_edits_applied": false,
+  "language": "en",
+  "profiles": [
+    {
+      "handle": "@opticpop",
+      "id": "opticpop",
+      "generator": "AngleSpin",
+      "style": "reversible_depth",
+      "display_name": "OpticPop | Optical Illusions",
+      "bio": "Two forms. One impossible overlap.\nRotating objects, shifting depth & optical illusions.\nWhich one is in front?",
+      "avatar": "opticpop/avatar.png",
+      "visual_identity_he": "שתי צורות ניאון בגוני קורל וכחול, חופפות על צירים מוטים.",
+      "focus_he": "שני אובייקטים מסתובבים ואשליית עומק.",
+      "bio_characters": 111
+    },
+    {
+      "handle": "@hypnotorium",
+      "id": "hypnotorium",
+      "generator": "MotionShift",
+      "style": "motion_paradox",
+      "display_name": "Hypnotorium | Motion Illusions",
+      "bio": "Motion that plays with your mind.\nHidden shapes, looping patterns & visual paradoxes.\nWatch. Pause. Look again.",
+      "avatar": "hypnotorium/avatar.png",
+      "visual_identity_he": "דפוס סיבובי בשחור ושנהב עם מוקד צהוב, שמרמז על תנועה מהפנטת.",
+      "focus_he": "אשליות תנועה, דפוסים וצורות שנחשפות בניגון.",
+      "bio_characters": 111
+    },
+    {
+      "handle": "@spiralium_",
+      "id": "spiralium_",
+      "generator": "StereoTwin",
+      "style": "binocular_worlds",
+      "display_name": "Spiralium | Stereo & Depth",
+      "bio": "Two views. One floating world.\nSpirals, stereo loops & depth illusions.\nCan you merge the two views?",
+      "avatar": "spiralium_/avatar.png",
+      "visual_identity_he": "סליל כפול בטורקיז וסגול על רקע כהה, עם הפרדה ועומק מרחבי.",
+      "focus_he": "סלילים, טבעות ועולמות סטריאוסקופיים בשתי תמונות.",
+      "bio_characters": 100
+    },
+    {
+      "handle": "@trustyoureyes_",
+      "id": "trustyoureyes_",
+      "generator": "PerceptionLab",
+      "style": "perception_lab",
+      "display_name": "Trust Your Eyes | Perception",
+      "bio": "Same color. Same length. Different perception.\nOptical illusions that test what you see.\nTrust your eyes... or look again.",
+      "avatar": "trustyoureyes_/avatar.png",
+      "visual_identity_he": "קובייה גאומטרית עמומה בקורל ופחם על רקע בהיר, עם חיבורים שמבלבלים את העומק.",
+      "focus_he": "אשליות צבע, אורך, גודל והקשר.",
+      "bio_characters": 122
+    }
+  ]
+}

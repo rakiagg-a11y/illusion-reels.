@@ -88,9 +88,18 @@ preview is emitted. Unavailable audio holds the automatic route. This does not
 upload, schedule, change account type or activate posting.
 See [AUDIO_AUTOMATION.md](AUDIO_AUTOMATION.md) for Hebrew setup and current limits.
 
-## OmniSocials migration
+## Page profiles and publishing preference
 
-The requested target provider has a read-only native-audio adapter and trending
+The current target for the four page connections is **Metricool**, as requested
+by the user. Connection setup follows page branding/setup; no connection,
+schedule or live posting change is activated by the local profile assets.
+The prepared names, English bios, generator assignments and avatar filenames
+are in `samples/five_styles/brand_profiles.json`. Avatar images and the review
+pack are local deliverables. See [BRAND_PROFILES_HE.md](BRAND_PROFILES_HE.md).
+
+## Earlier OmniSocials exploration (historical)
+
+The earlier provider exploration has a read-only native-audio adapter and trending
 catalogue lookup in `omnisocials_audio.py`. It reuses the exact MOTHS request,
 emits native `instagram.audio_id` settings for review, and holds mismatched or
 unverified audio. It never downloads music, creates posts or changes the current
