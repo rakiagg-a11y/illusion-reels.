@@ -452,7 +452,17 @@ def render_plan(plan_path, output, history_path, preview=False, ffmpeg="ffmpeg")
             raise ValueError("account identity changed within plan")
         account_rows[key] = b["account"]
     director.validate_accounts(dict(version=1, accounts=list(account_rows.values())))
-    keys = [director.structural_key(b["style"], b["mode"], b["parameters"]) for b in plan["briefs"]]
+    return _render_validated(plan["briefs"], output, history_path, preview, ffmpeg)
+
+
+def render_one(brief, output, history_path, preview=False, ffmpeg="ffmpeg"):
+    """Independent generator path; retains all brief and history safeguards."""
+    director.validate_brief(brief)
+    return _render_validated([brief], output, history_path, preview, ffmpeg)
+
+
+def _render_validated(briefs, output, history_path, preview, ffmpeg):
+    keys = [director.structural_key(b["style"], b["mode"], b["parameters"]) for b in briefs]
     if len(set(keys)) != len(keys):
         raise ValueError("duplicate concepts within plan")
     quality = "preview" if preview else "full"
@@ -462,7 +472,7 @@ def render_plan(plan_path, output, history_path, preview=False, ffmpeg="ffmpeg")
     # All validation and collision checks precede folder creation or encoding.
     with history_lock(history_path):
         history = load_history(history_path)
-        for b, key in zip(plan["briefs"], keys):
+        for b, key in zip(briefs, keys):
             previous = [e for e in history["entries"] if e["key"] == key]
             if any(e["quality"] == quality or e["quality"] == "full" for e in previous):
                 raise ValueError("concept already rendered; plan with the same history")
@@ -474,7 +484,7 @@ def render_plan(plan_path, output, history_path, preview=False, ffmpeg="ffmpeg")
                     raise ValueError("reviewed preview is missing or its checksum changed")
         output.mkdir(parents=True)
         manifest = dict(kind="five_style_render", quality=quality, local_only=True, outputs=[])
-        for b, key in zip(plan["briefs"], keys):
+        for b, key in zip(briefs, keys):
             target = output/(b["account"]["id"]+"_"+b["id"]+".mp4")
             size = (360, 640, 15) if preview else (1080, 1920, 30)
             renderer = Renderer(b, size[0], size[1])

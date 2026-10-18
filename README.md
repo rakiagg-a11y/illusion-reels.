@@ -10,6 +10,8 @@ production briefs and local-only rendering. Start with the [Hebrew setup guide](
 Its [reference audit](research/biologistmichael/REPORT_HE.md) states the actual
 inventory and visual-review coverage. This path does not activate publishing.
 
+To run just one style, use one of the [five independent generator entry points](FIVE_GENERATORS_HE.md).
+
 ## Styles
 
 - `dancer`: a 3D silhouette (ballerina, cat, flamingo, T-rex, shark, butterfly) that can be seen spinning either way.
