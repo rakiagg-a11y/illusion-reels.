@@ -26,6 +26,10 @@ def choose_brief(style, seed, history, mode=None, account_id=None, handle=None):
     seen = {entry["key"] for entry in history["entries"]}
     rng = random.Random(seed)
     pools = []
+    primary = d.PRIMARY_MODES.get(style)
+    if mode is None and primary and any(d.structural_key(style, primary, p) not in seen
+                                        for p in d.parameters_for(primary)):
+        mode = primary
     for name in ((mode,) if mode else d.MODES[style]):
         parameters = d.parameters_for(name)
         used = sum(d.structural_key(style, name, p) in seen for p in parameters)
