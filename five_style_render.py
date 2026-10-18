@@ -496,6 +496,7 @@ def _render_validated(briefs, output, history_path, preview, ffmpeg):
                                           sha256=checksum, output=str(target.resolve())))
             atomic_json(history_path, history)
             manifest["outputs"].append(dict(account=b["account"]["id"], style=b["style"], mode=b["mode"],
+                generator=director.GENERATORS[b["style"]]["name"], generator_label=director.GENERATORS[b["style"]]["label"],
                 video=target.name, poster=target.with_suffix(".png").name, brief=target.with_suffix(".json").name,
                 width=size[0], height=size[1], fps=size[2], seconds=renderer.seconds, sha256=checksum))
             atomic_json(output/"manifest.json", manifest)

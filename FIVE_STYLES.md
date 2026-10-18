@@ -5,13 +5,17 @@ uses a finite, deterministic procedural catalogue, explicit feasibility controls
 engineering scores and a machine-readable production brief. It is not a trained
 AI model and does not predict reach or virality.
 
-| Profile | Style | Working modes | Visual identity |
-|---|---|---|---|
-| opticpop | reversible_depth | tilted_pair | Two luminous, curved objects on distinct tilted axes; fixed camera; additive transparent surfaces |
-| brand_02 | hidden_stereogram | hidden_relief | One full-width repeating texture hiding a depth relief |
-| brand_03 | binocular_worlds | orbital_rings, helix, constellation | Two synchronized, slightly different views of one spatial scene |
-| brand_04 | motion_paradox | motion_form, infinite_regress, footsteps | Motion carries form or conflicts with a controlled trajectory |
-| brand_05 | perception_lab | munker_white, muller_lyer, afterimage, troxler, cafe_wall | Controlled color, length, fixation and context experiments |
+| Generator | Profile | Style | Working modes | Visual identity |
+|---|---|---|---|---|
+| AngleSpin | opticpop | reversible_depth | tilted_pair | Two luminous, curved objects on distinct tilted axes; fixed camera; additive transparent surfaces |
+| HiddenShape | brand_02 | hidden_stereogram | hidden_relief | One full-width repeating texture hiding a depth relief |
+| StereoTwin | brand_03 | binocular_worlds | orbital_rings, helix, constellation | Two synchronized, slightly different views of one spatial scene |
+| MotionShift | brand_04 | motion_paradox | motion_form, infinite_regress, footsteps | Motion carries form or conflicts with a controlled trajectory |
+| PerceptionLab | brand_05 | perception_lab | munker_white, muller_lyer, afterimage, troxler, cafe_wall | Controlled color, length, fixation and context experiments |
+
+`five_styles.GENERATORS` is the display-name registry used by runner help and new
+render manifests. Names identify generators, not Instagram handles. Stable style
+IDs and the production-brief contract are retained for history/promotion compatibility.
 
 The four `brand_XX` IDs are local placeholders. No Instagram accounts were created
 or connected. Names/handles may be edited in `accounts.json`, but all five styles

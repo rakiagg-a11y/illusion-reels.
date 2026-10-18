@@ -13,6 +13,13 @@ import random
 
 STYLES = ("reversible_depth", "hidden_stereogram", "binocular_worlds",
           "motion_paradox", "perception_lab")
+GENERATORS = {
+    "reversible_depth": dict(name="AngleSpin", label="סיבוב בזוויות"),
+    "hidden_stereogram": dict(name="HiddenShape", label="צורות חבויות בסטריאוגרמה"),
+    "binocular_worlds": dict(name="StereoTwin", label="עומק בשתי תמונות"),
+    "motion_paradox": dict(name="MotionShift", label="אשליות תנועה"),
+    "perception_lab": dict(name="PerceptionLab", label="צבע, גודל ותפיסה"),
+}
 SUBJECTS = ("heart", "star", "crescent", "butterfly", "ring", "leaf",
             "diamond", "lightning", "flower", "hourglass")
 MODES = {

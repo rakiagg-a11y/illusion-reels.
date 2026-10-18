@@ -11,6 +11,8 @@ Its [reference audit](research/biologistmichael/REPORT_HE.md) states the actual
 inventory and visual-review coverage. This path does not activate publishing.
 
 To run just one style, use one of the [five independent generator entry points](FIVE_GENERATORS_HE.md).
+Their fixed names are AngleSpin, HiddenShape, StereoTwin, MotionShift and PerceptionLab;
+the Hebrew guide maps each name to its content style and local account profile.
 
 ## Styles
 
