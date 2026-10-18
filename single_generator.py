@@ -45,7 +45,8 @@ def choose_brief(style, seed, history, mode=None, account_id=None, handle=None):
 def main(style):
     if style not in d.STYLES:
         raise ValueError("unknown generator")
-    ap = argparse.ArgumentParser(description=f"{d.GENERATORS[style]['name']} ({style}): one local video from this style only")
+    profile = next(a for a in d.default_accounts()["accounts"] if a["style"] == style)
+    ap = argparse.ArgumentParser(description=f"{d.GENERATORS[style]['name']} ({style}): one local video from this style only. Default page: {profile['handle'] or 'unassigned'}")
     ap.add_argument("--out", required=True, help="new output folder")
     ap.add_argument("--mode", choices=d.MODES[style])
     ap.add_argument("--seed", type=int)
@@ -67,7 +68,8 @@ def main(style):
             brief = choose_brief(style, a.seed if a.seed is not None else secrets.randbelow(1_000_000),
                                  load_history(a.history), a.mode, a.account, a.handle)
         print(json.dumps(dict(generator=d.GENERATORS[style]["name"], generator_label=d.GENERATORS[style]["label"],
-                              style=style, mode=brief["mode"], concept=brief["id"], local_only=True), ensure_ascii=True), flush=True)
+                              account=brief["account"], style=style, mode=brief["mode"],
+                              concept=brief["id"], local_only=True), ensure_ascii=True), flush=True)
         print(json.dumps(render_one(brief, a.out, a.history, a.preview, a.ffmpeg), ensure_ascii=True))
     except (ValueError, OSError, RuntimeError) as error:
         ap.error(str(error))

@@ -7,23 +7,23 @@
       "style": "reversible_depth"
     },
     {
-      "id": "brand_02",
+      "id": "unassigned_hidden_shape",
       "handle": "",
       "style": "hidden_stereogram"
     },
     {
-      "id": "brand_03",
-      "handle": "",
+      "id": "spiralium_",
+      "handle": "@spiralium_",
       "style": "binocular_worlds"
     },
     {
-      "id": "brand_04",
-      "handle": "",
+      "id": "hypnotorium",
+      "handle": "@hypnotorium",
       "style": "motion_paradox"
     },
     {
-      "id": "brand_05",
-      "handle": "",
+      "id": "trustyoureyes_",
+      "handle": "@trustyoureyes_",
       "style": "perception_lab"
     }
   ]

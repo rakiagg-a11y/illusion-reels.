@@ -13,6 +13,10 @@ inventory and visual-review coverage. This path does not activate publishing.
 To run just one style, use one of the [five independent generator entry points](FIVE_GENERATORS_HE.md).
 Their fixed names are AngleSpin, HiddenShape, StereoTwin, MotionShift and PerceptionLab;
 the Hebrew guide maps each name to its content style and local account profile.
+Default local routing is @opticpop → AngleSpin, @spiralium_ → StereoTwin,
+@hypnotorium → MotionShift and @trustyoureyes_ → PerceptionLab. HiddenShape is
+unassigned until a fifth page is chosen. Use `samples/five_styles/accounts.json`
+for new plans; this configuration does not connect or activate publishing accounts.
 
 ## Styles
 

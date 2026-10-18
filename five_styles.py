@@ -78,8 +78,14 @@ def exact(value, keys, label):
 
 
 def default_accounts():
-    return dict(version=1, accounts=[dict(id="opticpop" if i == 0 else f"brand_{i+1:02}",
-        handle="@opticpop" if i == 0 else "", style=style) for i, style in enumerate(STYLES)])
+    # Local content routing only; a handle is not a connected publishing account.
+    return dict(version=1, accounts=[
+        dict(id="opticpop", handle="@opticpop", style="reversible_depth"),
+        dict(id="unassigned_hidden_shape", handle="", style="hidden_stereogram"),
+        dict(id="spiralium_", handle="@spiralium_", style="binocular_worlds"),
+        dict(id="hypnotorium", handle="@hypnotorium", style="motion_paradox"),
+        dict(id="trustyoureyes_", handle="@trustyoureyes_", style="perception_lab"),
+    ])
 
 
 def validate_accounts(value):
