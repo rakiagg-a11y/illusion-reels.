@@ -137,6 +137,46 @@ class IllusionLibraryTests(unittest.TestCase):
 
 
 class MixedBatchTests(unittest.TestCase):
+    def test_pair_focus_keeps_tilted_objects_and_respects_both_histories(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            history,legacy = root/"history.json",root/"legacy.json"
+            legacy.write_text(json.dumps(dict(schema_version=1,entries=[
+                dict(id="old",novelty_key="old",pair_key="heart|crescent")])))
+            first = batches.plan(root/"first",history,count=4,pair_history=legacy,family="paired_objects")
+            batches.render_batch(root/"first/manifest.json",root/"videos",history,pair_history=legacy,
+                renderer=lambda brief,out:out.write_bytes(brief["idea"]["id"].encode()))
+            before = history.read_bytes(),legacy.read_bytes()
+            second = batches.plan(root/"next",history,seed=43,count=6,pair_history=legacy,family="paired_objects")
+            self.assertEqual(before,(history.read_bytes(),legacy.read_bytes()))
+            used = batches.seen_keys(batches.load_history(history),legacy)
+            self.assertFalse(used & {i["novelty_key"] for i in second["items"]})
+            for item in first["items"]+second["items"]:
+                self.assertEqual(item["family"],"paired_objects")
+                entities = validate_brief(item["brief"])["scene"]["entities"]
+                self.assertEqual(len(entities),2)
+                self.assertTrue(all(e["shape"] in batches.pairs.OBJECT_SHAPES for e in entities))
+                self.assertEqual([tuple(e["orientation"]) for e in entities],list(batches.pairs.PAIR_ORIENTATIONS))
+
+    def test_focused_exhaustion_never_falls_back_to_other_families(self):
+        pools = batches.candidate_pools(42)
+        pools["paired_objects"] = pools["paired_objects"][:1]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with patch("creative_library.candidate_pools",return_value=pools):
+                with self.assertRaisesRegex(ValueError,"selected catalogue exhausted"):
+                    batches.plan(root/"plan",root/"history.json",count=2,family="paired_objects")
+            self.assertFalse((root/"plan").exists())
+            self.assertFalse((root/"history.json").exists())
+
+    def test_invalid_family_is_rejected_before_creating_a_plan(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for family in ("unknown",False,[],{},1):
+                with self.assertRaisesRegex(ValueError,"family must be one of"):
+                    batches.plan(root/"plan",root/"history.json",family=family)
+                self.assertFalse((root/"plan").exists())
+
     def test_checked_in_demo_and_source_notices_are_consistent(self):
         root = Path(__file__).resolve().parents[1]
         manifest = json.loads((root/"samples/library_v1/manifest.json").read_text(encoding="utf-8"))

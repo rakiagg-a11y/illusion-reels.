@@ -49,9 +49,26 @@ python creative_library.py render local_demo/library_plan_01/manifest.json --qua
 python creative_library.py plan --count 12 --seed 43 --out local_demo/library_plan_02
 ```
 
-המחולל בוחר באופן מאוזן בין המשפחות. אם משפחה מוצתה, הוא בוחר מהאחרות.
+בלי מסנן, המחולל בוחר באופן מאוזן בין המשפחות. אם משפחה מוצתה, הוא בוחר מהאחרות.
 ברירת המחדל של creative_director.py נשארת זוג האובייקטים שביקשת; הספרייה הרחבה
 זמינה דרך creative_library.py. מסלול auto נשאר pointspin והתהליך החי לא שונה.
+
+## הכיוון הנבחר: שני אובייקטים עם צירים מוטים
+
+כדי להמשיך בסגנון הרפרנס, מתכננים אצווה עם `--family paired_objects`:
+
+```powershell
+python creative_library.py plan --family paired_objects --count 6 --seed 104731 --out local_demo/pairs_plan_01
+python creative_library.py render local_demo/pairs_plan_01/manifest.json --out local_demo/pairs_preview_01 --ffmpeg $encoder
+```
+
+כל בריף מכיל בדיוק שתי צורות ללא פנים, מצלמה קבועה, משטחים שקופים זוהרים
+וצירי סיבוב שונים: ‎[-18, 9, -15]‎ ו־‎[13, -15, 6]‎ מעלות.
+אלה זוויות שעוצבו בהשראת הרפרנס; הן אינן שחזור מדוד שלו.
+היסטוריית הספרייה והיסטוריית הזוגות הקודמת נבדקות גם במסלול הזה.
+כשהזוגות הפנויים אינם מספיקים, התכנון נעצר עם הסבר ואינו משלים ממשפחות אחרות.
+אפשר לבחור גם אחת מהמשפחות האחרות עם אותו מסנן. ההפקה ממשיכה דרך אותו
+manifest ודרך מתאם Python הקיים, ללא צורך ב־Blender.
 
 ## מניעת חזרות
 

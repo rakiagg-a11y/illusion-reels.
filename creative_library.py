@@ -111,9 +111,12 @@ def candidate_pools(seed):
     return pool
 
 
-def plan(out, history_path, seed=42, count=12, pair_history=None):
+def plan(out, history_path, seed=42, count=12, pair_history=None, family=None):
     if type(count) is not int or not 1 <= count <= 100:
         raise ValueError("count must be an integer in 1-100")
+    if family is not None and (not isinstance(family,str) or family not in FAMILIES):
+        raise ValueError("family must be one of " + ", ".join(FAMILIES))
+    selected_families = FAMILIES if family is None else (family,)
     out = Path(out)
     if out.exists():
         raise ValueError("choose a new plan folder")
@@ -125,7 +128,7 @@ def plan(out, history_path, seed=42, count=12, pair_history=None):
     while len(items) < count:
         added = False
         # A depleted family yields its slot to another; old variants are never recycled.
-        for family in sorted(FAMILIES,key=lambda f:(family_counts[f],FAMILIES.index(f))):
+        for family in sorted(selected_families,key=lambda f:(family_counts[f],FAMILIES.index(f))):
             while pools[family]:
                 idea = pools[family].pop()
                 if family == "paired_objects":
@@ -143,7 +146,7 @@ def plan(out, history_path, seed=42, count=12, pair_history=None):
             if len(items) == count:
                 break
         if not added:
-            raise ValueError("catalogue exhausted for this history; add a new geometry family or lower count")
+            raise ValueError("selected catalogue exhausted for this history; lower count or explicitly choose another family")
     manifest = dict(kind=MANIFEST_KIND,version=1,publishing_allowed=False,seed=seed,items=items)
     validate_manifest(manifest)
     out.mkdir(parents=True)
@@ -282,6 +285,8 @@ def main():
     planner = commands.add_parser("plan")
     planner.add_argument("--seed",type=int,default=42)
     planner.add_argument("--count",type=int,default=12)
+    planner.add_argument("--family",choices=FAMILIES,
+                         help="restrict the plan to one family; exhausted families never fall back to others")
     renderer = commands.add_parser("render")
     renderer.add_argument("manifest",type=Path)
     renderer.add_argument("--quality",choices=("preview","full"),default="preview")
@@ -293,7 +298,7 @@ def main():
     args = parser.parse_args()
     try:
         if args.command == "plan":
-            result = plan(args.out,args.history,args.seed,args.count,args.pair_history)
+            result = plan(args.out,args.history,args.seed,args.count,args.pair_history,args.family)
             print(json.dumps(dict(planned=len(result["items"]),families=dict(Counter(i["family"] for i in result["items"])),publishing_allowed=False)))
         else:
             render_batch(args.manifest,args.out,args.history,args.quality,args.ffmpeg,args.pair_history)
