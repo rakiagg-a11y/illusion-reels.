@@ -23,11 +23,23 @@ GENERATORS = {
 SUBJECTS = ("heart", "star", "crescent", "butterfly", "ring", "leaf",
             "diamond", "lightning", "flower", "hourglass")
 MODES = {
-    "reversible_depth": ("tilted_pair",),
+    "reversible_depth": ("bistable_spin", "tilted_pair"),
     "hidden_stereogram": ("hidden_relief",),
     "binocular_worlds": ("orbital_rings", "helix", "constellation"),
     "motion_paradox": ("motion_form", "infinite_regress", "footsteps"),
     "perception_lab": ("munker_white", "muller_lyer", "afterimage", "troxler", "cafe_wall"),
+}
+# The generator a page runs when no --mode is given (Rakia, 2026-10-18: opticpop
+# should produce shapes that can be seen spinning either way).
+PRIMARY_MODES = {"reversible_depth": "bistable_spin"}
+SPIN_HOOKS = {
+    "planet_wedge": "Which way is the planet spinning?",
+    "necker_cube": "Which way is the cube turning?",
+    "arrow_disc": "Which way is the arrow turning?",
+    "crossed_arrows": "Left or right: which way do the arrows spin?",
+    "chevron_band": "Which way are the arrows travelling?",
+    "twin_masks": "Which way are the masks turning?",
+    "arrow_globe": "Which way is the globe spinning?",
 }
 PALETTES = ("coral_blue", "mint_violet", "amber_cyan")
 REFERENCES = {
@@ -38,6 +50,8 @@ REFERENCES = {
     "perception_lab": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
 }
 COPY = {
+    "bistable_spin": ("Which way is it spinning?", "Blink, then look again. Can you make it switch direction?",
+                      "Orthographic projection; additive transparent particles; no occlusion or depth shading."),
     "tilted_pair": ("Which object is in front?", "Follow one object through the overlap.",
                     "Orthographic projection; additive surfaces; fixed, distinct tilted axes."),
     "hidden_relief": ("There is a shape inside the pattern.", "Look through the pattern. Keep your phone still.",
@@ -129,6 +143,10 @@ def validate_account(row):
 
 
 def parameters_for(mode):
+    if mode == "bistable_spin":
+        from bistable_spin import SHAPES, TILTS
+        return [dict(shape=shape, tilt=tilt, turns=turns)
+                for shape, tilt, turns in itertools.product(SHAPES, TILTS, (2, 3))]
     if mode == "tilted_pair":
         return [dict(subjects=list(p), layout=layout, tilt=tilt, turns=turns)
                 for p in itertools.combinations(SUBJECTS, 2)
@@ -190,7 +208,7 @@ def validate_brief(b):
         raise ValueError("invalid production render settings")
     if digest(b["render"]) != digest(dict(width=1080, height=1920, fps=30, seconds=24 if mode in ("afterimage", "troxler") else 15)):
         raise ValueError("invalid render types")
-    if b["caption"] != caption(mode):
+    if b["caption"] != caption(mode, p):
         raise ValueError("caption must retain the viewing instruction and factual control")
     if b["evaluation"] != evaluate(mode, p):
         raise ValueError("invalid evaluation")
@@ -201,8 +219,10 @@ def validate_brief(b):
     return b
 
 
-def caption(mode):
+def caption(mode, parameters=None):
     hook, instruction, control = COPY[mode]
+    if mode == "bistable_spin" and parameters:
+        hook = SPIN_HOOKS[parameters["shape"]]
     return dict(hook=hook, instruction=instruction, physical_control=control,
         full_caption=f"{hook}\n\n{instruction}\n\n#opticalillusion #perception #generativeart",
         perception_claim="May be perceived differently by different viewers; human review required.")
@@ -240,7 +260,7 @@ def make_brief(account, mode, parameters, seed):
         style=style, mode=mode, seed=seed, palette=PALETTES[seed % 3],
         parameters=copy.deepcopy(parameters),
         render=dict(width=1080, height=1920, fps=30, seconds=24 if mode in ("afterimage", "troxler") else 15),
-        caption=caption(mode), evaluation=evaluate(mode, parameters), reference=REFERENCES[style], local_only=True)
+        caption=caption(mode, parameters), evaluation=evaluate(mode, parameters), reference=REFERENCES[style], local_only=True)
     return validate_brief(b)
 
 
