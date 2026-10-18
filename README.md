@@ -1,6 +1,6 @@
 # illusion-reels
 
-Generator for the @opticpop optical-illusion reels (1080×1920, 30 fps, Instagram-ready).
+Generator for the @opticpop optical-illusion reels (1080�1920, 30 fps, Instagram-ready).
 
 ## Styles
 
@@ -21,7 +21,7 @@ This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 `RUNBOOK.md` describes the daily automated posting.
 
-## Creative Director — relational concepts (local review only)
+## Creative Director � relational concepts (local review only)
 
 The default mode composes exactly two non-face objects: hearts, stars, crescents,
 butterflies, rings, leaves, diamonds, lightning bolts, flowers and hourglasses. Shared rotation and transparent crossing contours follow the
@@ -71,3 +71,12 @@ version, artist, duration and auto-publish access must pass before a settings
 preview is emitted. Unavailable audio holds the automatic route. This does not
 upload, schedule, change account type or activate posting.
 See [AUDIO_AUTOMATION.md](AUDIO_AUTOMATION.md) for Hebrew setup and current limits.
+
+## OmniSocials migration
+
+The requested target provider has a read-only native-audio adapter and trending
+catalogue lookup in `omnisocials_audio.py`. It reuses the exact MOTHS request,
+emits native `instagram.audio_id` settings for review, and holds mismatched or
+unverified audio. It never downloads music, creates posts or changes the current
+posting route. See [OMNISOCIALS_MIGRATION.md](OMNISOCIALS_MIGRATION.md) for account
+connection, MCP setup, and the queue backup/review required before cutover.
