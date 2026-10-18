@@ -36,7 +36,7 @@ because upload + processing takes ~5–10 minutes. All inside 08:00–23:00 Isra
    same video URL, same `full_caption` text, same slot time, timezone `Asia/Jerusalem`):
    - **Facebook, automatic:** providers `[{"network":"facebook"}]`,
      `facebookData.type` = `REEL`, `autoPublish` = true.
-   - **Instagram, manual (Creator account):** use `short_caption` (a one-line hook
+   - **Instagram, manual while the selected native audio is unverified:** use `short_caption` (a one-line hook
      that shows in full before "more", then the 5 hashtags hidden below it),
      providers `[{"network":"instagram"}]`,
      `instagramData.type` = `REEL`, `showReelOnFeed` = true, `autoPublish` = **false**,
@@ -46,13 +46,22 @@ because upload + processing takes ~5–10 minutes. All inside 08:00–23:00 Isra
 
 ## Music
 
-@opticpop is a Creator account, so music is added by hand in the Instagram app.
+The current instructions add music by hand in the Instagram app. This is not a
+blanket restriction on Creator accounts. Metricool now supports native Reel audio
+for tracks authorized for third-party use, with a Facebook Login connection.
+The user's priority is the selected trending sound, not a silent automatic post.
+Before changing the manual route, follow [AUDIO_AUTOMATION.md](AUDIO_AUTOMATION.md)
+and verify the exact sound against the actual brand. If unavailable or unverified,
+hold the automatic route; do not substitute a different track or post silently.
+The new preflight is read-only and does not activate or modify this daily job.
+
 Songs the reference page uses most: Little Dark Age (MGMT), Coward (Hans Zimmer),
 Gabriel (Felsmann + Tiley), Return to Sender (John Luther), Credits Song for My Death
 (vivivivivi), Dark Fantasy (MPDV), Want To Love (Aloboi), around the world (slowed + reverb).
 
-The list below is the Instagram commercial library, only usable if the account is
-switched back to Business:
+The list below is a historical selection of commercial-library track IDs. They
+have not been revalidated for the current account; do not use them as automatic
+fallbacks for the user's requested sound:
 
 | audioId            | Track                                   |
 |--------------------|-----------------------------------------|

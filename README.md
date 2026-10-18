@@ -62,3 +62,12 @@ python creative_library.py render local_demo/library_plan_01/manifest.json --out
 ```
 
 Outputs are local review files. The existing auto generation and posting workflow are unchanged.
+
+## Native Instagram audio preflight
+
+The user's requested example, `moths (over slowed)` by Navjaxx and Staarz, has a
+read-only request template and brand-specific audio check. Exact audio identity,
+version, artist, duration and auto-publish access must pass before a settings
+preview is emitted. Unavailable audio holds the automatic route. This does not
+upload, schedule, change account type or activate posting.
+See [AUDIO_AUTOMATION.md](AUDIO_AUTOMATION.md) for Hebrew setup and current limits.
