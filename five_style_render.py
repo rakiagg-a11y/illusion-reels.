@@ -138,7 +138,13 @@ class Renderer:
 
     def _prepare(self):
         p, mode = self.p, self.mode
-        if mode == "tilted_pair":
+        if mode == "bistable_spin":
+            from bistable_spin import geometry
+            points, weights, layers = geometry(self.rng, p["shape"])
+            self.points = points
+            self.point_colors = weights[:, None]*np.array(self.colors)[layers]/255
+            self.bound = np.linalg.norm(points, axis=1).max()
+        elif mode == "tilted_pair":
             from relational_scene import geometry, orientation_matrix
             self.layers, bound = [], 0.
             for i, e in enumerate(pair_spec(p)["entities"]):
@@ -226,7 +232,16 @@ class Renderer:
         w, h, p, mode = self.w, self.h, self.p, self.mode
         light = mode in ("munker_white", "muller_lyer", "troxler", "cafe_wall")
         image = Image.new("RGB", (w, h), (245, 245, 245) if light else (0, 0, 0))
-        if mode == "tilted_pair":
+        if mode == "bistable_spin":
+            from bistable_spin import project
+            xy = project(self.points, 2*math.pi*p["turns"]*t/self.seconds, p["tilt"])
+            # Smaller field than the other modes so the whole object stays above
+            # the Reels/Shorts caption overlay (bottom ~35% of the frame).
+            size = round(w*.80)*2
+            panel = splat(xy*[1, -1]/(2.25*self.bound), self.point_colors, size, 3.4, w/360)
+            panel = panel.resize((size//2, size//2), Image.Resampling.LANCZOS)
+            self._panel(image, panel, round(h*.445-panel.height/2))
+        elif mode == "tilted_pair":
             from relational_scene import rotate
             angle = 2*math.pi*t/self.seconds
             points, colors = [], []
@@ -299,22 +314,24 @@ class Renderer:
             d.ellipse((w/2-r, h*.48-r, w/2+r, h*.48+r), fill="black", outline="white", width=max(1, round(w*.001)))
         d = ImageDraw.Draw(image)
         textcolor = (25, 30, 40) if light else (235, 238, 245)
-        centered(d, self.b["caption"]["hook"], h*.10, w, textcolor, .044)
+        # Reels/Shorts overlay the top ~14% and bottom ~35% of the frame, so all
+        # text sits in the band between the top UI and the optical field.
+        centered(d, self.b["caption"]["hook"], h*.15, w, textcolor, .044)
         # Short lines preserve phone legibility without covering the optical field.
         instruction = self.b["caption"]["instruction"]
         words, lines, line = instruction.split(), [], ""
         for word in words:
-            if len(line)+len(word) > 43:
+            if len(line)+len(word) > 52:
                 lines.append(line); line = word
             else:
                 line += (" " if line else "")+word
         lines.append(line)
         for i, line in enumerate(lines):
-            centered(d, line, h*.81+i*w*.045, w, textcolor, .031)
+            centered(d, line, h*.185+i*w*.036, w, textcolor, .028)
         if mode == "afterimage":
             centered(d, f"{max(0, 18-int(t))}s on the dot" if t < 18 else "Keep your gaze on the dot", h*.75, w, textcolor, .034)
         label = self.b["account"]["handle"] or self.b["account"]["id"]
-        centered(d, label, h*.92, w, textcolor, .027)
+        centered(d, label, h*.78, w, textcolor, .027)
         return image
 
     def _context_frame(self, image, t):
