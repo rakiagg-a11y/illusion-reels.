@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "accounts": [
+    {
+      "id": "opticpop",
+      "handle": "@opticpop",
+      "style": "reversible_depth"
+    },
+    {
+      "id": "brand_02",
+      "handle": "",
+      "style": "hidden_stereogram"
+    },
+    {
+      "id": "brand_03",
+      "handle": "",
+      "style": "binocular_worlds"
+    },
+    {
+      "id": "brand_04",
+      "handle": "",
+      "style": "motion_paradox"
+    },
+    {
+      "id": "brand_05",
+      "handle": "",
+      "style": "perception_lab"
+    }
+  ]
+}

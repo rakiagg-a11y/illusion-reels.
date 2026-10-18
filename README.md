@@ -2,6 +2,14 @@
 
 Generator for the @opticpop optical-illusion reels (1080×1920, 30 fps, Instagram-ready).
 
+## Five-account local studio
+
+The separate [five-style studio](FIVE_STYLES.md) routes exactly five account
+profiles to distinct illusion families, with 13 procedural modes, ranked
+production briefs and local-only rendering. Start with the [Hebrew setup guide](SETUP_HE.md).
+Its [reference audit](research/biologistmichael/REPORT_HE.md) states the actual
+inventory and visual-review coverage. This path does not activate publishing.
+
 ## Styles
 
 - `dancer`: a 3D silhouette (ballerina, cat, flamingo, T-rex, shark, butterfly) that can be seen spinning either way.

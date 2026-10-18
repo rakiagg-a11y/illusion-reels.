@@ -1,0 +1,1300 @@
+{
+  "kind": "five_style_plan",
+  "version": 1,
+  "local_only": true,
+  "seed": 181026,
+  "account_count": 5,
+  "selection": "mode coverage then deterministic variation; evaluation stored per brief",
+  "briefs": [
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "710886aaafd693f1",
+      "account": {
+        "id": "opticpop",
+        "handle": "@opticpop",
+        "style": "reversible_depth"
+      },
+      "style": "reversible_depth",
+      "mode": "tilted_pair",
+      "seed": 181026,
+      "palette": "coral_blue",
+      "parameters": {
+        "subjects": [
+          "star",
+          "lightning"
+        ],
+        "layout": "orbit",
+        "tilt": 2,
+        "turns": 1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Which object is in front?",
+        "instruction": "Follow one object through the overlap.",
+        "physical_control": "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+        "full_caption": "Which object is in front?\n\nFollow one object through the overlap.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeNPeIkyeLx/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "e719b57dfb231002",
+      "account": {
+        "id": "opticpop",
+        "handle": "@opticpop",
+        "style": "reversible_depth"
+      },
+      "style": "reversible_depth",
+      "mode": "tilted_pair",
+      "seed": 181027,
+      "palette": "mint_violet",
+      "parameters": {
+        "subjects": [
+          "crescent",
+          "flower"
+        ],
+        "layout": "orbit",
+        "tilt": 2,
+        "turns": -1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Which object is in front?",
+        "instruction": "Follow one object through the overlap.",
+        "physical_control": "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+        "full_caption": "Which object is in front?\n\nFollow one object through the overlap.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeNPeIkyeLx/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "cb2aeccfef8ef4c1",
+      "account": {
+        "id": "opticpop",
+        "handle": "@opticpop",
+        "style": "reversible_depth"
+      },
+      "style": "reversible_depth",
+      "mode": "tilted_pair",
+      "seed": 181028,
+      "palette": "amber_cyan",
+      "parameters": {
+        "subjects": [
+          "star",
+          "butterfly"
+        ],
+        "layout": "coaxial",
+        "tilt": 2,
+        "turns": -1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Which object is in front?",
+        "instruction": "Follow one object through the overlap.",
+        "physical_control": "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+        "full_caption": "Which object is in front?\n\nFollow one object through the overlap.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeNPeIkyeLx/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "a5ef8f26992370e8",
+      "account": {
+        "id": "opticpop",
+        "handle": "@opticpop",
+        "style": "reversible_depth"
+      },
+      "style": "reversible_depth",
+      "mode": "tilted_pair",
+      "seed": 181029,
+      "palette": "coral_blue",
+      "parameters": {
+        "subjects": [
+          "crescent",
+          "diamond"
+        ],
+        "layout": "orbit",
+        "tilt": 0,
+        "turns": 1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Which object is in front?",
+        "instruction": "Follow one object through the overlap.",
+        "physical_control": "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+        "full_caption": "Which object is in front?\n\nFollow one object through the overlap.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeNPeIkyeLx/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "42db08200a4fd274",
+      "account": {
+        "id": "opticpop",
+        "handle": "@opticpop",
+        "style": "reversible_depth"
+      },
+      "style": "reversible_depth",
+      "mode": "tilted_pair",
+      "seed": 181030,
+      "palette": "mint_violet",
+      "parameters": {
+        "subjects": [
+          "crescent",
+          "flower"
+        ],
+        "layout": "orbit",
+        "tilt": 0,
+        "turns": -1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Which object is in front?",
+        "instruction": "Follow one object through the overlap.",
+        "physical_control": "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+        "full_caption": "Which object is in front?\n\nFollow one object through the overlap.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeNPeIkyeLx/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "a9f9805ae2c11e6e",
+      "account": {
+        "id": "brand_02",
+        "handle": "",
+        "style": "hidden_stereogram"
+      },
+      "style": "hidden_stereogram",
+      "mode": "hidden_relief",
+      "seed": 181127,
+      "palette": "amber_cyan",
+      "parameters": {
+        "subject": "heart",
+        "relief": 0.15,
+        "repeat": 0.16
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "There is a shape inside the pattern.",
+        "instruction": "Look through the pattern. Keep your phone still.",
+        "physical_control": "Repeated horizontal correspondences encode relief; no visible outline.",
+        "full_caption": "There is a shape inside the pattern.\n\nLook through the pattern. Keep your phone still.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Repeated horizontal correspondences encode relief; no visible outline.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/Dec9MipPEKe/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "63f3955867fed9cd",
+      "account": {
+        "id": "brand_02",
+        "handle": "",
+        "style": "hidden_stereogram"
+      },
+      "style": "hidden_stereogram",
+      "mode": "hidden_relief",
+      "seed": 181128,
+      "palette": "coral_blue",
+      "parameters": {
+        "subject": "butterfly",
+        "relief": 0.15,
+        "repeat": 0.13
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "There is a shape inside the pattern.",
+        "instruction": "Look through the pattern. Keep your phone still.",
+        "physical_control": "Repeated horizontal correspondences encode relief; no visible outline.",
+        "full_caption": "There is a shape inside the pattern.\n\nLook through the pattern. Keep your phone still.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Repeated horizontal correspondences encode relief; no visible outline.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/Dec9MipPEKe/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "0fc5d50fb591d110",
+      "account": {
+        "id": "brand_02",
+        "handle": "",
+        "style": "hidden_stereogram"
+      },
+      "style": "hidden_stereogram",
+      "mode": "hidden_relief",
+      "seed": 181129,
+      "palette": "mint_violet",
+      "parameters": {
+        "subject": "diamond",
+        "relief": 0.15,
+        "repeat": 0.16
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "There is a shape inside the pattern.",
+        "instruction": "Look through the pattern. Keep your phone still.",
+        "physical_control": "Repeated horizontal correspondences encode relief; no visible outline.",
+        "full_caption": "There is a shape inside the pattern.\n\nLook through the pattern. Keep your phone still.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Repeated horizontal correspondences encode relief; no visible outline.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/Dec9MipPEKe/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "6daf2389f5221b1c",
+      "account": {
+        "id": "brand_02",
+        "handle": "",
+        "style": "hidden_stereogram"
+      },
+      "style": "hidden_stereogram",
+      "mode": "hidden_relief",
+      "seed": 181130,
+      "palette": "amber_cyan",
+      "parameters": {
+        "subject": "leaf",
+        "relief": 0.15,
+        "repeat": 0.13
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "There is a shape inside the pattern.",
+        "instruction": "Look through the pattern. Keep your phone still.",
+        "physical_control": "Repeated horizontal correspondences encode relief; no visible outline.",
+        "full_caption": "There is a shape inside the pattern.\n\nLook through the pattern. Keep your phone still.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Repeated horizontal correspondences encode relief; no visible outline.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/Dec9MipPEKe/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "fc40a1fb3f6f095b",
+      "account": {
+        "id": "brand_02",
+        "handle": "",
+        "style": "hidden_stereogram"
+      },
+      "style": "hidden_stereogram",
+      "mode": "hidden_relief",
+      "seed": 181131,
+      "palette": "coral_blue",
+      "parameters": {
+        "subject": "star",
+        "relief": 0.15,
+        "repeat": 0.16
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "There is a shape inside the pattern.",
+        "instruction": "Look through the pattern. Keep your phone still.",
+        "physical_control": "Repeated horizontal correspondences encode relief; no visible outline.",
+        "full_caption": "There is a shape inside the pattern.\n\nLook through the pattern. Keep your phone still.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Repeated horizontal correspondences encode relief; no visible outline.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/Dec9MipPEKe/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "659f68fc0fbe109c",
+      "account": {
+        "id": "brand_03",
+        "handle": "",
+        "style": "binocular_worlds"
+      },
+      "style": "binocular_worlds",
+      "mode": "orbital_rings",
+      "seed": 181228,
+      "palette": "mint_violet",
+      "parameters": {
+        "complexity": 3,
+        "eye_separation": 0.08,
+        "view": "parallel"
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Two views. One floating world.",
+        "instruction": "Relax your eyes through the screen to merge the center views.",
+        "physical_control": "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+        "full_caption": "Two views. One floating world.\n\nRelax your eyes through the screen to merge the center views.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeLpuvouR5f/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "503bb71bdea2eefa",
+      "account": {
+        "id": "brand_03",
+        "handle": "",
+        "style": "binocular_worlds"
+      },
+      "style": "binocular_worlds",
+      "mode": "helix",
+      "seed": 181229,
+      "palette": "amber_cyan",
+      "parameters": {
+        "complexity": 4,
+        "eye_separation": 0.12,
+        "view": "parallel"
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Can you see the spiral in depth?",
+        "instruction": "Relax your eyes through the screen to merge the center views.",
+        "physical_control": "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+        "full_caption": "Can you see the spiral in depth?\n\nRelax your eyes through the screen to merge the center views.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeLpuvouR5f/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "a51c343e0bbd9063",
+      "account": {
+        "id": "brand_03",
+        "handle": "",
+        "style": "binocular_worlds"
+      },
+      "style": "binocular_worlds",
+      "mode": "constellation",
+      "seed": 181230,
+      "palette": "coral_blue",
+      "parameters": {
+        "complexity": 4,
+        "eye_separation": 0.08,
+        "view": "parallel"
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "A galaxy between the two images.",
+        "instruction": "Relax your eyes through the screen to merge the center views.",
+        "physical_control": "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+        "full_caption": "A galaxy between the two images.\n\nRelax your eyes through the screen to merge the center views.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeLpuvouR5f/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "85cbae3f58a522f6",
+      "account": {
+        "id": "brand_03",
+        "handle": "",
+        "style": "binocular_worlds"
+      },
+      "style": "binocular_worlds",
+      "mode": "orbital_rings",
+      "seed": 181231,
+      "palette": "mint_violet",
+      "parameters": {
+        "complexity": 3,
+        "eye_separation": 0.12,
+        "view": "parallel"
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Two views. One floating world.",
+        "instruction": "Relax your eyes through the screen to merge the center views.",
+        "physical_control": "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+        "full_caption": "Two views. One floating world.\n\nRelax your eyes through the screen to merge the center views.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeLpuvouR5f/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "9eb204a754c10333",
+      "account": {
+        "id": "brand_03",
+        "handle": "",
+        "style": "binocular_worlds"
+      },
+      "style": "binocular_worlds",
+      "mode": "helix",
+      "seed": 181232,
+      "palette": "amber_cyan",
+      "parameters": {
+        "complexity": 4,
+        "eye_separation": 0.08,
+        "view": "parallel"
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Can you see the spiral in depth?",
+        "instruction": "Relax your eyes through the screen to merge the center views.",
+        "physical_control": "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+        "full_caption": "Can you see the spiral in depth?\n\nRelax your eyes through the screen to merge the center views.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 12,
+        "variation": 15,
+        "originality": 10,
+        "total": 87,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DeLpuvouR5f/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "9cc94406684b240a",
+      "account": {
+        "id": "brand_04",
+        "handle": "",
+        "style": "motion_paradox"
+      },
+      "style": "motion_paradox",
+      "mode": "motion_form",
+      "seed": 181329,
+      "palette": "coral_blue",
+      "parameters": {
+        "subject": "crescent",
+        "direction": 1,
+        "dot_size": 3
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "The shape lives in the movement.",
+        "instruction": "Watch it move, then pause. Can you find the shape?",
+        "physical_control": "Equal noise distributions inside and outside; opposite coherent motion.",
+        "full_caption": "The shape lives in the movement.\n\nWatch it move, then pause. Can you find the shape?\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Equal noise distributions inside and outside; opposite coherent motion.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DdE0kwoOo9h/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "d88056f8f15d350f",
+      "account": {
+        "id": "brand_04",
+        "handle": "",
+        "style": "motion_paradox"
+      },
+      "style": "motion_paradox",
+      "mode": "infinite_regress",
+      "seed": 181330,
+      "palette": "mint_violet",
+      "parameters": {
+        "columns": 4,
+        "carrier": -1,
+        "cycles": 1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Are the patches moving diagonally?",
+        "instruction": "Keep looking at the center dot.",
+        "physical_control": "Patch centers travel vertically; internal carriers drift horizontally.",
+        "full_caption": "Are the patches moving diagonally?\n\nKeep looking at the center dot.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Patch centers travel vertically; internal carriers drift horizontally.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DdE0kwoOo9h/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "86e37d03c38664a9",
+      "account": {
+        "id": "brand_04",
+        "handle": "",
+        "style": "motion_paradox"
+      },
+      "style": "motion_paradox",
+      "mode": "footsteps",
+      "seed": 181331,
+      "palette": "amber_cyan",
+      "parameters": {
+        "stripes": 16,
+        "axis": "vertical",
+        "cycles": 1
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Do these blocks move at the same speed?",
+        "instruction": "Watch as the stripes fade.",
+        "physical_control": "Both blocks share exactly one trajectory; contrast context changes.",
+        "full_caption": "Do these blocks move at the same speed?\n\nWatch as the stripes fade.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Both blocks share exactly one trajectory; contrast context changes.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DdE0kwoOo9h/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "2c3ec8ee5c52ea70",
+      "account": {
+        "id": "brand_04",
+        "handle": "",
+        "style": "motion_paradox"
+      },
+      "style": "motion_paradox",
+      "mode": "motion_form",
+      "seed": 181332,
+      "palette": "coral_blue",
+      "parameters": {
+        "subject": "heart",
+        "direction": 1,
+        "dot_size": 3
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "The shape lives in the movement.",
+        "instruction": "Watch it move, then pause. Can you find the shape?",
+        "physical_control": "Equal noise distributions inside and outside; opposite coherent motion.",
+        "full_caption": "The shape lives in the movement.\n\nWatch it move, then pause. Can you find the shape?\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Equal noise distributions inside and outside; opposite coherent motion.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DdE0kwoOo9h/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "a3206b27282dbda6",
+      "account": {
+        "id": "brand_04",
+        "handle": "",
+        "style": "motion_paradox"
+      },
+      "style": "motion_paradox",
+      "mode": "infinite_regress",
+      "seed": 181333,
+      "palette": "mint_violet",
+      "parameters": {
+        "columns": 4,
+        "carrier": -1,
+        "cycles": 2
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Are the patches moving diagonally?",
+        "instruction": "Keep looking at the center dot.",
+        "physical_control": "Patch centers travel vertically; internal carriers drift horizontally.",
+        "full_caption": "Are the patches moving diagonally?\n\nKeep looking at the center dot.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Patch centers travel vertically; internal carriers drift horizontally.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/reel/DdE0kwoOo9h/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "b3ea42b0d3464b77",
+      "account": {
+        "id": "brand_05",
+        "handle": "",
+        "style": "perception_lab"
+      },
+      "style": "perception_lab",
+      "mode": "munker_white",
+      "seed": 181430,
+      "palette": "amber_cyan",
+      "parameters": {
+        "stripes": 18,
+        "target": 100
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "These bars have exactly the same color.",
+        "instruction": "Watch the surrounding stripes disappear.",
+        "physical_control": "Target RGB stays constant; only the surrounding grating fades.",
+        "full_caption": "These bars have exactly the same color.\n\nWatch the surrounding stripes disappear.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Target RGB stays constant; only the surrounding grating fades.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "b7f10ea6aa69c82b",
+      "account": {
+        "id": "brand_05",
+        "handle": "",
+        "style": "perception_lab"
+      },
+      "style": "perception_lab",
+      "mode": "muller_lyer",
+      "seed": 181431,
+      "palette": "coral_blue",
+      "parameters": {
+        "wing_angle": 35,
+        "wing_length": 0.17
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Which line is longer?",
+        "instruction": "Watch the arrowheads disappear.",
+        "physical_control": "Both shafts have exactly equal endpoints and length.",
+        "full_caption": "Which line is longer?\n\nWatch the arrowheads disappear.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Both shafts have exactly equal endpoints and length.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "6159e9b4411dbd96",
+      "account": {
+        "id": "brand_05",
+        "handle": "",
+        "style": "perception_lab"
+      },
+      "style": "perception_lab",
+      "mode": "afterimage",
+      "seed": 181432,
+      "palette": "mint_violet",
+      "parameters": {
+        "subject": "star",
+        "segments": 7
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 24
+      },
+      "caption": {
+        "hook": "Keep looking at the center dot.",
+        "instruction": "Stay on the dot when the color turns gray.",
+        "physical_control": "Long fixed chromatic adaptor; achromatic test; continuous fixation point.",
+        "full_caption": "Keep looking at the center dot.\n\nStay on the dot when the color turns gray.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 10,
+        "variation": 15,
+        "originality": 10,
+        "total": 85,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Long fixed chromatic adaptor; achromatic test; continuous fixation point.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "a7e0c0dff2d6cb58",
+      "account": {
+        "id": "brand_05",
+        "handle": "",
+        "style": "perception_lab"
+      },
+      "style": "perception_lab",
+      "mode": "troxler",
+      "seed": 181433,
+      "palette": "amber_cyan",
+      "parameters": {
+        "patches": 12,
+        "contrast": 0.15
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 24
+      },
+      "caption": {
+        "hook": "Can the colors fade from your view?",
+        "instruction": "Keep a relaxed, steady gaze on the center dot.",
+        "physical_control": "Peripheral low contrast patches remain physically unchanged for the whole clip.",
+        "full_caption": "Can the colors fade from your view?\n\nKeep a relaxed, steady gaze on the center dot.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 10,
+        "variation": 15,
+        "originality": 10,
+        "total": 85,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Peripheral low contrast patches remain physically unchanged for the whole clip.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
+      "local_only": true
+    },
+    {
+      "kind": "five_style_production_brief",
+      "version": 1,
+      "id": "d1b2caae71673dfc",
+      "account": {
+        "id": "brand_05",
+        "handle": "",
+        "style": "perception_lab"
+      },
+      "style": "perception_lab",
+      "mode": "cafe_wall",
+      "seed": 181434,
+      "palette": "coral_blue",
+      "parameters": {
+        "columns": 5,
+        "offset": 0.5
+      },
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "caption": {
+        "hook": "Are the horizontal lines parallel?",
+        "instruction": "Watch the tiles fade to check the straight lines.",
+        "physical_control": "Every mortar line is horizontal; alternating rows have offset tiles.",
+        "full_caption": "Are the horizontal lines parallel?\n\nWatch the tiles fade to check the straight lines.\n\n#opticalillusion #perception #generativeart",
+        "perception_claim": "May be perceived differently by different viewers; human review required."
+      },
+      "evaluation": {
+        "feasibility": 25,
+        "mechanism_control": 25,
+        "viewing_accessibility": 18,
+        "variation": 15,
+        "originality": 10,
+        "total": 93,
+        "status": "renderable_needs_human_review",
+        "blender_required": false,
+        "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+        "reasons": [
+          "Existing Python geometry or bounded procedural renderer; no external assets.",
+          "Every mortar line is horizontal; alternating rows have offset tiles.",
+          "Perceptual strength remains subject to human review."
+        ],
+        "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+      },
+      "reference": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
+      "local_only": true
+    }
+  ]
+}
