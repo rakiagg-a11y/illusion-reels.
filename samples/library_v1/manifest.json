@@ -1,0 +1,505 @@
+{
+  "kind": "opticpop_library_batch",
+  "version": 1,
+  "publishing_allowed": false,
+  "seed": 181026,
+  "items": [
+    {
+      "id": "e4d33281f44cca87",
+      "family": "paired_objects",
+      "novelty_key": "48e1d4765891b1b65cd2eabb032b886f6a4ebd9b9c9eabd94274cfa6a3f31eac",
+      "brief": {
+        "schema_version": 2,
+        "status": "needs_human_review",
+        "publishing_allowed": false,
+        "idea": {
+          "id": "e4d33281f44cca87",
+          "title": "A butterfly passing through a leaf",
+          "theme": "paired_objects",
+          "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: coral butterfly at 1 relative turns, electric_blue leaf at 1 relative turns. Each object spins about its own tilted axis against a fixed camera.",
+          "hook": "Which object is in front?",
+          "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+          "illusion": {
+            "mechanism": "transparent_depth_ambiguity",
+            "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+            "question": "Can you keep the same object in front throughout the turn?",
+            "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+          },
+          "visual_identity": {
+            "background": "black",
+            "projection": "orthographic",
+            "surface": "additive_dots",
+            "occlusion": "none"
+          },
+          "scene": {
+            "version": 1,
+            "identity": {
+              "background": "black",
+              "projection": "orthographic",
+              "surface": "additive_dots",
+              "occlusion": "none"
+            },
+            "layout": "orbit",
+            "entities": [
+              {
+                "shape": "butterfly",
+                "expression": null,
+                "color": "coral",
+                "center": [
+                  -0.18,
+                  0.28,
+                  -0.32
+                ],
+                "turns": 1,
+                "phase": 0,
+                "scale": 0.9,
+                "orientation": [
+                  -18,
+                  9,
+                  -15
+                ]
+              },
+              {
+                "shape": "leaf",
+                "expression": null,
+                "color": "electric_blue",
+                "center": [
+                  0.18,
+                  -0.28,
+                  0.32
+                ],
+                "turns": 1,
+                "phase": 0,
+                "scale": 0.9,
+                "orientation": [
+                  13,
+                  -15,
+                  6
+                ]
+              }
+            ]
+          },
+          "seed": 179671,
+          "requirements": [],
+          "source": "paired_object_composition",
+          "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+          "novelty_key": "ebf302bad07c468c"
+        },
+        "render": {
+          "style": "opticpop",
+          "seed": 179671,
+          "seconds": 15,
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "scene": {
+            "version": 1,
+            "identity": {
+              "background": "black",
+              "projection": "orthographic",
+              "surface": "additive_dots",
+              "occlusion": "none"
+            },
+            "layout": "orbit",
+            "entities": [
+              {
+                "shape": "butterfly",
+                "expression": null,
+                "color": "coral",
+                "center": [
+                  -0.18,
+                  0.28,
+                  -0.32
+                ],
+                "turns": 1,
+                "phase": 0,
+                "scale": 0.9,
+                "orientation": [
+                  -18,
+                  9,
+                  -15
+                ]
+              },
+              {
+                "shape": "leaf",
+                "expression": null,
+                "color": "electric_blue",
+                "center": [
+                  0.18,
+                  -0.28,
+                  0.32
+                ],
+                "turns": 1,
+                "phase": 0,
+                "scale": 0.9,
+                "orientation": [
+                  13,
+                  -15,
+                  6
+                ]
+              }
+            ]
+          }
+        },
+        "evaluation": {
+          "eligible": true,
+          "status": "ready_for_preview",
+          "total": 93.0,
+          "scores": {
+            "mechanism": 4,
+            "relationship": 5,
+            "identity": 5,
+            "novelty": 4,
+            "feasibility": 5,
+            "theme_fit": 5
+          },
+          "reasons": [
+            "Geometry, motion, palette and compositing are supported by relational_scene.Scene",
+            "Color and caption changes alone do not count as concept novelty",
+            "No match in supplied scene history",
+            "Perceptual strength and narrative fidelity require human review"
+          ],
+          "missing_capabilities": []
+        },
+        "caption": {
+          "full_caption": "Which object is in front?\n\nFollow one colored object through the overlap; the near/far interpretation may change.\n\nCan you keep the same object in front throughout the turn?\n\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "short_caption": "Which object is in front?\n.\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "hashtags": [
+            "#opticalillusion",
+            "#perception",
+            "#visualillusion",
+            "#generativeart",
+            "#opticpop"
+          ]
+        },
+        "direction": {
+          "hook_placement": "Caption only; no on-screen hook",
+          "beats": [
+            {
+              "seconds": 0,
+              "intent": "Establish distinct colored surfaces"
+            },
+            {
+              "seconds": 1.875,
+              "intent": "Surfaces pass through narrow profiles"
+            },
+            {
+              "seconds": 3.75,
+              "intent": "Overlapping contours return from the opposite side"
+            },
+            {
+              "seconds": 7.5,
+              "intent": "Exact geometric cycle repeats"
+            },
+            {
+              "seconds": 15,
+              "intent": "Loop boundary matches opening geometry"
+            }
+          ],
+          "audio": "Silent AAC for production; preview is silent without an audio track"
+        },
+        "review_checks": [
+          "Verify silhouette recognition and surface curvature",
+          "Check crossing contours and color separation on a phone",
+          "Check whether the intended ambiguity is perceptible",
+          "Check loop boundary and caption fidelity"
+        ]
+      }
+    },
+    {
+      "id": "d33d75fb8fc6465b",
+      "family": "ebbinghaus",
+      "novelty_key": "ea723b595628a4e725122766e187de074934dd9dbe6ba927a5547257ce97b686",
+      "brief": {
+        "schema_version": 3,
+        "status": "needs_human_review",
+        "publishing_allowed": false,
+        "idea": {
+          "id": "d33d75fb8fc6465b",
+          "title": "Same circles, different surroundings",
+          "family": "ebbinghaus",
+          "hook": "Which orange circle is larger?",
+          "viewer_experience": "Compare the two orange circles while their surroundings move. Both targets keep the same radius.",
+          "mechanism": "size_context",
+          "observable_event": "The surrounding circles fade for a direct comparison, then return.",
+          "scene": {
+            "version": 1,
+            "family": "ebbinghaus",
+            "parameters": {
+              "target_radius": 0.05,
+              "small_radius": 0.045,
+              "large_radius": 0.1,
+              "small_count": 8,
+              "large_count": 5,
+              "gap": 0.07,
+              "cycles": 2
+            },
+            "palette": "amber"
+          },
+          "seed": 550972,
+          "novelty_key": "library:ea723b595628a4e725122766e187de074934dd9dbe6ba927a5547257ce97b686",
+          "source": {
+            "repository": "RealityBending/Pyllusion",
+            "commit": "8fff53efd783e666ea29262b8d0c671c088c0453",
+            "path": "pyllusion/Ebbinghaus/ebbinghaus_parameters.py",
+            "license": "MIT"
+          }
+        },
+        "render": {
+          "style": "illusion_lab",
+          "scene": {
+            "version": 1,
+            "family": "ebbinghaus",
+            "parameters": {
+              "target_radius": 0.05,
+              "small_radius": 0.045,
+              "large_radius": 0.1,
+              "small_count": 8,
+              "large_count": 5,
+              "gap": 0.07,
+              "cycles": 2
+            },
+            "palette": "amber"
+          },
+          "seed": 550972,
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "seconds": 15
+        },
+        "caption": {
+          "full_caption": "Which orange circle is larger?\n\nCompare the two orange circles while their surroundings move. Both targets keep the same radius.\n\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "short_caption": "Which orange circle is larger?\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "hashtags": [
+            "#opticalillusion",
+            "#perception",
+            "#visualillusion",
+            "#generativeart",
+            "#opticpop"
+          ]
+        },
+        "evaluation": {
+          "eligible": true,
+          "total": 94.0,
+          "status": "ready_for_preview",
+          "scores": {
+            "feasibility": 5,
+            "loop": 5,
+            "mechanism": 5,
+            "identity": 4,
+            "novelty": 4
+          },
+          "reasons": [
+            "Validated against explicit renderer capabilities and loop controls",
+            "Structural signature excludes color, speed, reversal and screen rotation",
+            "Illusion strength still requires human viewing; ranking is editorial"
+          ]
+        },
+        "direction": {
+          "opening": "Which orange circle is larger?",
+          "event": "The surrounding circles fade for a direct comparison, then return.",
+          "ending": "Return to opening configuration at 15 seconds",
+          "audio": "Silent AAC"
+        },
+        "review_checks": [
+          "Compare the illusion and its control on a phone",
+          "Check loop and legibility"
+        ]
+      }
+    },
+    {
+      "id": "34ddefa477de0182",
+      "family": "footsteps",
+      "novelty_key": "43013c5653cc5d3a41ce3772f628f41220cfa84f60292d71b0c9c4398fa19fdf",
+      "brief": {
+        "schema_version": 3,
+        "status": "needs_human_review",
+        "publishing_allowed": false,
+        "idea": {
+          "id": "34ddefa477de0182",
+          "title": "The footsteps that never change speed",
+          "family": "footsteps",
+          "hook": "Are these blocks moving together?",
+          "viewer_experience": "Track the yellow and blue blocks. Their positions and speed match even when the stripes suggest otherwise.",
+          "mechanism": "contrast_motion",
+          "observable_event": "The stripes fade to gray, exposing the identical motion, then return.",
+          "scene": {
+            "version": 1,
+            "family": "footsteps",
+            "parameters": {
+              "stripes": 16,
+              "bar_width": 2,
+              "lanes": 2,
+              "axis": "vertical",
+              "cycles": 2
+            },
+            "palette": "classic"
+          },
+          "seed": 16320,
+          "novelty_key": "library:43013c5653cc5d3a41ce3772f628f41220cfa84f60292d71b0c9c4398fa19fdf",
+          "source": {
+            "repository": "altunenes/sorceress",
+            "commit": "1186eba2af2a9e151e0712662c8315a57b4548a8",
+            "path": "docs/js/steps.js",
+            "license": "MIT"
+          }
+        },
+        "render": {
+          "style": "illusion_lab",
+          "scene": {
+            "version": 1,
+            "family": "footsteps",
+            "parameters": {
+              "stripes": 16,
+              "bar_width": 2,
+              "lanes": 2,
+              "axis": "vertical",
+              "cycles": 2
+            },
+            "palette": "classic"
+          },
+          "seed": 16320,
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "seconds": 15
+        },
+        "caption": {
+          "full_caption": "Are these blocks moving together?\n\nTrack the yellow and blue blocks. Their positions and speed match even when the stripes suggest otherwise.\n\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "short_caption": "Are these blocks moving together?\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "hashtags": [
+            "#opticalillusion",
+            "#perception",
+            "#visualillusion",
+            "#generativeart",
+            "#opticpop"
+          ]
+        },
+        "evaluation": {
+          "eligible": true,
+          "total": 94.0,
+          "status": "ready_for_preview",
+          "scores": {
+            "feasibility": 5,
+            "loop": 5,
+            "mechanism": 5,
+            "identity": 4,
+            "novelty": 4
+          },
+          "reasons": [
+            "Validated against explicit renderer capabilities and loop controls",
+            "Structural signature excludes color, speed, reversal and screen rotation",
+            "Illusion strength still requires human viewing; ranking is editorial"
+          ]
+        },
+        "direction": {
+          "opening": "Are these blocks moving together?",
+          "event": "The stripes fade to gray, exposing the identical motion, then return.",
+          "ending": "Return to opening configuration at 15 seconds",
+          "audio": "Silent AAC"
+        },
+        "review_checks": [
+          "Compare the illusion and its control on a phone",
+          "Check loop and legibility"
+        ]
+      }
+    },
+    {
+      "id": "1ba03799b567e678",
+      "family": "penrose",
+      "novelty_key": "b23e76d077a75d7bf5193884180e275841e069048444866ceae710d4b8f23086",
+      "brief": {
+        "schema_version": 3,
+        "status": "needs_human_review",
+        "publishing_allowed": false,
+        "idea": {
+          "id": "1ba03799b567e678",
+          "title": "Cubes on an impossible triangle",
+          "family": "penrose",
+          "hook": "Where does the impossible path join?",
+          "viewer_experience": "Follow a cube around the triangle and inspect which face passes in front at the crossing.",
+          "mechanism": "impossible_occlusion",
+          "observable_event": "The drawing order closes a path that cannot exist as these solid cubes in ordinary 3D space.",
+          "scene": {
+            "version": 1,
+            "family": "penrose",
+            "parameters": {
+              "cubes": 8,
+              "fill": 0.65,
+              "rotation": 0,
+              "direction": -1,
+              "cycles": 1
+            },
+            "palette": "amber"
+          },
+          "seed": 97983,
+          "novelty_key": "library:b23e76d077a75d7bf5193884180e275841e069048444866ceae710d4b8f23086",
+          "source": {
+            "repository": "llop/penrose-triangle-js",
+            "commit": "af94cf09cdd2900a3b9ee753cd8526db5ab94a83",
+            "path": "penrose-triangle.js",
+            "license": "MIT"
+          }
+        },
+        "render": {
+          "style": "illusion_lab",
+          "scene": {
+            "version": 1,
+            "family": "penrose",
+            "parameters": {
+              "cubes": 8,
+              "fill": 0.65,
+              "rotation": 0,
+              "direction": -1,
+              "cycles": 1
+            },
+            "palette": "amber"
+          },
+          "seed": 97983,
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "seconds": 15
+        },
+        "caption": {
+          "full_caption": "Where does the impossible path join?\n\nFollow a cube around the triangle and inspect which face passes in front at the crossing.\n\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "short_caption": "Where does the impossible path join?\n#opticalillusion #perception #visualillusion #generativeart #opticpop",
+          "hashtags": [
+            "#opticalillusion",
+            "#perception",
+            "#visualillusion",
+            "#generativeart",
+            "#opticpop"
+          ]
+        },
+        "evaluation": {
+          "eligible": true,
+          "total": 94.0,
+          "status": "ready_for_preview",
+          "scores": {
+            "feasibility": 5,
+            "loop": 5,
+            "mechanism": 5,
+            "identity": 4,
+            "novelty": 4
+          },
+          "reasons": [
+            "Validated against explicit renderer capabilities and loop controls",
+            "Structural signature excludes color, speed, reversal and screen rotation",
+            "Illusion strength still requires human viewing; ranking is editorial"
+          ]
+        },
+        "direction": {
+          "opening": "Where does the impossible path join?",
+          "event": "The drawing order closes a path that cannot exist as these solid cubes in ordinary 3D space.",
+          "ending": "Return to opening configuration at 15 seconds",
+          "audio": "Silent AAC"
+        },
+        "review_checks": [
+          "Compare the illusion and its control on a phone",
+          "Check loop and legibility"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,758 @@
+[
+  {
+    "id": "f2f7cba1cc623c93",
+    "title": "A heart passing through a crescent",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: coral heart at 1 relative turns, electric_blue crescent at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "heart",
+          "expression": null,
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "crescent",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 619176,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "bc9d9942dd419bf2"
+  },
+  {
+    "id": "e467c0bba25016e4",
+    "title": "A star passing through a butterfly",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: cyan star at 1 relative turns, violet butterfly at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "star",
+          "expression": null,
+          "color": "cyan",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "butterfly",
+          "expression": null,
+          "color": "violet",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 442417,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "0bfb2dd73306f67e"
+  },
+  {
+    "id": "99bd4c5c1807794b",
+    "title": "A ring passing through a star",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: amber ring at 1 relative turns, electric_blue star at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "ring",
+          "expression": null,
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "star",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 33326,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "25f2a3d19ba09efc"
+  },
+  {
+    "id": "a7beacb279a9a4e4",
+    "title": "A crescent passing through a butterfly",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: coral crescent at 1 relative turns, electric_blue butterfly at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "crescent",
+          "expression": null,
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "butterfly",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 31244,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "98a97a81f69f7ce7"
+  },
+  {
+    "id": "39584889ed380bfd",
+    "title": "A heart passing through a ring",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: cyan heart at 1 relative turns, violet ring at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "heart",
+          "expression": null,
+          "color": "cyan",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "ring",
+          "expression": null,
+          "color": "violet",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 98246,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "4739ebd6302deb7f"
+  },
+  {
+    "id": "ee73813828fe5b63",
+    "title": "A heart passing through a butterfly",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: amber heart at 1 relative turns, electric_blue butterfly at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "heart",
+          "expression": null,
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "butterfly",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 229258,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "721cd9fbe59a6e1c"
+  },
+  {
+    "id": "958922f6880cdaa6",
+    "title": "A crescent passing through a ring",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: coral crescent at 1 relative turns, electric_blue ring at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "crescent",
+          "expression": null,
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "ring",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 243962,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "2628ed6c31f8b20c"
+  },
+  {
+    "id": "431ec114bbdca6d1",
+    "title": "A star passing through a ring",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: cyan star at 1 relative turns, violet ring at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "star",
+          "expression": null,
+          "color": "cyan",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "ring",
+          "expression": null,
+          "color": "violet",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 529903,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "cce1599b837b9efd"
+  },
+  {
+    "id": "163b8ea05ef7ab76",
+    "title": "A butterfly passing through a ring",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: amber butterfly at 1 relative turns, electric_blue ring at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "butterfly",
+          "expression": null,
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "ring",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 631262,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "d68913328c2b1e14"
+  },
+  {
+    "id": "f5de04bb3a68d4b1",
+    "title": "A star passing through a crescent",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: coral star at 1 relative turns, electric_blue crescent at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "star",
+          "expression": null,
+          "color": "coral",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "crescent",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 27824,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "03c27aa829bc9029"
+  },
+  {
+    "id": "e12b81879ba9546c",
+    "title": "A heart passing through a star",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: cyan heart at 1 relative turns, violet star at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "heart",
+          "expression": null,
+          "color": "cyan",
+          "center": [
+            -0.18,
+            0.28,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "star",
+          "expression": null,
+          "color": "violet",
+          "center": [
+            0.18,
+            -0.28,
+            0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 588508,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "4d3f25180b882973"
+  },
+  {
+    "id": "110fae2d14a7d928",
+    "title": "A heart passing through a crescent",
+    "theme": "paired_objects",
+    "premise": "Two luminous curved objects rotate through a shared space without hiding each other. Motion: amber heart at 1 relative turns, electric_blue crescent at 1 relative turns.",
+    "hook": "Which object is in front?",
+    "viewer_experience": "Follow one colored object through the overlap; the near/far interpretation may change.",
+    "illusion": {
+      "mechanism": "transparent_depth_ambiguity",
+      "cue_withheld": "Occlusion at crossing contours, depth-dependent brightness and perspective size cues",
+      "question": "Can you keep the same object in front throughout the turn?",
+      "observable_event": "The two silhouettes cross in projection, narrow into side views, then overlap again."
+    },
+    "visual_identity": {
+      "background": "black",
+      "projection": "orthographic",
+      "surface": "additive_dots",
+      "occlusion": "none"
+    },
+    "scene": {
+      "version": 1,
+      "identity": {
+        "background": "black",
+        "projection": "orthographic",
+        "surface": "additive_dots",
+        "occlusion": "none"
+      },
+      "layout": "orbit",
+      "entities": [
+        {
+          "shape": "heart",
+          "expression": null,
+          "color": "amber",
+          "center": [
+            -0.18,
+            0.38,
+            -0.32
+          ],
+          "turns": 1,
+          "phase": 0,
+          "scale": 0.9
+        },
+        {
+          "shape": "crescent",
+          "expression": null,
+          "color": "electric_blue",
+          "center": [
+            0.18,
+            -0.38,
+            0.32
+          ],
+          "turns": 1,
+          "phase": -25,
+          "scale": 0.9
+        }
+      ]
+    },
+    "seed": 735392,
+    "requirements": [],
+    "source": "paired_object_composition",
+    "authorship_note": "Reference-inspired procedural concept; uniqueness is not externally verified.",
+    "novelty_key": "76eceeaebfbe1296"
+  }
+]

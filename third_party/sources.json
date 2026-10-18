@@ -1,0 +1,34 @@
+{
+  "reviewed_on": "2026-10-18",
+  "license": "MIT",
+  "sources": [
+    {
+      "repository": "RealityBending/Pyllusion",
+      "commit": "8fff53efd783e666ea29262b8d0c671c088c0453",
+      "url": "https://github.com/RealityBending/Pyllusion",
+      "files": [
+        "pyllusion/Ebbinghaus/ebbinghaus_parameters.py",
+        "pyllusion/Ebbinghaus/ebbinghaus_image.py"
+      ],
+      "license_file": "third_party/Pyllusion.LICENSE"
+    },
+    {
+      "repository": "altunenes/sorceress",
+      "commit": "1186eba2af2a9e151e0712662c8315a57b4548a8",
+      "url": "https://github.com/altunenes/sorceress",
+      "files": [
+        "docs/js/steps.js"
+      ],
+      "license_file": "third_party/sorceress.LICENSE"
+    },
+    {
+      "repository": "llop/penrose-triangle-js",
+      "commit": "af94cf09cdd2900a3b9ee753cd8526db5ab94a83",
+      "url": "https://github.com/llop/penrose-triangle-js",
+      "files": [
+        "penrose-triangle.js"
+      ],
+      "license_file": "third_party/penrose-triangle-js.LICENSE"
+    }
+  ]
+}

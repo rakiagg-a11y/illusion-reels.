@@ -1,0 +1,362 @@
+[
+  {
+    "idea": {
+      "id": "3c3678c6eec0",
+      "title": "perception: Catch the secret word",
+      "hook": "Pause when the dots form a word",
+      "mechanism": "anamorphic word alignment",
+      "payoff": "Read OPTICPOP at alignment",
+      "render": {
+        "style": "pointspin",
+        "obj": "hidden word",
+        "text": "OPTICPOP",
+        "seed": 776646,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 94.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 5,
+        "participation": 5,
+        "novelty": 4,
+        "loop": 4
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "a837703f3b11",
+      "title": "perception: Reverse the spin text",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "spin text",
+        "text": "OPTICPOP",
+        "seed": 107473,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 90.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 5,
+        "novelty": 4,
+        "loop": 4
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "197af6fdf0d0",
+      "title": "perception: Reverse the DNA helix",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "DNA helix",
+        "text": null,
+        "seed": 234053,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "4ed6b64491c0",
+      "title": "perception: Reverse the crown",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "crown",
+        "text": null,
+        "seed": 26225,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "772c024d13a9",
+      "title": "perception: Reverse the cube",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "cube",
+        "text": null,
+        "seed": 256787,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "8afae2227fa4",
+      "title": "perception: Reverse the rainbow sphere",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "rainbow sphere",
+        "text": null,
+        "seed": 670487,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "9bd2275d637b",
+      "title": "perception: Reverse the arrow ring",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "arrow ring",
+        "text": null,
+        "seed": 288389,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "c2f64eb1d424",
+      "title": "perception: Reverse the dark star",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "dark star",
+        "text": null,
+        "seed": 777572,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "ea7b66b15a64",
+      "title": "perception: Reverse the planet",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "planet",
+        "text": null,
+        "seed": 146316,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  },
+  {
+    "idea": {
+      "id": "eee97e0dec3a",
+      "title": "perception: Reverse the arrow band",
+      "hook": "Can you make it spin the other way?",
+      "mechanism": "ambiguous orthographic rotation",
+      "payoff": "Try perceiving the opposite rotation",
+      "render": {
+        "style": "pointspin",
+        "obj": "arrow band",
+        "text": null,
+        "seed": 116739,
+        "seconds": 15,
+        "width": 1080,
+        "height": 1920,
+        "fps": 30
+      },
+      "requires_blender": false
+    },
+    "evaluation": {
+      "eligible": true,
+      "total": 88.0,
+      "scores": {
+        "feasibility": 5,
+        "hook": 4,
+        "participation": 4,
+        "novelty": 4,
+        "loop": 5
+      },
+      "reasons": [
+        "Existing pointcloud.Scene and generate.run accept this specification",
+        "Subject absent from supplied recent history",
+        "Perceptual effect and text legibility require human preview review"
+      ]
+    }
+  }
+]
