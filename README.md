@@ -1,6 +1,6 @@
 # illusion-reels
 
-Generator for the @opticpop optical-illusion reels (1080�1920, 30 fps, Instagram-ready).
+Generator for the @opticpop optical-illusion reels (1080×1920, 30 fps, Instagram-ready).
 
 ## Styles
 
@@ -21,7 +21,7 @@ This writes an `.mp4` and a `.json` file with a ready caption (5 hashtags).
 
 `RUNBOOK.md` describes the daily automated posting.
 
-## Creative Director � relational concepts (local review only)
+## Creative Director — relational concepts (local review only)
 
 The default mode composes exactly two non-face objects: hearts, stars, crescents,
 butterflies, rings, leaves, diamonds, lightning bolts, flowers and hourglasses. Shared rotation and transparent crossing contours follow the
