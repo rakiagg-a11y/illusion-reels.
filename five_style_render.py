@@ -299,22 +299,24 @@ class Renderer:
             d.ellipse((w/2-r, h*.48-r, w/2+r, h*.48+r), fill="black", outline="white", width=max(1, round(w*.001)))
         d = ImageDraw.Draw(image)
         textcolor = (25, 30, 40) if light else (235, 238, 245)
-        centered(d, self.b["caption"]["hook"], h*.10, w, textcolor, .044)
+        # Reels/Shorts overlay the top ~14% and bottom ~35% of the frame, so all
+        # text sits in the band between the top UI and the optical field.
+        centered(d, self.b["caption"]["hook"], h*.15, w, textcolor, .044)
         # Short lines preserve phone legibility without covering the optical field.
         instruction = self.b["caption"]["instruction"]
         words, lines, line = instruction.split(), [], ""
         for word in words:
-            if len(line)+len(word) > 43:
+            if len(line)+len(word) > 52:
                 lines.append(line); line = word
             else:
                 line += (" " if line else "")+word
         lines.append(line)
         for i, line in enumerate(lines):
-            centered(d, line, h*.81+i*w*.045, w, textcolor, .031)
+            centered(d, line, h*.185+i*w*.036, w, textcolor, .028)
         if mode == "afterimage":
             centered(d, f"{max(0, 18-int(t))}s on the dot" if t < 18 else "Keep your gaze on the dot", h*.75, w, textcolor, .034)
         label = self.b["account"]["handle"] or self.b["account"]["id"]
-        centered(d, label, h*.92, w, textcolor, .027)
+        centered(d, label, h*.78, w, textcolor, .027)
         return image
 
     def _context_frame(self, image, t):
