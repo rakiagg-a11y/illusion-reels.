@@ -137,9 +137,10 @@ def frame(scene, seconds, width=1080, height=1920, handle=""):
         draw.text(((w-(box[2]-box[0]))/2,y),text,font=f,fill=color)
     centered(COPY[family][1],h*.08,round(w*.034),(240,240,240))
     # The control is factual and does not promise that every viewer perceives the effect.
-    centered(control,h*.89,round(w*.026),(170,180,195))
+    # The largest lower Ebbinghaus ring reaches 91% of portrait height.
+    centered(control,h*(.925 if family=="ebbinghaus" else .89),round(w*.026),(170,180,195))
     if handle:
-        centered(handle,h*.94,round(w*.025),(115,125,140))
+        centered(handle,h*(.96 if family=="ebbinghaus" else .94),round(w*.025),(115,125,140))
     return np.asarray(image.resize((width,height),Image.Resampling.LANCZOS))
 
 
