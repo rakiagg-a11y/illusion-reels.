@@ -13,10 +13,13 @@ inventory and visual-review coverage. This path does not activate publishing.
 To run just one style, use one of the [five independent generator entry points](FIVE_GENERATORS_HE.md).
 Their fixed names are AngleSpin, HiddenShape, StereoTwin, MotionShift and PerceptionLab;
 the Hebrew guide maps each name to its content style and local account profile.
-Default local routing is @opticpop → AngleSpin, @spiralium_ → StereoTwin,
-@hypnotorium → MotionShift and @trustyoureyes_ → PerceptionLab. HiddenShape is
-unassigned until a fifth page is chosen. Use `samples/five_styles/accounts.json`
-for new plans; this configuration does not connect or activate publishing accounts.
+Current approved routing replaces Hypnotorium with **ColorEcho + FaceFlash** and
+Spiralium with **MirrorFlip + StillWobble**. OpticPop retains both AngleSpin modes
+and adds **DepthFlip**. Use [the current Hebrew account guide](ACCOUNT_STYLES_HE.md)
+and `account_studio.py` for new plans. The existing per-style shortcuts also use
+these new routes. TrustYourEyes and Claude's Brainrot work are outside this change.
+The old `five_styles.py` contracts and `samples/five_styles/` remain for reproducing
+historical briefs, not configuring these new account routes. No publishing is activated.
 
 ## Styles
 

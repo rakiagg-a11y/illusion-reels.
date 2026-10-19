@@ -15,13 +15,16 @@ from single_generator import choose_brief
 class IndependentGeneratorTests(unittest.TestCase):
     def test_each_runner_has_only_its_own_modes(self):
         root=Path(__file__).resolve().parents[1]
+        from account_studio import ROUTES
+        replacements={'motion_paradox':'hypnotorium','binocular_worlds':'spiralium_',
+                      'reversible_depth':'opticpop'}
         for style in d.STYLES:
             with self.subTest(style=style):
                 run=subprocess.run([sys.executable,str(root/'generators'/(style+'.py')),'--help'],
                                    cwd=root.parent,capture_output=True,text=True)
                 self.assertEqual(run.returncode,0,run.stderr)
-                self.assertIn(style,run.stdout)
-                for mode in d.MODES[style]:
+                self.assertIn(replacements.get(style,style),run.stdout)
+                for mode in ROUTES[replacements[style]] if style in replacements else d.MODES[style]:
                     self.assertIn(mode,run.stdout)
                 other=next(s for s in d.STYLES if s!=style)
                 invalid=subprocess.run([sys.executable,str(root/'generators'/(style+'.py')),

@@ -47,6 +47,13 @@ def choose_brief(style, seed, history, mode=None, account_id=None, handle=None):
 
 
 def main(style):
+    # Current account routes supersede these old entry points. The legacy
+    # choose_brief API stays available for reproducing already reviewed work.
+    account_routes = {"motion_paradox": "hypnotorium", "binocular_worlds": "spiralium_",
+                      "reversible_depth": "opticpop"}
+    if style in account_routes:
+        from account_studio import main as account_main
+        return account_main(account_routes[style])
     if style not in d.STYLES:
         raise ValueError("unknown generator")
     profile = next(a for a in d.default_accounts()["accounts"] if a["style"] == style)
