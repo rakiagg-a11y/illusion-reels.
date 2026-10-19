@@ -22,6 +22,8 @@ GENERATORS = {
 }
 SUBJECTS = ("heart", "star", "crescent", "butterfly", "ring", "leaf",
             "diamond", "lightning", "flower", "hourglass")
+# The tilted pairs also use shapes added for the month trial.
+PAIR_SUBJECTS = SUBJECTS+("drop",)
 MODES = {
     "reversible_depth": ("bistable_spin", "tilted_pair"),
     "hidden_stereogram": ("hidden_relief",),
@@ -159,7 +161,7 @@ def parameters_for(mode):
                 for shape, tilt, turns in itertools.product(SHAPES, TILTS, (2, 3))]
     if mode == "tilted_pair":
         return [dict(subjects=list(p), layout=layout, tilt=tilt, turns=turns)
-                for p in itertools.combinations(SUBJECTS, 2)
+                for p in itertools.combinations(PAIR_SUBJECTS, 2)
                 for layout, tilt, turns in itertools.product(("orbit", "coaxial"), (0, 1, 2), (1, -1))]
     if mode == "hidden_relief":
         return [dict(subject=s, relief=relief, repeat=repeat) for s, relief, repeat in

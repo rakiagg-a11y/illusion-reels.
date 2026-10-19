@@ -4,6 +4,9 @@ Rakia approves each template once; every post then gets its own caption filled
 in from that video's brief, so the text always names what is in this video
 (the character, shape or scene) and asks the viewer one question about it.
 """
+import hashlib
+import inspect
+
 import brainrot
 
 # A few words on what each figure looks like, so a caption describes this video.
@@ -34,7 +37,7 @@ FRANCHISE = {"mario": "#supermario #mario", "tom": "#tomandjerry #cartoon", "jer
 PROFILES = dict(classical="classic", soft="soft", angular="sharp", aquiline="long-nosed")
 SCENES = dict(terrace="terrace of arches", mountain="mountain landscape", botanical="garden of plants")
 EMOJI = dict(heart="❤️", star="⭐", crescent="🌙", butterfly="🦋", ring="⭕", leaf="🍃",
-             lightning="⚡", flower="🌸", diamond="💎", hourglass="⏳")
+             lightning="⚡", flower="🌸", diamond="💎", hourglass="⏳", drop="💧")
 
 
 def _tag(character):
@@ -122,3 +125,11 @@ def youtube(account, mode, p):
     else:
         raise ValueError(f"no approved caption template for {account} / {mode}")
     return title[:100], [t.lower() for t in tags]+["optical illusion", "illusion"]
+
+
+def template_digest():
+    """Checksum of the caption and title templates (not the per-character data).
+
+    The approval record names this value, so a changed template is not posted
+    under an earlier approval."""
+    return hashlib.sha256((inspect.getsource(caption)+inspect.getsource(youtube)).encode()).hexdigest()

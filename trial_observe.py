@@ -3,11 +3,12 @@
   python3 trial_observe.py due --reels /mnt/project-files/reels/trial
   python3 trial_observe.py add --store snapshots.jsonl --row '{...}'
 
-due lists posts that should be live but are not verified yet, and posts whose
-24, 72 or 168 hour observation window is open now (age within 3 hours of the
-target). add appends one observation. Instagram rows use the fields
-trial_metrics.py reads; Facebook and YouTube rows are kept apart, with their
-own ids and metric names, so views are never mixed with Instagram reach.
+due reads each day's queue.json and posts.json and lists scheduled posts that
+should be live but are not verified yet, and live posts whose 24, 72 or 168
+hour observation window is open now (age within 3 hours of the target).
+add appends one observation. Instagram rows use the fields trial_metrics.py
+reads; Facebook and YouTube rows are kept apart, with their own ids and metric
+names, so views are never mixed with Instagram reach.
 A metric that was not returned is stored as null, never as 0.
 """
 import argparse
@@ -15,6 +16,8 @@ from datetime import datetime, timedelta, timezone
 import json
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from trial_records import read_json
 
 TZ = ZoneInfo("Asia/Jerusalem")
 AGES = (24, 72, 168)
@@ -30,13 +33,17 @@ def _scheduled(row):
 def due(reels, now):
     out = dict(unverified=[], observe=[])
     for queue_file in sorted(Path(reels).glob("*/queue.json")):
-        for row in json.loads(queue_file.read_text(encoding="utf-8"))["slots"]:
+        posts = read_json(queue_file.with_name("posts.json"), {})
+        for row in read_json(queue_file)["slots"]:
             when = _scheduled(row)
-            for network, post in row.get("posts", {}).items():
+            for network, post in posts.get(row["slot_id"], {}).items():
+                if post.get("status") not in ("scheduled", "live"):
+                    continue
                 published = post.get("actual_published_at_utc")
                 if not published and now >= when+timedelta(minutes=30):
                     out["unverified"].append(dict(slot_id=row["slot_id"], account=row["account"], network=network,
-                                                  scheduled_utc=when.isoformat(), queue=str(queue_file)))
+                                                  provider_post_id=post.get("provider_post_id"),
+                                                  scheduled_utc=when.isoformat(), day_dir=str(queue_file.parent)))
                 if published:
                     age = (now-datetime.fromisoformat(published)).total_seconds()/3600
                     for target in AGES:
@@ -44,7 +51,7 @@ def due(reels, now):
                             out["observe"].append(dict(slot_id=row["slot_id"], account=row["account"], network=network,
                                                        target_age=target, age=round(age, 2),
                                                        network_post_id=post.get("network_post_id"),
-                                                       queue=str(queue_file)))
+                                                       day_dir=str(queue_file.parent)))
     return out
 
 

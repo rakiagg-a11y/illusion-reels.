@@ -6,7 +6,10 @@ COLORS = {"coral": (1.0, .055, .09), "electric_blue": (.07, .2, 1.0),
           "amber": (1.0, .38, .035)}
 OBJECT_SHAPES = ("heart", "star", "crescent", "butterfly", "ring",
                  "leaf", "diamond", "lightning", "flower", "hourglass")
-SHAPES = ("mask", "arc") + OBJECT_SHAPES
+# Shapes added for the month trial's tilted pairs only; the older pair
+# generators keep their original ten.
+PAIR_ONLY_SHAPES = ("drop",)
+SHAPES = ("mask", "arc") + OBJECT_SHAPES + PAIR_ONLY_SHAPES
 IDENTITY = {"background": "black", "projection": "orthographic",
             "surface": "additive_dots", "occlusion": "none"}
 # Reference-inspired opposing tilts, in our camera basis (X right, Y up, Z depth).

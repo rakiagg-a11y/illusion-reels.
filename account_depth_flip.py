@@ -16,7 +16,7 @@ def parameters_for(mode="depth_flip"):
     if mode != "depth_flip":
         raise ValueError("unknown depth mode")
     return [dict(ribs=r, rings=n, opening=o, tilt=t)
-            for r, n, o, t in itertools.product((7, 9, 11, 13), (5, 7, 9), (210, 250, 290, 330), (12, 24, 36))]
+            for r, n, o, t in itertools.product((5, 7, 9, 11, 13, 15), (5, 7, 9, 11), (210, 250, 290, 330), (12, 24, 36))]
 
 
 def geometry(p):

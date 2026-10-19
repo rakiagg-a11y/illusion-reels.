@@ -62,6 +62,10 @@ def outline(shape):
         return np.c_[x / 16 * .77, (y - (y.max()+y.min())/2) / np.ptp(y) * 1.68]
     if shape == "leaf":
         return np.c_[.64*np.sin(t)*np.sqrt(np.abs(np.sin(t))), .84*np.cos(t)]
+    if shape == "drop":
+        # Teardrop: pointed tip up, round belly down.
+        x, y = np.sin(t)*np.sin(t/2)**1.3, np.cos(t)
+        return np.c_[x/np.abs(x).max()*.62, (y-(y.max()+y.min())/2)/np.ptp(y)*1.68]
     if shape == "flower":
         r=.64+.17*np.cos(5*(t-math.pi/2))
         return np.c_[.94*r*np.cos(t),r*np.sin(t)]
