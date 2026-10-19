@@ -47,4 +47,4 @@ class BrainrotSpinTests(unittest.TestCase):
     def test_trustyoureyes_defaults_to_brainrot_with_character_hook(self):
         brief = choose_brief("perception_lab", 3, dict(entries=[]))
         self.assertEqual(brief["mode"], "brainrot_spin")
-        self.assertEqual(brief["caption"]["hook"], d.BRAINROT_HOOKS[brief["parameters"]["character"]])
+        self.assertEqual(brief["caption"]["hook"], __import__("brainrot").hook(brief["parameters"]["character"]))

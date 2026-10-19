@@ -34,13 +34,6 @@ MODES = {
 PRIMARY_MODES = {"reversible_depth": "bistable_spin",
                  # Rakia, 2026-10-19: trustyoureyes_ becomes a brainrot particle-spin page.
                  "perception_lab": "brainrot_spin"}
-BRAINROT_HOOKS = {
-    "tung_tung_sahur": "Which way is Tung Tung Tung Sahur spinning?",
-    "tralalero_tralala": "Which way is Tralalero Tralala turning?",
-    "ballerina_cappuccina": "Which way is Ballerina Cappuccina spinning?",
-    "bombardiro_crocodilo": "Which way is Bombardiro Crocodilo turning?",
-    "lirili_larila": "Which way is Lirili Larila spinning?",
-}
 SPIN_HOOKS = {
     "planet_wedge": "Which way is the planet spinning?",
     "necker_cube": "Which way is the cube turning?",
@@ -239,7 +232,8 @@ def caption(mode, parameters=None):
     if mode == "bistable_spin" and parameters:
         hook = SPIN_HOOKS[parameters["shape"]]
     if mode == "brainrot_spin" and parameters:
-        hook = BRAINROT_HOOKS[parameters["character"]]
+        from brainrot import hook as brainrot_hook
+        hook = brainrot_hook(parameters["character"])
     return dict(hook=hook, instruction=instruction, physical_control=control,
         full_caption=f"{hook}\n\n{instruction}\n\n#opticalillusion #perception #generativeart",
         perception_claim="May be perceived differently by different viewers; human review required.")

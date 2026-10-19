@@ -12,8 +12,18 @@ from pathlib import Path
 
 import numpy as np
 
-CHARACTERS = ("tung_tung_sahur", "tralalero_tralala", "ballerina_cappuccina",
-              "bombardiro_crocodilo", "lirili_larila")
+# Display names for captions. A character joins the rotation once it has a
+# reference picture in assets/brainrot/ (or a hand-built sculpture below).
+NAMES = {
+    "tung_tung_sahur": "Tung Tung Tung Sahur", "tralalero_tralala": "Tralalero Tralala",
+    "ballerina_cappuccina": "Ballerina Cappuccina", "bombardiro_crocodilo": "Bombardiro Crocodilo",
+    "lirili_larila": "Lirili Larila", "brr_brr_patapim": "Brr Brr Patapim",
+    "chimpanzini_bananini": "Chimpanzini Bananini", "cappuccino_assassino": "Cappuccino Assassino",
+    "trippi_troppi": "Trippi Troppi", "boneca_ambalabu": "Boneca Ambalabu",
+    "la_vaca_saturno_saturnita": "La Vaca Saturno Saturnita", "udin_din_din_dun": "Udin Din Din Dun",
+    "frigo_camelo": "Frigo Camelo", "bobrito_bandito": "Bobrito Bandito",
+    "tric_trac_baraboom": "Tric Trac Baraboom", "mario": "Mario", "tom": "Tom", "jerry": "Jerry",
+}
 TILTS = (0, 6, 12)
 
 WOOD = (255, 125, 35)
@@ -342,6 +352,11 @@ BUILDERS = {"tung_tung_sahur": _tung_tung, "tralalero_tralala": _tralalero,
 
 
 ASSETS = Path(__file__).resolve().parent/"assets"/"brainrot"
+CHARACTERS = tuple(c for c in NAMES if c in BUILDERS or (ASSETS/f"{c}.png").is_file())
+
+
+def hook(character):
+    return f"Which way is {NAMES[character]} {'turning' if CHARACTERS.index(character) % 2 else 'spinning'}?"
 
 
 def from_image(path, rng, per_pixel=3, depth=.9):
@@ -381,7 +396,7 @@ def from_image(path, rng, per_pixel=3, depth=.9):
 
 def geometry(rng, character, total=70000):
     """Return (points, rgb) for a character, centred on its vertical spin axis."""
-    if character not in BUILDERS:
+    if character not in CHARACTERS:
         raise ValueError("unknown brainrot character")
     picture = ASSETS/(character+".png")
     if picture.is_file():
