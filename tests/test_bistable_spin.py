@@ -39,7 +39,7 @@ class BrainrotSpinTests(unittest.TestCase):
     def test_brainrot_figures_also_fit_the_opposite_spin(self):
         import brainrot
         for character in brainrot.CHARACTERS:
-            points, _, _ = brainrot.geometry(np.random.default_rng(1), character)
+            points, _ = brainrot.geometry(np.random.default_rng(1), character, total=4000)
             a = b.project(points, .9, 14)
             mirrored = b._rx(b._ry(points*[1, 1, -1], -math.degrees(.9)-30), -14)[:, :2]
             np.testing.assert_allclose(a, mirrored, atol=1e-9)

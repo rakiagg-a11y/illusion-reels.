@@ -1,179 +1,351 @@
-"""Brainrot meme characters as transparent particle figures for ambiguous rotation.
+"""Brainrot meme characters as transparent particle sculptures for ambiguous rotation.
 
-Each character is an original procedural build from simple primitives
-(ellipsoids, tubes, discs and strokes), drawn as particles with no occlusion,
-so it can be spun with the bistable_spin projection and read turning either way.
+Each character is modelled as a union of smooth signed-distance primitives
+(rounded boxes, tapered capsules, ellipsoids, cylinders, tori), and particles
+are scattered on the resulting surface. That gives joined, anatomical shapes
+(shoulders, elbows, hands, knees, feet) like a sculpted figure, while the
+rendering stays additive and occlusion-free, so the figure still reads as
+spinning either way under orthographic projection.
 """
 import math
 
 import numpy as np
 
-from bistable_spin import EDGE
-
-# Denser, brighter dust than the geometric shapes: the figure reads as a solid
-# particle sculpture (as in Rakia's reference), with only the eyes drawn as lines.
-DUST = (.10, .30)
-TILTS = (0, 6, 12)
-
 CHARACTERS = ("tung_tung_sahur", "tralalero_tralala", "ballerina_cappuccina",
               "bombardiro_crocodilo", "lirili_larila")
+TILTS = (0, 6, 12)
+
+WOOD = (255, 125, 35)
+EYE_WHITE = (255, 235, 200)
+IRIS = (120, 80, 40)
 
 
-class Figure:
+# ---------------------------------------------------------------- primitives
+def sphere(c, r):
+    c = np.asarray(c, float)
+    return lambda p: np.linalg.norm(p-c, axis=1)-r
+
+
+def _turn(axis, degrees):
+    a = math.radians(degrees)
+    co, si = math.cos(a), math.sin(a)
+    i = "xyz".index(axis)
+    j, k = [n for n in range(3) if n != i]
+    m = np.eye(3)
+    m[j, j], m[j, k], m[k, j], m[k, k] = co, -si, si, co
+    return m
+
+
+def ellipsoid(c, radii, axis="z", degrees=0):
+    """Ellipsoid, optionally turned about one axis (fins, ears, wings)."""
+    c, radii = np.asarray(c, float), np.asarray(radii, float)
+    m = _turn(axis, degrees)
+
+    def d(p):
+        q = ((p-c) @ m)/radii
+        k = np.linalg.norm(q, axis=1)
+        return (k-1)*radii.min()
+    return d
+
+
+def round_box(c, half, r):
+    c, half = np.asarray(c, float), np.asarray(half, float)-r
+
+    def d(p):
+        q = np.abs(p-c)-half
+        return np.linalg.norm(np.maximum(q, 0), axis=1)+np.minimum(q.max(1), 0)-r
+    return d
+
+
+def capsule(a, b, ra, rb=None):
+    """Tapered capsule from a (radius ra) to b (radius rb)."""
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    rb = ra if rb is None else rb
+    ab = b-a
+
+    def d(p):
+        t = np.clip(((p-a) @ ab)/(ab @ ab), 0, 1)
+        return np.linalg.norm(p-(a+t[:, None]*ab), axis=1)-(ra+(rb-ra)*t)
+    return d
+
+
+def limb(points, radii):
+    """Chain of tapered capsules through joints (shoulder-elbow-wrist etc.)."""
+    parts = [capsule(points[i], points[i+1], radii[i], radii[i+1]) for i in range(len(points)-1)]
+    return lambda p: np.min([f(p) for f in parts], axis=0)
+
+
+def cylinder_y(c, r, h, round_r=.02):
+    c = np.asarray(c, float)
+
+    def d(p):
+        q = p-c
+        dx = np.hypot(q[:, 0], q[:, 2])-(r-round_r)
+        dy = np.abs(q[:, 1])-(h/2-round_r)
+        return np.minimum(np.maximum(dx, dy), 0)+np.hypot(np.maximum(dx, 0), np.maximum(dy, 0))-round_r
+    return d
+
+
+def cone_y(c, r_bottom, r_top, h):
+    """Truncated cone along y (cup shapes)."""
+    c = np.asarray(c, float)
+
+    def d(p):
+        q = p-c
+        t = np.clip(q[:, 1]/h+.5, 0, 1)
+        r = r_bottom+(r_top-r_bottom)*t
+        dx = np.hypot(q[:, 0], q[:, 2])-r
+        dy = np.abs(q[:, 1])-h/2
+        return np.minimum(np.maximum(dx, dy), 0)+np.hypot(np.maximum(dx, 0), np.maximum(dy, 0))
+    return d
+
+
+def torus(c, axis, R, r):
+    c = np.asarray(c, float)
+    i = "xyz".index(axis)
+    j, k = [n for n in range(3) if n != i]
+
+    def d(p):
+        q = p-c
+        return np.hypot(np.hypot(q[:, j], q[:, k])-R, q[:, i])-r
+    return d
+
+
+def flat(c, half, r=.01):
+    """Thin plate (fins, wings, ears)."""
+    return round_box(c, half, r)
+
+
+# ---------------------------------------------------------------- sampler
+class Sculpture:
     def __init__(self, rng):
         self.rng, self.parts = rng, []
 
-    def add(self, points, layer, weight=None):
-        points = np.asarray(points, float)
-        w = self.rng.uniform(*DUST, len(points)) if weight is None else np.full(len(points), weight)
-        self.parts.append((points, w, np.full(len(points), layer)))
+    def add(self, sdf, color, density=1., weight=(.10, .30)):
+        self.parts.append((sdf, np.asarray(color, float), density, weight))
 
-    def ellipsoid(self, center, radii, n, layer=0, outline=False):
-        v = self.rng.normal(size=(n, 3))
-        v /= np.linalg.norm(v, axis=1, keepdims=True)
-        self.add(np.asarray(center)+v*radii, layer)
-        if outline:
-            # Silhouette rings in the three body planes keep the shape readable.
-            a = np.linspace(0, 2*math.pi, 700)
-            rx, ry, rz = radii
-            self.add(np.asarray(center)+np.c_[rx*np.cos(a), ry*np.sin(a), 0*a], 1, EDGE*.75)
-            self.add(np.asarray(center)+np.c_[rx*np.cos(a), 0*a, rz*np.sin(a)], 1, EDGE*.75)
+    def sample(self, lo, hi, total=70000, shell=.006):
+        """Scatter particles on each part's surface, but only where no other
+        part covers it, so joints read as one continuous skin."""
+        lo, hi = np.asarray(lo, float), np.asarray(hi, float)
+        out_p, out_c = [], []
+        n = max(1, len(self.parts))
+        candidates = int(total*90)
+        p = self.rng.uniform(lo, hi, (candidates, 3))
+        dists = np.stack([sdf(p) for sdf, *_ in self.parts])
+        union = dists.min(0)
+        near = np.abs(union) < shell
+        owner = dists.argmin(0)
+        for k, (sdf, color, density, weight) in enumerate(self.parts):
+            mask = near & (owner == k)
+            pts = p[mask]
+            keep = self.rng.random(len(pts)) < min(1., density)
+            pts = pts[keep]
+            w = self.rng.uniform(*weight, len(pts))
+            out_p.append(pts)
+            out_c.append(w[:, None]*color/255)
+        return np.vstack(out_p), np.vstack(out_c)
 
-    def tube(self, a, b, radius, n, layer=0, rings=False):
-        a, b = np.asarray(a, float), np.asarray(b, float)
-        axis = b-a
-        length = np.linalg.norm(axis)
-        axis /= length
-        helper = np.array([1., 0, 0]) if abs(axis[0]) < .9 else np.array([0, 1., 0])
-        u = np.cross(axis, helper); u /= np.linalg.norm(u)
-        w = np.cross(axis, u)
-        t, ang = self.rng.random(n), self.rng.uniform(0, 2*math.pi, n)
-        r = np.broadcast_to(radius, n) if np.isscalar(radius) else radius[0]+(radius[1]-radius[0])*t
-        self.add(a+t[:, None]*(b-a)+r[:, None]*(np.cos(ang)[:, None]*u+np.sin(ang)[:, None]*w), layer)
-        if rings:
-            c = np.linspace(0, 2*math.pi, 400)
-            for end, rr in ((a, r.max() if np.isscalar(radius) else radius[0]),
-                            (b, r.max() if np.isscalar(radius) else radius[1])):
-                self.add(end+rr*(np.cos(c)[:, None]*u+np.sin(c)[:, None]*w), 1, EDGE*.75)
 
-    def curve(self, points, weight=EDGE):
-        self.add(points, 1, weight)
+def _eye(s, c, r, facing, iris_frac=.42, pupil_frac=.30):
+    """Protruding eyeball: bright sclera, coloured iris ring, empty pupil."""
+    c = np.asarray(c, float)
+    facing = np.asarray(facing, float)/np.linalg.norm(facing)
+    ball = ellipsoid(c, r) if np.ndim(r) else sphere(c, r)
 
-    def ring(self, center, radius, normal, weight=EDGE, n=500):
-        normal = np.asarray(normal, float); normal /= np.linalg.norm(normal)
-        helper = np.array([1., 0, 0]) if abs(normal[0]) < .9 else np.array([0, 1., 0])
-        u = np.cross(normal, helper); u /= np.linalg.norm(u)
-        w = np.cross(normal, u)
-        c = np.linspace(0, 2*math.pi, n)
-        self.curve(np.asarray(center)+radius*(np.cos(c)[:, None]*u+np.sin(c)[:, None]*w), weight)
+    def angle(p):
+        v = p-c
+        return np.arccos(np.clip((v @ facing)/np.maximum(np.linalg.norm(v, axis=1), 1e-9), -1, 1))
+    iris_a, pupil_a = math.asin(iris_frac), math.asin(pupil_frac)
+    # Bright sclera, a faint iris ring and an empty (dark) pupil.
+    s.add(lambda p: np.where(angle(p) > iris_a, ball(p), 1.), EYE_WHITE, 1., (.45, .75))
+    s.add(lambda p: np.where((angle(p) <= iris_a) & (angle(p) > pupil_a), ball(p), 1.), IRIS, 1., (.15, .30))
 
-    def triangle(self, a, b, c, n, layer=0):
-        u, v = self.rng.random((2, n))
-        flip = u+v > 1
-        u[flip], v[flip] = 1-u[flip], 1-v[flip]
-        a, b, c = map(np.asarray, (a, b, c))
-        self.add(a+u[:, None]*(b-a)+v[:, None]*(c-a), layer)
-        for p, q in ((a, b), (b, c), (c, a)):
-            s = np.linspace(0, 1, 300)[:, None]
-            self.curve(p*(1-s)+q*s, EDGE*.8)
 
-    def face(self, center, normal_z, spread=.11, eye=.06, mouth=.12, mood=1):
-        """Eyes, pupils, brows and mouth on a surface facing +z (or -z)."""
-        cx, cy, cz = center
+# ---------------------------------------------------------------- characters
+def _tung_tung(s):
+    # Tall rounded wooden log; the face is carved in profile on the front.
+    s.add(round_box((0, .25, 0), (.28, .50, .245), .09), WOOD)
+    for x in (-.11, .11):
+        _eye(s, (x, .55, .21), (.065, .10, .05), (0, 0, 1))
+    # Long protruding nose, lips and a small chin.
+    s.add(capsule((0, .52, .23), (0, .40, .34), .05, .03), WOOD)
+    s.add(sphere((0, .395, .335), .04), WOOD)
+    s.add(ellipsoid((0, .31, .255), (.10, .022, .035)), WOOD)
+    s.add(ellipsoid((0, .265, .25), (.085, .02, .03)), WOOD)
+    s.add(ellipsoid((0, .21, .245), (.07, .035, .025)), WOOD)
+    for side in (-1, 1):
+        # Thin arms hang from the upper sides, elbows slightly back.
+        x = side*.32
+        s.add(limb([(side*.27, .45, 0), (x, .08, -.05), (x, -.24, .05)], [.05, .042, .036]), WOOD)
+        s.add(ellipsoid((x, -.29, .05), (.032, .06, .045)), WOOD)
+        if side < 0:
+            # Open hand, fingers hanging down.
+            for f in range(4):
+                z = .02+f*.022
+                s.add(limb([(x, -.33, z), (x, -.38, z+.005), (x+.005, -.42, z)], [.012, .011, .009]), WOOD)
+            s.add(capsule((x+.02, -.30, .09), (x+.025, -.36, .11), .012, .009), WOOD)
+        else:
+            # Fist wrapped around the bat handle.
+            for f in range(4):
+                s.add(torus((x, -.33, -.01+f*.026), "z", .038, .012), WOOD)
+        # Long legs with knees, ankles and big bare feet.
+        s.add(limb([(side*.13, -.20, 0), (side*.14, -.60, .04), (side*.13, -.94, -.03)], [.065, .05, .04]), WOOD)
+        s.add(sphere((side*.13, -.97, -.06), .055), WOOD)
+        s.add(ellipsoid((side*.13, -.985, .07), (.075, .04, .15)), WOOD)
+        for t in range(5):
+            s.add(sphere((side*(.08+.025*t), -.99, .21-.012*t), .025-.003*t), WOOD)
+    # Baseball bat held horizontally at hip height: knob, handle, thick barrel.
+    s.add(sphere((.32, -.33, -.34), .045), WOOD)
+    s.add(capsule((.32, -.33, -.32), (.32, -.33, .25), .025, .04), WOOD)
+    s.add(capsule((.32, -.33, .25), (.32, -.33, .78), .04, .07), WOOD)
+    return (-.5, -1.05, -.45), (.5, .80, .90)
+
+
+def _tralalero(s):
+    blue, white, belly, swoosh = (70, 150, 255), (235, 240, 255), (175, 215, 255), (40, 90, 230)
+    # Streamlined shark: thick head, body tapering into the tail stalk.
+    s.add(ellipsoid((.05, .30, 0), (.55, .20, .18)), blue)
+    s.add(capsule((-.35, .32, 0), (-.80, .36, 0), .13, .035), blue)
+    s.add(ellipsoid((.15, .21, 0), (.42, .09, .14)), belly, .7)
+    # Crescent tail, dorsal and pectoral fins as thin swept blades.
+    s.add(ellipsoid((-.88, .50, 0), (.06, .19, .015), "z", -25), blue)
+    s.add(ellipsoid((-.86, .24, 0), (.05, .12, .015), "z", 35), blue)
+    s.add(ellipsoid((-.05, .52, 0), (.07, .16, .015), "z", -35), blue)
+    for z in (-1, 1):
+        s.add(ellipsoid((.10, .15, z*.20), (.13, .015, .07), "y", z*30), blue)
+        _eye(s, (.40, .38, z*.12), .04, (.4, .1, z))
+        for g in range(3):
+            s.add(ellipsoid((.22-.05*g, .32, z*.17), (.006, .06, .006)), belly, 1., (.2, .4))
+    # Open jaw lined with teeth.
+    s.add(ellipsoid((.48, .18, 0), (.10, .025, .10)), (255, 120, 150), 1., (.15, .3))
+    for i in range(9):
+        a = -1.1+2.2*i/8
+        x, z = .48+.09*math.cos(a), .09*math.sin(a)
+        s.add(capsule((x, .20, z), (x, .16, z), .01, .003), white, 1., (.45, .7))
+    # Three legs ending in high-top sneakers with a swoosh.
+    for x, z in ((-.22, .09), (.03, -.09), (.28, .09)):
+        s.add(limb([(x, .16, z), (x+.02, -.12, z+.01), (x, -.40, z)], [.055, .045, .04]), blue)
+        s.add(cylinder_y((x, -.43, z), .055, .08), white, 1., (.3, .5))
+        s.add(round_box((x+.05, -.50, z), (.13, .045, .07), .035), white, 1., (.3, .5))
+        s.add(round_box((x+.05, -.555, z), (.135, .012, .072), .008), blue)
         for side in (-1, 1):
-            self.ring((cx+side*spread, cy, cz), eye, (0, 0, normal_z))
-            self.ring((cx+side*spread, cy, cz), eye*.8, (0, 0, normal_z), EDGE*.8)
-            a, r = self.rng.uniform(0, 2*math.pi, 400), np.sqrt(self.rng.random(400))*eye*.38
-            self.add(np.c_[cx+side*spread+r*np.cos(a), cy+r*np.sin(a), np.full(400, cz)], 1, EDGE*.9)
-        s = np.linspace(-1, 1, 300)
-        self.curve(np.c_[cx+mouth*s, cy-.17-mood*.05*(1-s*s), np.full(300, cz)])
-
-    def build(self):
-        pts = np.vstack([p for p, _, _ in self.parts])
-        w = np.concatenate([w for _, w, _ in self.parts])
-        layers = np.concatenate([l for _, _, l in self.parts]).astype(int)
-        return pts, w, layers
+            s.add(capsule((x-.04, -.49, z+side*.072), (x+.10, -.46, z+side*.072), .008, .004), swoosh, 1., (.4, .6))
+    return (-1.0, -.6, -.45), (.7, .72, .45)
 
 
-def geometry(rng, character):
-    f = Figure(rng)
-    if character == "tung_tung_sahur":
-        # A wooden log with a face, stick arms and a baseball bat.
-        f.tube((0, -.45, 0), (0, .62, 0), .27, 22000)
-        f.ellipsoid((0, .62, 0), (.27, .10, .27), 3000)
-        f.ellipsoid((0, -.45, 0), (.27, .06, .27), 2000)
-        f.face((0, .40, .28), 1, spread=.10, eye=.075, mouth=.07)
-        for side in (-1, 1):
-            f.tube((side*.27, .15, 0), (side*.33, -.22, .08), .03, 1200)
-            f.tube((side*.11, -.48, 0), (side*.12, -.95, 0), .04, 1400)
-            f.ellipsoid((side*.12, -.97, .04), (.06, .03, .09), 500)
-        # Bat held in the right hand, swung across the front at waist height.
-        f.tube((.36, -.24, .12), (-.62, -.24, .42), (.035, .08), 4500)
-        f.ellipsoid((-.64, -.24, .43), (.08, .08, .08), 600)
-    elif character == "tralalero_tralala":
-        # A shark standing on three legs in sneakers.
-        f.ellipsoid((0, .30, 0), (.78, .27, .25), 15000)
-        f.triangle((-.70, .30, 0), (-1.0, .62, 0), (-.98, .02, 0), 1500)
-        f.triangle((-.10, .52, 0), (.10, .52, 0), (-.18, .85, 0), 1200)
-        for z in (-.25, .25):
-            f.ring((.52, .40, z), .045, (0, 0, 1))
-            f.triangle((.05, .20, z*.95), (.25, .20, z*.95), (.0, .02, z*1.6), 600)
-        s = np.linspace(-1, 1, 300)
-        for z in (-.2, .2):
-            f.curve(np.c_[.62+.12*s, .20+.03*s*s, np.full(300, z)])
-        for x, z in ((-.35, .12), (.0, -.12), (.32, .12)):
-            f.tube((x, .08, z), (x, -.62, z), .04, 900, rings=False)
-            f.ellipsoid((x+.07, -.68, z), (.15, .07, .08), 700)
-    elif character == "ballerina_cappuccina":
-        # A cappuccino cup head on a ballerina in a tutu.
-        f.tube((0, .45, 0), (0, .85, 0), (.17, .24), 5000)
-        f.ellipsoid((0, .85, 0), (.24, .02, .24), 1500, outline=False)
-        f.ring((.30, .66, 0), .09, (0, 0, 1))
-        f.face((0, .66, .21), 1, spread=.08, eye=.045, mouth=.08)
-        f.ellipsoid((0, .18, 0), (.14, .25, .11), 3500)
-        a, r = rng.uniform(0, 2*math.pi, 6000), np.sqrt(rng.uniform(.04, 1, 6000))*.62
-        f.add(np.c_[r*np.cos(a), -.02-.08*r, r*np.sin(a)], 0)
-        f.ring((0, -.07, 0), .62, (0, 1, 0), EDGE*.8)
-        t = np.linspace(0, 1, 400)
-        for side in (-1, 1):
-            f.curve(np.c_[side*(.13+.25*np.sin(t*math.pi*.8)), .32+.55*t, 0*t])
-        f.tube((-.06, -.05, 0), (-.08, -.95, 0), .035, 900, rings=False)
-        f.tube((.06, -.05, 0), (.30, -.55, .05), .035, 700, rings=False)
-        f.tube((.30, -.55, .05), (.10, -.70, .05), .032, 400, rings=False)
-    elif character == "bombardiro_crocodilo":
-        # A crocodile with airplane wings and a tail fin.
-        f.ellipsoid((0, .05, 0), (.85, .17, .17), 11000)
-        f.ellipsoid((.85, .02, 0), (.32, .07, .12), 3000)
-        for z in (-.09, .09):
-            f.ring((.62, .18, z), .045, (0, 1, 0))
-        s = np.linspace(0, 1, 300)
-        f.curve(np.c_[.55+.62*s, .0*s, .11-.03*s])
-        f.curve(np.c_[.55+.62*s, .0*s, -.11+.03*s])
-        for side in (-1, 1):
-            f.triangle((.25, .02, 0), (-.25, .02, 0), (-.10, .02, side*.95), 2500)
-        f.triangle((-.70, .10, 0), (-.95, .10, 0), (-.92, .48, 0), 900)
-        for side in (-1, 1):
-            f.ellipsoid((.0, -.25, side*.35), (.16, .05, .05), 700)
-    elif character == "lirili_larila":
-        # An elephant head on a cactus body wearing sandals.
-        f.ellipsoid((0, .62, 0), (.26, .24, .24), 6000)
-        for side in (-1, 1):
-            # Big flat ears facing forward, like a cartoon elephant.
-            a, r = rng.uniform(0, 2*math.pi, 1500), np.sqrt(rng.random(1500))*.2
-            f.add(np.c_[side*.40+r*np.cos(a), .64+r*np.sin(a)*1.2, np.full(1500, -.04)], 0)
-            f.add(np.c_[side*.40+.2*np.cos(np.linspace(0, 2*math.pi, 500)),
-                        .64+.24*np.sin(np.linspace(0, 2*math.pi, 500)), np.full(500, -.04)], 1, EDGE*.8)
-            f.ring((side*.10, .70, .22), .04, (0, 0, 1))
-        t = np.linspace(0, 1, 500)
-        f.curve(np.c_[.03*np.sin(t*5), .58-.42*t, .24+.12*np.sin(t*math.pi)])
-        f.tube((0, -.75, 0), (0, .40, 0), .18, 9000)
-        for side, y in ((-1, .05), (1, -.15)):
-            f.tube((side*.18, y, 0), (side*.42, y, 0), .07, 900, rings=False)
-            f.tube((side*.42, y, 0), (side*.42, y+.28, 0), .07, 900)
-        for side in (-1, 1):
-            f.ellipsoid((side*.10, -.82, .06), (.08, .03, .14), 500)
-    else:
+def _ballerina(s):
+    cup, foam, pink, skin, coffee = (200, 125, 70), (255, 238, 215), (255, 140, 190), (255, 205, 170), (150, 90, 50)
+    # Cappuccino cup head: saucer rim, handle, foam with a heart of coffee.
+    s.add(cone_y((0, .72, 0), .12, .18, .24), cup)
+    s.add(torus((0, .84, 0), "y", .18, .015), foam, 1., (.3, .5))
+    s.add(ellipsoid((0, .845, 0), (.17, .03, .17)), foam, 1., (.25, .45))
+    s.add(ellipsoid((0, .87, 0), (.06, .01, .05)), coffee, 1., (.3, .5))
+    s.add(torus((.20, .72, 0), "z", .055, .018), cup)
+    for x in (-.06, .06):
+        _eye(s, (x, .73, .16), .035, (0, 0, 1))
+    s.add(capsule((-.04, .65, .17), (.04, .65, .17), .008), (255, 120, 120), 1., (.35, .55))
+    # Slim neck, bodice and hips.
+    s.add(capsule((0, .60, 0), (0, .50, 0), .035), skin)
+    s.add(capsule((0, .46, 0), (0, .24, 0), .11, .085), pink)
+    s.add(ellipsoid((0, .17, 0), (.12, .07, .09)), pink)
+    # Layered, scalloped tutu.
+    for y, r in ((.17, .40), (.12, .36)):
+        s.add(ellipsoid((0, y, 0), (r, .035, r)), pink, .45, (.10, .22))
+    for k in range(12):
+        a = 2*math.pi*k/12
+        s.add(sphere((.40*math.cos(a), .14, .40*math.sin(a)), .045), pink, 1., (.15, .32))
+    for side in (-1, 1):
+        # Arms arched over the head (fifth position), hands nearly touching.
+        s.add(limb([(side*.12, .46, 0), (side*.27, .66, .02), (side*.20, .97, .02), (side*.05, 1.04, 0)],
+                   [.035, .03, .025, .02]), skin)
+        s.add(ellipsoid((side*.03, 1.05, 0), (.03, .02, .02)), skin)
+    # Standing leg on pointe and a bent passé leg, both in pink shoes.
+    s.add(limb([(-.05, .12, 0), (-.06, -.38, .02), (-.06, -.86, 0)], [.06, .042, .03]), skin)
+    s.add(capsule((-.06, -.86, 0), (-.06, -1.0, .01), .03, .02), pink)
+    s.add(limb([(.05, .12, 0), (.28, -.28, .06), (-.03, -.40, .02)], [.06, .042, .03]), skin)
+    s.add(capsule((-.03, -.40, .02), (-.08, -.44, .02), .03, .02), pink)
+    return (-.55, -1.05, -.5), (.55, 1.10, .5)
+
+
+def _bombardiro(s):
+    green, belly, metal, white, dark = (90, 200, 90), (190, 230, 150), (175, 185, 200), (240, 240, 230), (60, 120, 60)
+    # Crocodile head and body form the fuselage.
+    s.add(ellipsoid((-.05, 0, 0), (.62, .22, .22)), green)
+    s.add(ellipsoid((0, -.07, 0), (.55, .14, .18)), belly, .7)
+    s.add(capsule((-.55, .02, 0), (-1.0, .10, 0), .16, .04), green)
+    for k in range(7):
+        x = -.55+.17*k
+        s.add(ellipsoid((x, .21, 0), (.04, .035, .03)), dark)
+    # Long snout with nostrils, eye bumps and interlocking teeth.
+    s.add(round_box((.80, .05, 0), (.30, .07, .13), .05), green)
+    s.add(round_box((.78, -.08, 0), (.29, .04, .12), .03), belly)
+    for z in (-1, 1):
+        s.add(sphere((.48, .20, z*.09), .07), green)
+        _eye(s, (.50, .23, z*.10), .045, (.3, .6, z))
+        s.add(sphere((1.05, .11, z*.05), .02), dark)
+    for i in range(9):
+        x = .58+.055*i
+        for z in (-.12, .12):
+            s.add(capsule((x, -.02, z), (x, -.07, z), .008, .003), white, 1., (.4, .6))
+    # Swept bomber wings with engines and spinning propellers; tail plane and fin.
+    for z in (-1, 1):
+        s.add(ellipsoid((.0, .0, z*.60), (.20, .025, .48), "y", z*8), metal)
+        for e in (.32, .62):
+            s.add(capsule((.32, -.05, z*e), (-.10, -.05, z*e), .065, .045), metal)
+            s.add(ellipsoid((.36, -.05, z*e), (.03, .14, .022), "x", 0), white, 1., (.3, .5))
+            s.add(ellipsoid((.36, -.05, z*e), (.03, .022, .14), "x", 0), white, 1., (.3, .5))
+        s.add(ellipsoid((-.88, .10, z*.22), (.11, .018, .20)), metal)
+    s.add(ellipsoid((-.90, .30, 0), (.12, .20, .018), "z", -20), metal)
+    # Bombs slung under the belly.
+    for x in (-.15, .15):
+        s.add(capsule((x-.10, -.26, 0), (x+.10, -.26, 0), .045), dark)
+    return (-1.1, -.35, -1.15), (1.15, .55, 1.15)
+
+
+def _lirili(s):
+    grey, cactus, spine, sandal, flower = (190, 190, 205), (90, 200, 110), (230, 255, 200), (200, 140, 80), (255, 120, 170)
+    # Elephant head with big rounded fan ears, curling trunk and tusks.
+    s.add(sphere((0, .72, 0), .20), grey)
+    for side in (-1, 1):
+        s.add(ellipsoid((side*.25, .72, -.04), (.14, .19, .02), "y", side*-20), grey)
+        _eye(s, (side*.08, .78, .17), .03, (side*.3, 0, 1))
+        s.add(capsule((side*.07, .60, .15), (side*.11, .50, .26), .018, .006), (255, 250, 235), 1., (.4, .6))
+    s.add(limb([(0, .66, .19), (0, .50, .27), (.02, .34, .26), (.09, .27, .20), (.12, .30, .14)],
+               [.07, .055, .04, .028, .02]), grey)
+    # Saguaro cactus body with ribbed arms, spines and a flower.
+    s.add(capsule((0, -.45, 0), (0, .50, 0), .17, .16), cactus)
+    for k in range(8):
+        a = 2*math.pi*k/8
+        s.add(capsule((.17*math.cos(a), -.45, .17*math.sin(a)), (.16*math.cos(a), .45, .16*math.sin(a)), .012),
+              (70, 170, 90), 1., (.15, .3))
+    for side, y in ((-1, .10), (1, -.08)):
+        s.add(limb([(side*.15, y, 0), (side*.36, y, 0), (side*.38, y+.32, 0)], [.065, .065, .06]), cactus)
+    for k in range(26):
+        a, y = k*2.4, -.40+.035*k
+        s.add(capsule((.17*math.cos(a), y, .17*math.sin(a)), (.23*math.cos(a), y+.02, .23*math.sin(a)), .004),
+              spine, 1., (.35, .55))
+    s.add(sphere((-.38, .45, 0), .04), flower, 1., (.35, .55))
+    # Elephant legs in strappy sandals.
+    for side in (-1, 1):
+        s.add(limb([(side*.08, -.55, 0), (side*.09, -.86, 0)], [.07, .065]), grey)
+        s.add(round_box((side*.09, -.92, .04), (.07, .015, .12), .01), sandal)
+        for z in (-.02, .08):
+            s.add(torus((side*.09, -.88, z), "z", .072, .01), sandal)
+    return (-.55, -.98, -.35), (.55, .95, .45)
+
+
+BUILDERS = {"tung_tung_sahur": _tung_tung, "tralalero_tralala": _tralalero,
+            "ballerina_cappuccina": _ballerina, "bombardiro_crocodilo": _bombardiro,
+            "lirili_larila": _lirili}
+
+
+def geometry(rng, character, total=70000):
+    """Return (points, rgb) for a character, centred on its vertical spin axis."""
+    if character not in BUILDERS:
         raise ValueError("unknown brainrot character")
-    pts, w, layers = f.build()
+    s = Sculpture(rng)
+    lo, hi = BUILDERS[character](s)
+    pts, rgb = s.sample(lo, hi, total)
     pts -= (pts.max(0)+pts.min(0))/2*[1, 1, 0]
-    return pts, w, layers
+    return pts, rgb

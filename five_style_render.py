@@ -142,15 +142,12 @@ class Renderer:
             if mode == "bistable_spin":
                 from bistable_spin import geometry
                 points, weights, layers = geometry(self.rng, p["shape"])
+                self.point_colors = weights[:, None]*np.array(self.colors)[layers]/255
             else:
+                # Brainrot figures carry their own avatar colours per particle.
                 from brainrot import geometry
-                points, weights, layers = geometry(self.rng, p["character"])
+                points, self.point_colors = geometry(self.rng, p["character"])
             self.points = points
-            colors = np.array(self.colors)
-            if mode == "brainrot_spin":
-                # One warm wood/ember tone for the whole figure, eyes slightly paler.
-                colors = np.array([(255, 120, 30), (255, 200, 130)])
-            self.point_colors = weights[:, None]*colors[layers]/255
             self.bound = np.linalg.norm(points, axis=1).max()
             if mode == "brainrot_spin":
                 # Tall figures spin about y: size them by height and turning radius,
