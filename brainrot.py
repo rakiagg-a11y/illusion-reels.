@@ -8,6 +8,7 @@ rendering stays additive and occlusion-free, so the figure still reads as
 spinning either way under orthographic projection.
 """
 import math
+from pathlib import Path
 
 import numpy as np
 
@@ -340,10 +341,52 @@ BUILDERS = {"tung_tung_sahur": _tung_tung, "tralalero_tralala": _tralalero,
             "lirili_larila": _lirili}
 
 
+ASSETS = Path(__file__).resolve().parent/"assets"/"brainrot"
+
+
+def from_image(path, rng, per_pixel=3, depth=.9):
+    """Turn a cut-out character picture into a particle sculpture.
+
+    Every opaque pixel becomes particles carrying its colour on the front
+    surface. Depth comes from the silhouette: each part is inflated into a
+    round tube whose radius is its local half-width, so the log, arms, bat
+    and legs keep their real shape when the figure turns. The back is a dim,
+    featureless copy of the wood tone, so the face is only on the front.
+    """
+    from PIL import Image
+    from scipy import ndimage
+    im = np.asarray(Image.open(path).convert("RGBA"), float)/255
+    rgb, mask = im[..., :3], im[..., 3] > .5
+    ys, xs = np.nonzero(mask)
+    scale = 2/(ys.max()-ys.min())
+    dist = ndimage.distance_transform_edt(mask)
+    ridge = ndimage.maximum_filter(dist, size=int(dist.max()*2)+1)
+    thick = np.sqrt(np.clip(dist*(2*ridge-dist), 0, None))*depth*scale
+    plain = np.stack([ndimage.gaussian_filter(rgb[..., c]*mask, 6)/np.maximum(ndimage.gaussian_filter(mask*1., 6), 1e-3)
+                      for c in range(3)], -1)
+    n = len(xs)*per_pixel
+    k = rng.integers(0, len(xs), n)
+    px, py = xs[k]+rng.random(n), ys[k]+rng.random(n)
+    at = [py-.5, px-.5]
+    front = np.stack([ndimage.map_coordinates(rgb[..., c], at, order=1) for c in range(3)], 1)
+    back = np.stack([ndimage.map_coordinates(plain[..., c], at, order=1) for c in range(3)], 1)
+    side = rng.choice([-1., 1.], n)
+    z = side*ndimage.map_coordinates(thick, at, order=1)
+    points = np.c_[(px-(xs.min()+xs.max())/2)*scale, -(py-(ys.min()+ys.max())/2)*scale, z]
+    col = np.where(side[:, None] > 0, front, back)
+    lum = col.mean(1, keepdims=True)
+    colors = np.clip(col*1.25, 0, 1)*np.where(side > 0, 1., .45)[:, None]*(.20+.45*lum)
+    return points, colors
+
+
 def geometry(rng, character, total=70000):
     """Return (points, rgb) for a character, centred on its vertical spin axis."""
     if character not in BUILDERS:
         raise ValueError("unknown brainrot character")
+    picture = ASSETS/(character+".png")
+    if picture.is_file():
+        # A reference picture of the character beats the hand-built sculpture.
+        return from_image(picture, rng)
     s = Sculpture(rng)
     lo, hi = BUILDERS[character](s)
     pts, rgb = s.sample(lo, hi, total)
