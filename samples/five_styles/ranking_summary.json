@@ -1,0 +1,406 @@
+{
+  "kind": "five_style_ranking_summary",
+  "interpretation": "Engineering heuristics, not learned scores or predicted performance. Plans reserve mode coverage before ranking within each mode.",
+  "accounts": [
+    {
+      "account": {
+        "id": "opticpop",
+        "handle": "@opticpop",
+        "style": "reversible_depth"
+      },
+      "candidate_count": 540,
+      "top_by_mode": [
+        {
+          "id": "710886aaafd693f1",
+          "mode": "tilted_pair",
+          "parameters": {
+            "subjects": [
+              "star",
+              "lightning"
+            ],
+            "layout": "orbit",
+            "tilt": 2,
+            "turns": 1
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Orthographic projection; additive surfaces; fixed, distinct tilted axes.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        }
+      ]
+    },
+    {
+      "account": {
+        "id": "brand_02",
+        "handle": "",
+        "style": "hidden_stereogram"
+      },
+      "candidate_count": 40,
+      "top_by_mode": [
+        {
+          "id": "25b4ee13f46346b8",
+          "mode": "hidden_relief",
+          "parameters": {
+            "subject": "hourglass",
+            "relief": 0.15,
+            "repeat": 0.13
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 12,
+            "variation": 15,
+            "originality": 10,
+            "total": 87,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Repeated horizontal correspondences encode relief; no visible outline.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        }
+      ]
+    },
+    {
+      "account": {
+        "id": "brand_03",
+        "handle": "",
+        "style": "binocular_worlds"
+      },
+      "candidate_count": 24,
+      "top_by_mode": [
+        {
+          "id": "659f68fc0fbe109c",
+          "mode": "orbital_rings",
+          "parameters": {
+            "complexity": 3,
+            "eye_separation": 0.08,
+            "view": "parallel"
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 12,
+            "variation": 15,
+            "originality": 10,
+            "total": 87,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "b9114d4a8a4bdb55",
+          "mode": "helix",
+          "parameters": {
+            "complexity": 3,
+            "eye_separation": 0.08,
+            "view": "parallel"
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 12,
+            "variation": 15,
+            "originality": 10,
+            "total": 87,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "39711ebac0a07adc",
+          "mode": "constellation",
+          "parameters": {
+            "complexity": 3,
+            "eye_separation": 0.12,
+            "view": "parallel"
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 12,
+            "variation": 15,
+            "originality": 10,
+            "total": 87,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Parallel eye cameras; bounded off-axis disparity; identical scene time.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        }
+      ]
+    },
+    {
+      "account": {
+        "id": "brand_04",
+        "handle": "",
+        "style": "motion_paradox"
+      },
+      "candidate_count": 84,
+      "top_by_mode": [
+        {
+          "id": "af5334ebbd710db1",
+          "mode": "motion_form",
+          "parameters": {
+            "subject": "heart",
+            "direction": -1,
+            "dot_size": 4
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Equal noise distributions inside and outside; opposite coherent motion.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "d63c9e481227b0b1",
+          "mode": "infinite_regress",
+          "parameters": {
+            "columns": 5,
+            "carrier": -1,
+            "cycles": 2
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Patch centers travel vertically; internal carriers drift horizontally.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "fd4ee39f2fcfcace",
+          "mode": "footsteps",
+          "parameters": {
+            "stripes": 16,
+            "axis": "vertical",
+            "cycles": 2
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Both blocks share exactly one trajectory; contrast context changes.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        }
+      ]
+    },
+    {
+      "account": {
+        "id": "brand_05",
+        "handle": "",
+        "style": "perception_lab"
+      },
+      "candidate_count": 60,
+      "top_by_mode": [
+        {
+          "id": "ce4da978d397cbd7",
+          "mode": "munker_white",
+          "parameters": {
+            "stripes": 24,
+            "target": 156
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Target RGB stays constant; only the surrounding grating fades.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "92e7563da22b4a6f",
+          "mode": "muller_lyer",
+          "parameters": {
+            "wing_angle": 25,
+            "wing_length": 0.12
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Both shafts have exactly equal endpoints and length.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "4b09e39d071d78e1",
+          "mode": "afterimage",
+          "parameters": {
+            "subject": "butterfly",
+            "segments": 5
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 10,
+            "variation": 15,
+            "originality": 10,
+            "total": 85,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Long fixed chromatic adaptor; achromatic test; continuous fixation point.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "a73516e596adb070",
+          "mode": "troxler",
+          "parameters": {
+            "patches": 12,
+            "contrast": 0.23
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 10,
+            "variation": 15,
+            "originality": 10,
+            "total": 85,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Peripheral low contrast patches remain physically unchanged for the whole clip.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        },
+        {
+          "id": "6463b31912d9eab1",
+          "mode": "cafe_wall",
+          "parameters": {
+            "columns": 9,
+            "offset": 0.35
+          },
+          "evaluation": {
+            "feasibility": 25,
+            "mechanism_control": 25,
+            "viewing_accessibility": 18,
+            "variation": 15,
+            "originality": 10,
+            "total": 93,
+            "status": "renderable_needs_human_review",
+            "blender_required": false,
+            "rubric": "25 feasibility + 25 physical control + 20 accessibility + 15 variation + 15 originality",
+            "reasons": [
+              "Existing Python geometry or bounded procedural renderer; no external assets.",
+              "Every mortar line is horizontal; alternating rows have offset tiles.",
+              "Perceptual strength remains subject to human review."
+            ],
+            "limitation": "Original procedural analogue; no copied reference artwork; no audience-performance prediction."
+          },
+          "eligible": true
+        }
+      ]
+    }
+  ]
+}

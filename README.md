@@ -2,6 +2,25 @@
 
 Generator for the @opticpop optical-illusion reels (1080×1920, 30 fps, Instagram-ready).
 
+## Five-account local studio
+
+The separate [five-style studio](FIVE_STYLES.md) routes exactly five account
+profiles to distinct illusion families, with 13 procedural modes, ranked
+production briefs and local-only rendering. Start with the [Hebrew setup guide](SETUP_HE.md).
+Its [reference audit](research/biologistmichael/REPORT_HE.md) states the actual
+inventory and visual-review coverage. This path does not activate publishing.
+
+To run just one style, use one of the [five independent generator entry points](FIVE_GENERATORS_HE.md).
+Their fixed names are AngleSpin, HiddenShape, StereoTwin, MotionShift and PerceptionLab;
+the Hebrew guide maps each name to its content style and local account profile.
+Current approved routing replaces Hypnotorium with **ColorEcho + FaceFlash** and
+Spiralium with **MirrorFlip + StillWobble**. OpticPop retains both AngleSpin modes
+and adds **DepthFlip**. Use [the current Hebrew account guide](ACCOUNT_STYLES_HE.md)
+and `account_studio.py` for new plans. The existing per-style shortcuts also use
+these new routes. TrustYourEyes and Claude's Brainrot work are outside this change.
+The old `five_styles.py` contracts and `samples/five_styles/` remain for reproducing
+historical briefs, not configuring these new account routes. No publishing is activated.
+
 ## Styles
 
 - `dancer`: a 3D silhouette (ballerina, cat, flamingo, T-rex, shark, butterfly) that can be seen spinning either way.
@@ -72,9 +91,18 @@ preview is emitted. Unavailable audio holds the automatic route. This does not
 upload, schedule, change account type or activate posting.
 See [AUDIO_AUTOMATION.md](AUDIO_AUTOMATION.md) for Hebrew setup and current limits.
 
-## OmniSocials migration
+## Page profiles and publishing preference
 
-The requested target provider has a read-only native-audio adapter and trending
+The current target for the four page connections is **Metricool**, as requested
+by the user. Connection setup follows page branding/setup; no connection,
+schedule or live posting change is activated by the local profile assets.
+The prepared names, English bios, generator assignments and avatar filenames
+are in `samples/five_styles/brand_profiles.json`. Avatar images and the review
+pack are local deliverables. See [BRAND_PROFILES_HE.md](BRAND_PROFILES_HE.md).
+
+## Earlier OmniSocials exploration (historical)
+
+The earlier provider exploration has a read-only native-audio adapter and trending
 catalogue lookup in `omnisocials_audio.py`. It reuses the exact MOTHS request,
 emits native `instagram.audio_id` settings for review, and holds mismatched or
 unverified audio. It never downloads music, creates posts or changes the current

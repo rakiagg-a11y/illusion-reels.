@@ -1,0 +1,26 @@
+{
+  "profile": "https://www.instagram.com/biologistmichael/",
+  "audit_date": "2026-10-18",
+  "displayed_posts": 1449,
+  "unique_visible_links": 1429,
+  "unaccounted_display_count": 20,
+  "grid_passes": 292,
+  "visible_end_reached": true,
+  "reel_links": 611,
+  "caption_candidate_counts": {
+    "reversible_depth": 164,
+    "binocular_worlds": 80,
+    "hidden_stereogram": 317,
+    "motion_paradox": 14,
+    "perception_lab": 56
+  },
+  "status_counts": {
+    "caption_candidate_not_individually_verified": 631,
+    "unresolved_or_non_illusion_content": 705,
+    "needs_manual_mechanism_review": 93
+  },
+  "interpretation": "Whole visible-grid and rendered-caption inventory, not a claim that every video was watched. Rules are provisional. See separate visual audit for actual detail-page observations. Captions may be inaccurate or humorous; authorship is not assumed.",
+  "visual_detail_pages": 47,
+  "complete_archive_playback": false,
+  "subjective_effect_certification": false
+}

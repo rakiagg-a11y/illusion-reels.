@@ -1,0 +1,24 @@
+{
+  "kind": "approved_account_routes",
+  "version": 1,
+  "approved_date": "2026-10-19",
+  "local_only": true,
+  "publishing_allowed": false,
+  "routes": {
+    "hypnotorium": [
+      "color_echo",
+      "face_flash"
+    ],
+    "spiralium_": [
+      "mirror_flip",
+      "still_wobble"
+    ],
+    "opticpop": [
+      "bistable_spin",
+      "tilted_pair",
+      "depth_flip"
+    ]
+  },
+  "protected_account": "trustyoureyes_",
+  "legacy_contracts": "historical reproduction only; active entry points dispatch through account_studio"
+}

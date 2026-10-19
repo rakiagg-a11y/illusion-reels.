@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "accounts": [
+    {
+      "id": "opticpop",
+      "handle": "@opticpop",
+      "style": "reversible_depth"
+    },
+    {
+      "id": "unassigned_hidden_shape",
+      "handle": "",
+      "style": "hidden_stereogram"
+    },
+    {
+      "id": "spiralium_",
+      "handle": "@spiralium_",
+      "style": "binocular_worlds"
+    },
+    {
+      "id": "hypnotorium",
+      "handle": "@hypnotorium",
+      "style": "motion_paradox"
+    },
+    {
+      "id": "trustyoureyes_",
+      "handle": "@trustyoureyes_",
+      "style": "perception_lab"
+    }
+  ]
+}
