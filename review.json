@@ -1,0 +1,200 @@
+{
+  "trial05-20261020-opticpop-d01-s1": {
+    "verdict": "approved",
+    "sha256": "c4e99135ef8295a9a8749a4dfae0e5405bfef53f549be3a6cfa382d373328277",
+    "yt_sha256": "7d569f8ee67bc5dea2525ba47eff11ef3f56745c054e43d26f900135c605704f",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-hypnotorium-d01-s1": {
+    "verdict": "approved",
+    "sha256": "9580afbe570f7fea809709397f36d18948885038b9f36aa897bdd5fc34e76c5d",
+    "yt_sha256": "f6fc4539692cf3fc62562c1947cbfd0d80a202b7ecd5f90f2eb508d38be1ce97",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-spiralium_-d01-s1": {
+    "verdict": "approved",
+    "sha256": "629f38741f35f67b6457d462325ccfa2f0ce629a80559354794afbd8a8f86674",
+    "yt_sha256": "2c305793ed900b101fe2e2aa933bf4243cfc07f1fa8f31ceaa8879247de1c94f",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-trustyoureyes_-d01-s1": {
+    "verdict": "approved",
+    "sha256": "8f145da78caa8a704d413d53da9c73194772e4aabc6c188f5c0c639021d5ac23",
+    "yt_sha256": "7026a4a3e3046d8d5bf91dae85f1fd1557fe411d251b37d2f953608abd492da3",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-opticpop-d01-s2": {
+    "verdict": "approved",
+    "sha256": "517c4504cc08ba24703fb1c9cd8126ca1f97c037b48c00609ac43eb0e3acaffa",
+    "yt_sha256": "496f8009bbbfbfd2980b5be660bdde21049a1cdbc6c98e012f01ae069dcabb07",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-hypnotorium-d01-s2": {
+    "verdict": "approved",
+    "sha256": "7437afd37f0e36f27196dd4690664649cee39644ef61def610c1dd4df07089b2",
+    "yt_sha256": "8acf682439082ff9b5c3f6d1f4abc79f83f223e3dde29eedf876b760d0142152",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-spiralium_-d01-s2": {
+    "verdict": "approved",
+    "sha256": "52808349cb84aab598cc44ef8117df3daa483b89fc47d21ec96cebf66b1bf68d",
+    "yt_sha256": "d4cbec4b7140e9814ad100a7865aa1f25c5c5f444f00c0aaf9e2ab20415ac7a0",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-opticpop-d01-s3": {
+    "verdict": "approved",
+    "sha256": "5e49a692a173db5bab07d5b4267989001ac5f2d6dcb796ded7c88c062029e270",
+    "yt_sha256": "ef87324f24619a95e44c33e45650561badc52c2de108e82461ef5019e5dbfb37",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-hypnotorium-d01-s3": {
+    "verdict": "approved",
+    "sha256": "a2bb60776f29054aa031c5bd72a6823c6f215d78883211264325baa7cdf8324d",
+    "yt_sha256": "73058afe51eceb5ca02469e203be5885cb112bcfc53a9bfc8b5e98bca23352d7",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:21+00:00"
+  },
+  "trial05-20261020-spiralium_-d01-s3": {
+    "verdict": "approved",
+    "sha256": "bb7b1d72a302965ef98eb4d866a389c25896cfc4d4370faeb438c934298e4bdc",
+    "yt_sha256": "ab4fb6962ce2341c4bc2b5d85ae7b2add2cdb7e40c9c6b08786df7dd8f5a8458",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-opticpop-d01-s4": {
+    "verdict": "approved",
+    "sha256": "2bc915ad07a64ff5f8cd3b68e6b076facb47b283a57c59e5513df8598a553368",
+    "yt_sha256": "2ae4db6cc64ce0719a4d46cabf1af6ae1db4e45b5af7ba352bcce610194081c0",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-hypnotorium-d01-s4": {
+    "verdict": "approved",
+    "sha256": "b72d482baa95b10f6dc54cba0aec319441af6b0773a6a2311fcdfc376960dbcf",
+    "yt_sha256": "f4ccd366322aaa347ed182d8fb09aefbc7f7e781deeadb9baefa3c22ead8b37e",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-spiralium_-d01-s4": {
+    "verdict": "approved",
+    "sha256": "50a80f81e6d6c13d5e3042eb391b118b92649e3ddaff3ef50d258a4a02e321f7",
+    "yt_sha256": "3a40ef728277843d5506d4ede75f3352ee4727afb4ad37658661ae7b8f9e9ae9",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-trustyoureyes_-d01-s4": {
+    "verdict": "approved",
+    "sha256": "8e4497f7a284d0556219b8387d8e7dc9e0ab6a7c1d89b8e91a1115e4e1da7920",
+    "yt_sha256": "34c90a662ef09ee85fc80503a7816529e52129c9a178ab8a73a82c18b2d54d7e",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-opticpop-d01-s5": {
+    "verdict": "approved",
+    "sha256": "e09589fb669c2f0b7d44f45a0a82bfabbc569a808d20befc911c36d7ba0ae17d",
+    "yt_sha256": "307f4a605926462f98fe980bbfca6e3f275b632176039b1f616c2498b7e50a61",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-hypnotorium-d01-s5": {
+    "verdict": "approved",
+    "sha256": "d604e640d93554635e930c8ff6ad3716a0832aafb147106af6798b44acfe0545",
+    "yt_sha256": "5da977745dcdbe881931262854053565746b4d279d08900704c22be3787adf86",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-spiralium_-d01-s5": {
+    "verdict": "approved",
+    "sha256": "c74286acfe6b36c3631d92c654bbe5bca104231ffef4fc01a6c297801a2c8bf7",
+    "yt_sha256": "bb56e2231f5ae1b63dca4d2add0cf59b50249668d959f94ebd5688302a046e09",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-opticpop-d01-s6": {
+    "verdict": "approved",
+    "sha256": "25dbb3b3cbee1427e483e277e20233b06e587fa85ef90158c2eeab032035cda9",
+    "yt_sha256": "8c78c27778c35fcd4a9cf1d0b37bdf0bb45d36a1d62c6ae527ec4dab3949f5a6",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-hypnotorium-d01-s6": {
+    "verdict": "approved",
+    "sha256": "5d059eb438bbf1a80a16188fb9a6c43e7fdf0e0f7bece702765102177d049af9",
+    "yt_sha256": "3e99a9584c8effd829fb7d33271b22dd0a74ad4e13d793c2ad3986757e42bc4c",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-spiralium_-d01-s6": {
+    "verdict": "approved",
+    "sha256": "a411ed1367eefe8dc03cc59e45c6209b2a2efba7df03866b8b83ee901ee4f65f",
+    "yt_sha256": "713aed5e9747fa1087b422a8eb269acf748a9a7f65e37c9f96f2e3d9dfe9a513",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_20_reels.png",
+    "note": "Poster frames checked on a contact sheet: figure readable, text inside the safe zone, nothing covered by the bottom overlay.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-trustyoureyes_-d01-s5": {
+    "verdict": "approved",
+    "sha256": "3c5cab5482dbe6a346ab1619916af9b62f342cc16824502378016e66446b060b",
+    "yt_sha256": "acbacf6d0c0415d2c152455c054e2c23eb0c10440df5ac429a276b051dfda671",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_trustyoureyes_s5_s6.png",
+    "note": "Both characters readable side by side; one is edge-on at this frame, the quarter-turn offset of the duo design.",
+    "reviewed_at_utc": "2026-10-19T13:53:22+00:00"
+  },
+  "trial05-20261020-trustyoureyes_-d01-s6": {
+    "verdict": "approved",
+    "sha256": "69b90e87485c72010b0286fbd7bd4fd0499e6d3eaa1a196e4448c9dc394b8e65",
+    "yt_sha256": "c8a805910bdff2f35c380d57b7108874bf7465654cd0894e03411798e1dffc3d",
+    "reviewer": "Claude (production thread)",
+    "evidence": "/mnt/project-files/reels/trial/2026-10-20/review_sheets/sheet_trustyoureyes_s5_s6.png",
+    "note": "Both characters readable side by side; one is edge-on at this frame, the quarter-turn offset of the duo design.",
+    "reviewed_at_utc": "2026-10-19T13:53:23+00:00"
+  }
+}

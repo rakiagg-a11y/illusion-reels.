@@ -1,0 +1,1073 @@
+{
+  "kind": "trial_day_queue",
+  "version": 2,
+  "day": 1,
+  "plan_fingerprint": "5726e451aaccc2354c93df13e90579d6906db8dadc0efa00b714a61420da5142",
+  "accounts": null,
+  "local_date": "2026-10-20",
+  "slots": [
+    {
+      "slot_id": "trial05-20261020-opticpop-d01-s1",
+      "account": "opticpop",
+      "mode": "depth_flip",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "00:30",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-19T21:30:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "depth_flip",
+      "content_id": "21b5b51deb396277",
+      "parameters": {
+        "ribs": 9,
+        "rings": 5,
+        "opening": 290,
+        "tilt": 12
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s1.json",
+      "brief_digest": "7c580bebde8448c38953ea54e5a963a3a3bf7f8af50dd4d62f602dca4d1d97db",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s1.mp4",
+      "sha256": "c4e99135ef8295a9a8749a4dfae0e5405bfef53f549be3a6cfa382d373328277",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s1_yt.mp4",
+      "yt_sha256": "7d569f8ee67bc5dea2525ba47eff11ef3f56745c054e43d26f900135c605704f",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 12.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A glowing wire sphere with 9 ribs and 5 rings, open on one side, turning in one steady direction 🌐\nAre you looking into a bowl, or at the outside of a ball? Can you flip it in your mind?\nComment 🥣 bowl or ⚽ ball\n\n#opticalillusion #depthillusion #illusion #brain #opticpop",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-hypnotorium-d01-s1",
+      "account": "hypnotorium",
+      "mode": "color_echo",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "00:40",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-19T21:40:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "color_echo",
+      "content_id": "ec4e9910fe80a228",
+      "parameters": {
+        "scene": "terrace",
+        "composition": 3,
+        "layers": 6,
+        "landmark": 1
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s1.json",
+      "brief_digest": "9f629c5507991184a83891fce3cc844805022b7836cca858c30b0f9fbed848dd",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s1.mp4",
+      "sha256": "9580afbe570f7fea809709397f36d18948885038b9f36aa897bdd5fc34e76c5d",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s1_yt.mp4",
+      "yt_sha256": "f6fc4539692cf3fc62562c1947cbfd0d80a202b7ecd5f90f2eb508d38be1ce97",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 24.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A bright terrace of arches that turns black and white after 18 seconds 🎨\nKeep your eyes on the dot the whole time. When the colour is gone, what colours do you still see?\nComment the colour you saw 👇\n\n#opticalillusion #afterimage #colorillusion #brain #hypnotorium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-spiralium_-d01-s1",
+      "account": "spiralium_",
+      "mode": "mirror_flip",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "00:50",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-19T21:50:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "mirror_flip",
+      "content_id": "47a66dcbeca8e2e3",
+      "parameters": {
+        "profile": "classical",
+        "throat": 0.17,
+        "rim_width": 0.34
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s1.json",
+      "brief_digest": "d782cb62513b99ab3978fd625536c499c9b26fd053465b49b1676ffbbdc7ce52",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s1.mp4",
+      "sha256": "629f38741f35f67b6457d462325ccfa2f0ce629a80559354794afbd8a8f86674",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s1_yt.mp4",
+      "yt_sha256": "2c305793ed900b101fe2e2aa933bf4243cfc07f1fa8f31ceaa8879247de1c94f",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Two classic profiles facing each other… or one vase? 🏺\nWhich did you see first, the faces or the vase? Can you switch between them?\nComment 👤 faces or 🏺 vase\n\n#opticalillusion #rubinsvase #illusion #brain #spiralium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-trustyoureyes_-d01-s1",
+      "account": "trustyoureyes_",
+      "mode": "brainrot_spin",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "00:55",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-19T21:55:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "brainrot_spin",
+      "content_id": "e07afa1326b26ded",
+      "parameters": {
+        "character": "cappuccino_assassino",
+        "partner": "jerry",
+        "tilt": 6,
+        "turns": 2
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s1.json",
+      "brief_digest": "1875721b5e70105e1b787c21c87f7d419b0a6fae4733ff59f71b19ec8313d25a",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s1.mp4",
+      "sha256": "8f145da78caa8a704d413d53da9c73194772e4aabc6c188f5c0c639021d5ac23",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s1_yt.mp4",
+      "yt_sha256": "7026a4a3e3046d8d5bf91dae85f1fd1557fe411d251b37d2f953608abd492da3",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Cappuccino Assassino and Jerry, built from thousands of glowing particles, spin side by side… 👀\nAre they turning the same way, or opposite ways? Watch one, then the other, and see if one of them flips.\nComment 🔁 same or 🔀 opposite\n\n#cappuccinoassassino #jerry #brainrot #italianbrainrot #tomandjerry #cartoon #opticalillusion #illusion #trustyoureyes",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-opticpop-d01-s2",
+      "account": "opticpop",
+      "mode": "tilted_pair",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "04:30",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T01:30:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "tilted_pair",
+      "content_id": "e9e7cc8fcc984332",
+      "parameters": {
+        "subjects": [
+          "heart",
+          "flower"
+        ],
+        "layout": "orbit",
+        "tilt": 0,
+        "turns": 1
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s2.json",
+      "brief_digest": "a3b97e08af81b62e1ad4bc0bad45170f9bc75aed6f45e84f5817662ff5fca0e5",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s2.mp4",
+      "sha256": "517c4504cc08ba24703fb1c9cd8126ca1f97c037b48c00609ac43eb0e3acaffa",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s2_yt.mp4",
+      "yt_sha256": "496f8009bbbfbfd2980b5be660bdde21049a1cdbc6c98e012f01ae069dcabb07",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A glowing heart and a flower, circling each other ❤️🌸\nWhich one is in front? Follow one shape through the overlap and see if the order flips.\nComment ❤️ or 🌸\n\n#opticalillusion #depthillusion #illusion #brain #opticpop",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-hypnotorium-d01-s2",
+      "account": "hypnotorium",
+      "mode": "face_flash",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "04:40",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T01:40:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "face_flash",
+      "content_id": "4fb68d1fff32c447",
+      "parameters": {
+        "jaw_family": 3,
+        "nose_family": 1,
+        "hair_family": 3
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s2.json",
+      "brief_digest": "ba6ba6e109e8415a99b769fb39f544d47a2015ff51c14e84f0616b955c59b39a",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s2.mp4",
+      "sha256": "7437afd37f0e36f27196dd4690664649cee39644ef61def610c1dd4df07089b2",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s2_yt.mp4",
+      "yt_sha256": "8acf682439082ff9b5c3f6d1f4abc79f83f223e3dde29eedf876b760d0142152",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 12.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Two illustrated faces flash on each side of the cross, a new pair every quarter second 👀\nKeep your eyes on the cross until the end. Do the faces start to look strange?\nComment 😐 normal or 😱 strange\n\n#opticalillusion #flashedfaceillusion #illusion #brain #hypnotorium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-spiralium_-d01-s2",
+      "account": "spiralium_",
+      "mode": "still_wobble",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "04:50",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T01:50:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "still_wobble",
+      "content_id": "c68778777501017a",
+      "parameters": {
+        "element_length": 34,
+        "aspect_ratio": 6,
+        "surround_angle": 30,
+        "centre_radius": 0.25
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s2.json",
+      "brief_digest": "a98d4d91d64d4744b4b786375b9d08a4b9dfffa2412cb2b979254aa692e46096",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s2.mp4",
+      "sha256": "52808349cb84aab598cc44ef8117df3daa483b89fc47d21ec96cebf66b1bf68d",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s2_yt.mp4",
+      "yt_sha256": "d4cbec4b7140e9814ad100a7865aa1f25c5c5f444f00c0aaf9e2ab20415ac7a0",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A circle of long, thin black-and-white bricks, laid crosswise inside a slanted brick pattern. Every frame of this video is identical 📱\nGently move your phone. Does the circle in the middle float or slide?\nComment 🌀 it moves or 🧱 it's still\n\n#opticalillusion #ouchiillusion #illusion #brain #spiralium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-opticpop-d01-s3",
+      "account": "opticpop",
+      "mode": "depth_flip",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "08:30",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T05:30:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "depth_flip",
+      "content_id": "85e184a4a9bb00b3",
+      "parameters": {
+        "ribs": 7,
+        "rings": 5,
+        "opening": 210,
+        "tilt": 36
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s3.json",
+      "brief_digest": "97eb38ba9a0c84d737f5e93b134125d109147ee8e240ec0195d8371f391e5746",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s3.mp4",
+      "sha256": "5e49a692a173db5bab07d5b4267989001ac5f2d6dcb796ded7c88c062029e270",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s3_yt.mp4",
+      "yt_sha256": "ef87324f24619a95e44c33e45650561badc52c2de108e82461ef5019e5dbfb37",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 12.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A glowing wire sphere with 7 ribs and 5 rings, open on one side, turning in one steady direction 🌐\nAre you looking into a bowl, or at the outside of a ball? Can you flip it in your mind?\nComment 🥣 bowl or ⚽ ball\n\n#opticalillusion #depthillusion #illusion #brain #opticpop",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-hypnotorium-d01-s3",
+      "account": "hypnotorium",
+      "mode": "color_echo",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "08:40",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T05:40:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "color_echo",
+      "content_id": "b74ffac1f437587d",
+      "parameters": {
+        "scene": "terrace",
+        "composition": 3,
+        "layers": 4,
+        "landmark": 0
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s3.json",
+      "brief_digest": "a1412faa73980f51048c9e67e4e424a9719e02bc3a0e27bd2a2cc1d7c905a009",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s3.mp4",
+      "sha256": "a2bb60776f29054aa031c5bd72a6823c6f215d78883211264325baa7cdf8324d",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s3_yt.mp4",
+      "yt_sha256": "73058afe51eceb5ca02469e203be5885cb112bcfc53a9bfc8b5e98bca23352d7",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 24.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A bright terrace of arches that turns black and white after 18 seconds 🎨\nKeep your eyes on the dot the whole time. When the colour is gone, what colours do you still see?\nComment the colour you saw 👇\n\n#opticalillusion #afterimage #colorillusion #brain #hypnotorium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-spiralium_-d01-s3",
+      "account": "spiralium_",
+      "mode": "mirror_flip",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "08:50",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T05:50:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "mirror_flip",
+      "content_id": "f845703b3377eb09",
+      "parameters": {
+        "profile": "aquiline",
+        "throat": 0.08,
+        "rim_width": 0.46
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s3.json",
+      "brief_digest": "21fdb393c51584325ffa15c0a5dc99dead24760cbcb74e9a1fb3ba3122f48fc6",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s3.mp4",
+      "sha256": "bb7b1d72a302965ef98eb4d866a389c25896cfc4d4370faeb438c934298e4bdc",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s3_yt.mp4",
+      "yt_sha256": "ab4fb6962ce2341c4bc2b5d85ae7b2add2cdb7e40c9c6b08786df7dd8f5a8458",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Two long-nosed profiles facing each other… or one vase? 🏺\nWhich did you see first, the faces or the vase? Can you switch between them?\nComment 👤 faces or 🏺 vase\n\n#opticalillusion #rubinsvase #illusion #brain #spiralium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-opticpop-d01-s4",
+      "account": "opticpop",
+      "mode": "tilted_pair",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "12:30",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T09:30:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "tilted_pair",
+      "content_id": "544fda9c33c80bee",
+      "parameters": {
+        "subjects": [
+          "butterfly",
+          "flower"
+        ],
+        "layout": "coaxial",
+        "tilt": 1,
+        "turns": -1
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s4.json",
+      "brief_digest": "9e04424d6f15ed01302b9ee348fd0d34088fa599f2293622a3d4d6c54f4713ca",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s4.mp4",
+      "sha256": "2bc915ad07a64ff5f8cd3b68e6b076facb47b283a57c59e5513df8598a553368",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s4_yt.mp4",
+      "yt_sha256": "2ae4db6cc64ce0719a4d46cabf1af6ae1db4e45b5af7ba352bcce610194081c0",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A glowing butterfly and a flower, spinning through each other on one axis 🦋🌸\nWhich one is in front? Follow one shape through the overlap and see if the order flips.\nComment 🦋 or 🌸\n\n#opticalillusion #depthillusion #illusion #brain #opticpop",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-hypnotorium-d01-s4",
+      "account": "hypnotorium",
+      "mode": "face_flash",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "12:40",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T09:40:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "face_flash",
+      "content_id": "2a5c6a76f69a56fe",
+      "parameters": {
+        "jaw_family": 3,
+        "nose_family": 4,
+        "hair_family": 1
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s4.json",
+      "brief_digest": "389da16a5556ed3500def9a717a57304da9b5dd6a07a008cb86e7bc01f195e60",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s4.mp4",
+      "sha256": "b72d482baa95b10f6dc54cba0aec319441af6b0773a6a2311fcdfc376960dbcf",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s4_yt.mp4",
+      "yt_sha256": "f4ccd366322aaa347ed182d8fb09aefbc7f7e781deeadb9baefa3c22ead8b37e",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 12.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Two illustrated faces flash on each side of the cross, a new pair every quarter second 👀\nKeep your eyes on the cross until the end. Do the faces start to look strange?\nComment 😐 normal or 😱 strange\n\n#opticalillusion #flashedfaceillusion #illusion #brain #hypnotorium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-spiralium_-d01-s4",
+      "account": "spiralium_",
+      "mode": "still_wobble",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "12:50",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T09:50:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "still_wobble",
+      "content_id": "6e039fbedbd920ea",
+      "parameters": {
+        "element_length": 34,
+        "aspect_ratio": 5,
+        "surround_angle": 15,
+        "centre_radius": 0.29
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s4.json",
+      "brief_digest": "4adfb2061d29569f1d55efb0d1be367f16dcfce30959a386b3138c3da4a7274d",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s4.mp4",
+      "sha256": "50a80f81e6d6c13d5e3042eb391b118b92649e3ddaff3ef50d258a4a02e321f7",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s4_yt.mp4",
+      "yt_sha256": "3a40ef728277843d5506d4ede75f3352ee4727afb4ad37658661ae7b8f9e9ae9",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A circle of long, thin black-and-white bricks, laid crosswise inside a slanted brick pattern. Every frame of this video is identical 📱\nGently move your phone. Does the circle in the middle float or slide?\nComment 🌀 it moves or 🧱 it's still\n\n#opticalillusion #ouchiillusion #illusion #brain #spiralium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-trustyoureyes_-d01-s4",
+      "account": "trustyoureyes_",
+      "mode": "brainrot_spin",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "12:55",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T09:55:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "brainrot_spin",
+      "content_id": "13961471145b2d30",
+      "parameters": {
+        "character": "la_vaca_saturno_saturnita",
+        "tilt": 12,
+        "turns": 2
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s4.json",
+      "brief_digest": "b8fb6589f9bffa46e3c681118eeb8280801239662d67f42ef5d61611a1b36f00",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s4.mp4",
+      "sha256": "8e4497f7a284d0556219b8387d8e7dc9e0ab6a7c1d89b8e91a1115e4e1da7920",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s4_yt.mp4",
+      "yt_sha256": "34c90a662ef09ee85fc80503a7816529e52129c9a178ab8a73a82c18b2d54d7e",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "La Vaca Saturno Saturnita, the Saturn cow, built from thousands of glowing particles, spins… but which way? 👀\nIs La Vaca Saturno Saturnita turning left or right? Blink, look again, and try to flip the direction with your mind.\nComment ⬅️ or ➡️\n\n#lavacasaturnosaturnita #brainrot #italianbrainrot #opticalillusion #illusion #trustyoureyes",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-opticpop-d01-s5",
+      "account": "opticpop",
+      "mode": "depth_flip",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "16:30",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T13:30:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "depth_flip",
+      "content_id": "16cc8148f9182d2f",
+      "parameters": {
+        "ribs": 13,
+        "rings": 9,
+        "opening": 210,
+        "tilt": 36
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s5.json",
+      "brief_digest": "74dc29a071d11af81f62a7233954a034d88bebc7e9936f450e19b79b83c3441e",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s5.mp4",
+      "sha256": "e09589fb669c2f0b7d44f45a0a82bfabbc569a808d20befc911c36d7ba0ae17d",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s5_yt.mp4",
+      "yt_sha256": "307f4a605926462f98fe980bbfca6e3f275b632176039b1f616c2498b7e50a61",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 12.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A glowing wire sphere with 13 ribs and 9 rings, open on one side, turning in one steady direction 🌐\nAre you looking into a bowl, or at the outside of a ball? Can you flip it in your mind?\nComment 🥣 bowl or ⚽ ball\n\n#opticalillusion #depthillusion #illusion #brain #opticpop",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-hypnotorium-d01-s5",
+      "account": "hypnotorium",
+      "mode": "color_echo",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "16:40",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T13:40:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "color_echo",
+      "content_id": "f6b3b3e071393693",
+      "parameters": {
+        "scene": "mountain",
+        "composition": 2,
+        "layers": 5,
+        "landmark": 1
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s5.json",
+      "brief_digest": "ecbf7651b846826a778ea9dfa702cd32f5a189bf58db3a3403e7aab5bbf5a36e",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s5.mp4",
+      "sha256": "d604e640d93554635e930c8ff6ad3716a0832aafb147106af6798b44acfe0545",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s5_yt.mp4",
+      "yt_sha256": "5da977745dcdbe881931262854053565746b4d279d08900704c22be3787adf86",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 24.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A bright mountain landscape that turns black and white after 18 seconds 🎨\nKeep your eyes on the dot the whole time. When the colour is gone, what colours do you still see?\nComment the colour you saw 👇\n\n#opticalillusion #afterimage #colorillusion #brain #hypnotorium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-spiralium_-d01-s5",
+      "account": "spiralium_",
+      "mode": "mirror_flip",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "16:50",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T13:50:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "mirror_flip",
+      "content_id": "1d52a5bde16d5093",
+      "parameters": {
+        "profile": "aquiline",
+        "throat": 0.14,
+        "rim_width": 0.4
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s5.json",
+      "brief_digest": "279126dc3b5f41c393a8ffaee3177487f713f1e28a168c2531db8e2b2c440741",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s5.mp4",
+      "sha256": "c74286acfe6b36c3631d92c654bbe5bca104231ffef4fc01a6c297801a2c8bf7",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s5_yt.mp4",
+      "yt_sha256": "bb56e2231f5ae1b63dca4d2add0cf59b50249668d959f94ebd5688302a046e09",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Two long-nosed profiles facing each other… or one vase? 🏺\nWhich did you see first, the faces or the vase? Can you switch between them?\nComment 👤 faces or 🏺 vase\n\n#opticalillusion #rubinsvase #illusion #brain #spiralium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-trustyoureyes_-d01-s5",
+      "account": "trustyoureyes_",
+      "mode": "brainrot_spin",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "16:55",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T13:55:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "brainrot_spin",
+      "content_id": "cdb8bc9ff33ab040",
+      "parameters": {
+        "character": "trippi_troppi",
+        "partner": "tom",
+        "tilt": 6,
+        "turns": 2
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s5.json",
+      "brief_digest": "65434625809abbac8c57cb513b21210d807a750a7932cbd5e5dc94e57ced0018",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s5.mp4",
+      "sha256": "3c5cab5482dbe6a346ab1619916af9b62f342cc16824502378016e66446b060b",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s5_yt.mp4",
+      "yt_sha256": "acbacf6d0c0415d2c152455c054e2c23eb0c10440df5ac429a276b051dfda671",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Trippi Troppi and Tom, built from thousands of glowing particles, spin side by side… 👀\nAre they turning the same way, or opposite ways? Watch one, then the other, and see if one of them flips.\nComment 🔁 same or 🔀 opposite\n\n#trippitroppi #tom #brainrot #italianbrainrot #tomandjerry #cartoon #opticalillusion #illusion #trustyoureyes",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-opticpop-d01-s6",
+      "account": "opticpop",
+      "mode": "tilted_pair",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "20:30",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T17:30:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "tilted_pair",
+      "content_id": "165cf9290a84cf31",
+      "parameters": {
+        "subjects": [
+          "ring",
+          "lightning"
+        ],
+        "layout": "orbit",
+        "tilt": 1,
+        "turns": -1
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s6.json",
+      "brief_digest": "e02ddbf5d479eff485006389943afbfe929cd5efd29a984a066f0e256de037c4",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s6.mp4",
+      "sha256": "25dbb3b3cbee1427e483e277e20233b06e587fa85ef90158c2eeab032035cda9",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-opticpop-d01-s6_yt.mp4",
+      "yt_sha256": "8c78c27778c35fcd4a9cf1d0b37bdf0bb45d36a1d62c6ae527ec4dab3949f5a6",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A glowing ring and a lightning, circling each other ⭕⚡\nWhich one is in front? Follow one shape through the overlap and see if the order flips.\nComment ⭕ or ⚡\n\n#opticalillusion #depthillusion #illusion #brain #opticpop",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-hypnotorium-d01-s6",
+      "account": "hypnotorium",
+      "mode": "face_flash",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "20:40",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T17:40:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "face_flash",
+      "content_id": "7c03e4f47d28a6f3",
+      "parameters": {
+        "jaw_family": 2,
+        "nose_family": 1,
+        "hair_family": 5
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s6.json",
+      "brief_digest": "3df85fbe0aeeea3779d3eee6c8b57c73397817fb9bb086d695aaa373dadb6a59",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s6.mp4",
+      "sha256": "5d059eb438bbf1a80a16188fb9a6c43e7fdf0e0f7bece702765102177d049af9",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-hypnotorium-d01-s6_yt.mp4",
+      "yt_sha256": "3e99a9584c8effd829fb7d33271b22dd0a74ad4e13d793c2ad3986757e42bc4c",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 12.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Two illustrated faces flash on each side of the cross, a new pair every quarter second 👀\nKeep your eyes on the cross until the end. Do the faces start to look strange?\nComment 😐 normal or 😱 strange\n\n#opticalillusion #flashedfaceillusion #illusion #brain #hypnotorium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-spiralium_-d01-s6",
+      "account": "spiralium_",
+      "mode": "still_wobble",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "20:50",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T17:50:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "still_wobble",
+      "content_id": "586b24ecb901f7be",
+      "parameters": {
+        "element_length": 18,
+        "aspect_ratio": 4,
+        "surround_angle": 15,
+        "centre_radius": 0.21
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s6.json",
+      "brief_digest": "7fac1336e6f783a454440b459b60f476b51d9d58c25dfe5a4ea6c92704247800",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s6.mp4",
+      "sha256": "a411ed1367eefe8dc03cc59e45c6209b2a2efba7df03866b8b83ee901ee4f65f",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-spiralium_-d01-s6_yt.mp4",
+      "yt_sha256": "713aed5e9747fa1087b422a8eb269acf748a9a7f65e37c9f96f2e3d9dfe9a513",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "A circle of short black-and-white bricks, laid crosswise inside a slanted brick pattern. Every frame of this video is identical 📱\nGently move your phone. Does the circle in the middle float or slide?\nComment 🌀 it moves or 🧱 it's still\n\n#opticalillusion #ouchiillusion #illusion #brain #spiralium",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    },
+    {
+      "slot_id": "trial05-20261020-trustyoureyes_-d01-s6",
+      "account": "trustyoureyes_",
+      "mode": "brainrot_spin",
+      "day": 1,
+      "local_date": "2026-10-20",
+      "local_time": "20:55",
+      "timezone": "Asia/Jerusalem",
+      "scheduled_at_utc": "2026-10-20T17:55:00+00:00",
+      "networks": [
+        "instagram",
+        "facebook",
+        "youtube"
+      ],
+      "style": "brainrot_spin",
+      "content_id": "df8cd69854c40052",
+      "parameters": {
+        "character": "bombardiro_crocodilo",
+        "partner": "chimpanzini_bananini",
+        "tilt": 6,
+        "turns": 2
+      },
+      "brief_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s6.json",
+      "brief_digest": "c9ff9aef50633d54b136aac4e44d41a9cfd0a9f3cb3660d4bc886622a130a374",
+      "asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s6.mp4",
+      "sha256": "69b90e87485c72010b0286fbd7bd4fd0499e6d3eaa1a196e4448c9dc394b8e65",
+      "yt_asset_path": "/home/claude/trial_days/2026-10-20/trial05-20261020-trustyoureyes_-d01-s6_yt.mp4",
+      "yt_sha256": "c8a805910bdff2f35c380d57b7108874bf7465654cd0894e03411798e1dffc3d",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "seconds": 15.0,
+      "qa": {
+        "automatic": {
+          "size": true,
+          "fps": true,
+          "duration": true,
+          "instagram_file_silent": true,
+          "music_copy_has_audio": true,
+          "music_copy_duration": true
+        },
+        "passed": true
+      },
+      "caption": "Bombardiro Crocodilo and Chimpanzini Bananini, built from thousands of glowing particles, spin side by side… 👀\nAre they turning the same way, or opposite ways? Watch one, then the other, and see if one of them flips.\nComment 🔁 same or 🔀 opposite\n\n#bombardirocrocodilo #chimpanzinibananini #brainrot #italianbrainrot #opticalillusion #illusion #trustyoureyes",
+      "caption_template_digest": "600f603604856a98f40d666840321f38ef285846a6704b75c1a0e6b0c89b16ef",
+      "generator_commit": "2ededb88efa46f1738bb0072017fab033d4f54b2",
+      "generator_tree_dirty": false
+    }
+  ],
+  "failed": [],
+  "missing": [
+    "trial05-20261020-trustyoureyes_-d01-s2",
+    "trial05-20261020-trustyoureyes_-d01-s3"
+  ]
+}
