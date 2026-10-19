@@ -31,14 +31,14 @@ def instant(local):
     return local.astimezone(timezone.utc)
 
 
-def build_plan(start, seed=20261020):
+def build_plan(start, seed=20261020, days=30):
     if isinstance(start, str):
         start = date.fromisoformat(start)
-    if type(start) is not date or type(seed) is not int or seed < 0:
-        raise ValueError('start must be a date and seed a nonnegative integer')
+    if type(start) is not date or type(seed) is not int or seed < 0 or type(days) is not int or days not in (30,31):
+        raise ValueError('start must be a date, seed a nonnegative integer, and days either 30 or 31')
     rows = []
     for account, config in ACCOUNTS.items():
-        for d in range(31):
+        for d in range(days):
             current = start+timedelta(days=d)
             first_style = ((d % 4)//2+d//4) % 2
             for window in range(6):
@@ -49,6 +49,7 @@ def build_plan(start, seed=20261020):
                 mode = styles[(window+first_style) % len(styles)]
                 rows.append(dict(slot_id=f'trial05-{start:%Y%m%d}-{account}-d{d+1:02}-s{window+1}',
                     account=account, brand_id=config['brand_id'], network='instagram', style=mode,
+                    networks=['instagram','facebook','youtube'],
                     day=d+1, window=window, local_date=current.isoformat(), local_time=local.strftime('%H:%M'),
                     scheduled_at_local=local.isoformat(), scheduled_at_utc=utc.isoformat(),
                     market_times={zone:utc.astimezone(ZoneInfo(zone)).isoformat() for zone in MARKETS},
@@ -57,16 +58,17 @@ def build_plan(start, seed=20261020):
                     asset_id=None, sha256=None, qa_approved=False, provider_post_id=None,
                     scheduling_ready=False, queue_reconciled=False, production_brief=None))
     plan = dict(kind='monthly_timing_trial',version=1,start_date=start.isoformat(),
-        end_date=(start+timedelta(days=30)).isoformat(),timezone='Asia/Jerusalem',days=31,core_days=28,
+        end_date=(start+timedelta(days=days-1)).isoformat(),timezone='Asia/Jerusalem',days=days,core_days=28,
         seed=seed,accounts={k:dict(v,styles=list(v['styles'])) for k,v in ACCOUNTS.items()},
-        requested_daily_per_account=6,total_slots=744,user_authorized_trial=True,
+        requested_daily_per_account=6,total_slots=24*days,user_authorized_trial=True,
+        requested_networks=['instagram','facebook','youtube'],total_network_publications=72*days,
         start_date_status='candidate_pending_full_first_day_assets_and_queue_reconciliation',
         active=False,activated_at_utc=None,externally_scheduled_posts=0,
         primary_metric='median reach at 72h within account/style/four-hour local window',
         metric_age_tolerance_hours=[69,75],metrics_collector_active=False,
         sources_commit='25855d2757fa5f4772e8b60f1df7f702ca1fd5f8',
         excluded_optic_mode_not_removed='bistable_spin',
-        structural_catalogue_note='Optic uses93 DepthFlip+93 original tilted-pair structures. 42 bistable parameter rows cannot provide62 monthly uniques.',
+        structural_catalogue_note='Within-plan uniqueness is not verified remaining capacity. Reconcile all generator histories with Claude before production.',
         slots=rows)
     plan['verification'] = verify_plan(plan)
     return plan
@@ -74,18 +76,19 @@ def build_plan(start, seed=20261020):
 
 def verify_plan(plan):
     slots=plan['slots']
-    if len(slots)!=744 or len({r['slot_id'] for r in slots})!=744:
-        raise ValueError('requires744 unique slots')
+    days=plan['days']; total=days*24
+    if days not in (30,31) or len(slots)!=total or len({r['slot_id'] for r in slots})!=total:
+        raise ValueError('monthly slot count mismatch')
     gaps={}
     for account, config in ACCOUNTS.items():
         group=[r for r in slots if r['account']==account]
-        if len(group)!=186:
-            raise ValueError('requires186 slots per account')
+        if len(group)!=6*days:
+            raise ValueError('account monthly slot count mismatch')
         times=sorted(datetime.fromisoformat(r['scheduled_at_utc']) for r in group)
         gaps[account]=min((b-a).total_seconds()/3600 for a,b in zip(times,times[1:]))
         if gaps[account]<3:
             raise ValueError('posts less than3 real hours apart')
-        for day in range(1,32):
+        for day in range(1,days+1):
             daily=[r for r in group if r['day']==day]
             expected={m:6//len(config['styles']) for m in config['styles']}
             if len(daily)!=6 or dict(Counter(r['style'] for r in daily))!=expected:
@@ -98,7 +101,7 @@ def verify_plan(plan):
         if set(Counter(r['local_time'] for r in group if r['day']<=28).values())!={7}:
             raise ValueError('core hour balance mismatch')
     final=max(datetime.fromisoformat(r['scheduled_at_utc']) for r in slots)
-    return dict(passed=True,slots=744,per_account=186,core_style_window_count=14,
+    return dict(passed=True,slots=total,per_account=6*days,core_style_window_count=14,
         trust_core_window_count=28,minimum_real_gap_hours=gaps,
         tentative_primary_analysis_at_local=(final+timedelta(hours=72)).astimezone(TZ).isoformat(),
         tentative_seven_day_followup_at_local=(final+timedelta(hours=168)).astimezone(TZ).isoformat(),
@@ -153,9 +156,9 @@ def attach_production(plan, approved=()):
         row.update(asset_id=b['id'],production_brief=b,sha256=item['sha256'],asset_path=item['path'],
             qa_approved=item['path'] is not None,
             status='approved_asset_pending_queue_and_audio' if item['path'] else 'awaiting_render_and_quality_review')
-    plan['production_summary']=dict(unique_validated_python_briefs=558,
+    plan['production_summary']=dict(unique_validated_python_briefs=18*plan['days'],
         existing_approved_assets=sum(r['qa_approved'] for r in plan['slots']),
-        pending_claude_brainrot_tasks=186,
+        pending_claude_brainrot_tasks=6*plan['days'],historical_deduplication_pending=True,
         awaiting_render_and_quality_review=sum(r['status']=='awaiting_render_and_quality_review' for r in plan['slots']),
         full_first_day_ready=all(r['qa_approved'] and r['queue_reconciled'] for r in plan['slots'] if r['day']==1))
     return plan
@@ -170,9 +173,9 @@ def review_html(plan):
     select{padding:10px;font:inherit}a{color:#88c9ff}.note{padding:16px;background:#263247;border-radius:12px}
     table{width:100%;border-collapse:collapse;margin-top:20px}td,th{padding:10px;border-bottom:1px solid #33415d;text-align:right}
     .ready{color:#a7efbc}.pending{color:#ffca87}h1{font-size:28px}</style>
-    <h1>31 ימי ניסוי · 6 סרטונים ביום לכל חשבון</h1>
+    <h1>'''+str(plan['days'])+''' ימי ניסוי · 6 סרטונים ביום לכל חשבון</h1>
     <p class="note">התוכנית מתוארכת ל־'''+plan['start_date']+''' עד '''+plan['end_date']+'''. זהו תאריך מועמד, ולא תור שהופעל ב־Metricool.
-    נדרשים 744 סרטונים; כרגע יש רק חמש דוגמאות מאושרות. 28 ימים הם ליבה מאוזנת ועוד 3 ימי הרחבה.
+    זהו לוח מועדים; הוא אינו מעיד על מלאי וידאו זמין. 28 ימים הם ליבה מאוזנת והיתר הרחבה.
     כל שעות הפרסום בטבלה הן שעון ישראל; אפשר להשוות זמני מדינות. אין טענה שהן כבר שעות השיא של הקהל.</p>
     <label>חשבון <select id="account">'''+''.join('<option>'+a+'</option>' for a in ACCOUNTS)+'''</select></label>
     <label> הצגת זמן נוספת <select id="zone">'''+''.join('<option>'+z+'</option>' for z in MARKETS)+'''</select></label>
@@ -189,6 +192,7 @@ def main():
     ap.add_argument('command',choices=('plan','analyze'))
     ap.add_argument('--out',required=True)
     ap.add_argument('--start',help='candidate YYYY-MM-DD, only with plan')
+    ap.add_argument('--days',type=int,choices=(30,31),default=30)
     ap.add_argument('--approved-assets',help='local JSON list with validated briefs, paths and approved checksums')
     ap.add_argument('--plan',help='existing plan JSON for analyze')
     ap.add_argument('--snapshots',help='JSON list of measured metric snapshots')
@@ -200,7 +204,7 @@ def main():
         if a.command=='plan':
             if not a.start:
                 raise ValueError('--start is required')
-            plan=attach_production(build_plan(a.start),json.loads(Path(a.approved_assets).read_text(encoding='utf-8')) if a.approved_assets else [])
+            plan=attach_production(build_plan(a.start,days=a.days),json.loads(Path(a.approved_assets).read_text(encoding='utf-8')) if a.approved_assets else [])
             target.mkdir(parents=True)
             studio.atomic_json(target/'plan.json',plan)
             (target/'review.html').write_text(review_html(plan),encoding='utf-8')

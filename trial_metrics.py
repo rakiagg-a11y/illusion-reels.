@@ -51,7 +51,7 @@ def analyze(plan, snapshots, now=None):
     if (type(plan.get('version')) is not int or plan['version'] != 1 or
             plan.get('timezone') != 'Asia/Jerusalem' or
             type(plan.get('core_days')) is not int or plan['core_days'] != 28 or
-            type(plan.get('days')) is not int or plan['days'] != 31):
+            type(plan.get('days')) is not int or plan['days'] not in (30, 31)):
         raise ValueError('unsupported trial contract')
     if not isinstance(plan.get('slots'), list) or not isinstance(snapshots, list):
         raise ValueError('slots and snapshots must be lists')
@@ -67,7 +67,7 @@ def analyze(plan, snapshots, now=None):
             raise ValueError('invalid or duplicate slot/account')
         if not isinstance(style, str) or not style or len(style) > 100:
             raise ValueError('invalid style')
-        _integer(slot.get('day'), 1, 31, 'day')
+        _integer(slot.get('day'), 1, plan['days'], 'day')
         _integer(slot.get('window'), 0, 5, 'window')
         scheduled = _time(slot.get('scheduled_at_utc'), 'scheduled_at_utc')
         origins.add(scheduled.astimezone(TZ).date() - timedelta(days=slot['day'] - 1))
@@ -187,6 +187,7 @@ def analyze(plan, snapshots, now=None):
             candidate_windows=tied, qualified_window_count=len(qualified),
             requires_confirmation_test=True, automatic_settings_changed=False))
     return dict(kind='monthly_timing_report', version=1, publishing_enabled=False,
+        days=plan['days'], core_days=28,
         primary='reach_at_72h_within_account_style_local_four_hour_window',
         capture_age_window_hours=[69, 75], bootstrap='1000 deterministic day-cluster percentile samples',
         coverage=dict(expected_slots=len(slots), observed_slots=len(submitted),
@@ -198,6 +199,6 @@ def analyze(plan, snapshots, now=None):
                 age_matched=sum(slots[s][0]['account'] == a for s in selected))
                 for a in sorted({s['account'] for s, _, _ in slots.values()})}, **diagnostics),
         groups=groups, protocol_deviations=deviations, recommendations=recommendations,
-        limitations=['Core28days and extension3days remain separate.',
+        limitations=[f"Core28days and extension{plan['days'] - 28}days remain separate.",
             'Missing source age, reach or actions remain missing; views never replace reach.',
             'No inference of optimal minute, cross-account style causality or six/day versus three/day.'])

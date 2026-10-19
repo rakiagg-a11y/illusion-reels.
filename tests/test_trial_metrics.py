@@ -140,7 +140,7 @@ class TrialMetricsTests(unittest.TestCase):
 
     def test_bad_contract_naive_schedule_and_date_day_disagreement_rejected(self):
         s=slot()
-        for patch in [dict(version=True),dict(core_days=True),dict(timezone='UTC'),dict(days=30)]:
+        for patch in [dict(version=True),dict(core_days=True),dict(timezone='UTC'),dict(days=29)]:
             bad=plan(s);bad.update(patch)
             with self.assertRaises(ValueError):t.analyze(bad,[],NOW)
         bad=dict(s,scheduled_at_utc='2026-10-20T08:40:00')
@@ -148,6 +148,20 @@ class TrialMetricsTests(unittest.TestCase):
         with self.assertRaises(ValueError):t.analyze(plan(s,s),[],NOW)
         bad=slot(2);bad['day']=3
         with self.assertRaises(ValueError):t.analyze(plan(s,bad),[],NOW)
+
+    def test_thirty_day_contract_has_180_slots_and_rejects_day31(self):
+        slots=[slot(day,window)for day in range(1,31)for window in range(6)]
+        monthly=plan(*slots);monthly['days']=30
+        report=t.analyze(monthly,[snapshot(slots[-1],reach=321)],NOW)
+        self.assertEqual(report['days'],30)
+        self.assertEqual(report['coverage']['expected_slots'],180)
+        self.assertEqual(sum(g['expected_slots']for g in report['groups']if g['cohort']=='core'),168)
+        extension=[g for g in report['groups']if g['cohort']=='extension']
+        self.assertEqual(sum(g['expected_slots']for g in extension),12)
+        self.assertEqual(sum(g['reach_n']for g in extension),1)
+        invalid=plan(slot(31));invalid['days']=30
+        with self.assertRaises(ValueError):t.analyze(invalid,[],NOW)
+        self.assertEqual(t.analyze(plan(slot(31)),[snapshot(slot(31))],NOW)['days'],31)
 
 
 if __name__=='__main__':unittest.main()

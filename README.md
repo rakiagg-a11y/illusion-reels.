@@ -23,12 +23,13 @@ historical briefs, not configuring these new account routes. No publishing is ac
 
 ## Styles
 
-The [monthly timing experiment guide](MONTH_TRIAL_HE.md) defines six Instagram
-Reels/day for each of the four accounts, balanced style/time allocation, dated
-timezone conversions, local production tasks and age-matched measurement.
+The [monthly timing experiment guide](MONTH_TRIAL_HE.md) defines 30 days,
+20 October–18 November 2026: six unique videos/day for each of four accounts,
+720 videos and 2,160 intended Instagram/Facebook/YouTube publications. The handoff
+uses one CSV, `outputs/month_trial_06/schedule_30_days.csv`, outside this repository.
 `experiment_trial.py` creates plans and reports only; it does not schedule or publish.
-The [Claude production handoff](MONTH_TRIAL_CLAUDE_HE.md) records the remaining
-asset, Brainrot-capacity, audio and metrics-collection work.
+The [Claude production handoff](MONTH_TRIAL_CLAUDE_HE.md) covers expansion of all
+generators, historical deduplication, pending caption approval, QA, audio and metrics.
 
 - `dancer`: a 3D silhouette (ballerina, cat, flamingo, T-rex, shark, butterfly) that can be seen spinning either way.
 - `dots`: a dot cloud (sphere, cylinder, torus, helix) that can be seen spinning either way.

@@ -7,7 +7,7 @@ import experiment_trial as trial
 
 class TimingTrialTests(unittest.TestCase):
     def test_month_is_dated_balanced_and_handles_dst(self):
-        plan=trial.build_plan('2026-10-20')
+        plan=trial.build_plan('2026-10-20',days=31)
         self.assertEqual(plan['end_date'],'2026-11-19')
         self.assertEqual(len(plan['slots']),744)
         self.assertEqual(plan['verification']['minimum_real_gap_hours'],{a:3 for a in trial.ACCOUNTS})
@@ -24,7 +24,7 @@ class TimingTrialTests(unittest.TestCase):
         self.assertEqual(Counter(r['style'] for r in optic),{'depth_flip':93,'tilted_pair':93})
 
     def test_production_has558_distinct_briefs_and186_claude_tasks(self):
-        plan=trial.attach_production(trial.build_plan('2026-10-20'))
+        plan=trial.attach_production(trial.build_plan('2026-10-20',days=31))
         briefs=[r['production_brief'] for r in plan['slots'] if r['production_brief']]
         keys=[trial.studio.structural_key(b['mode'],b['parameters']) for b in briefs]
         self.assertEqual(len(set(keys)),558)
@@ -42,6 +42,20 @@ class TimingTrialTests(unittest.TestCase):
             trial.verify_plan(plan)
         with self.assertRaises(ValueError):
             trial.attach_production(trial.build_plan('2026-10-20'),[dict(account='foreign',mode='bad')])
+
+    def test_claude_thirty_day_table_scope(self):
+        plan=trial.build_plan('2026-10-20')
+        self.assertEqual(plan['days'],30)
+        self.assertEqual(plan['end_date'],'2026-11-18')
+        self.assertEqual(len(plan['slots']),720)
+        self.assertEqual(plan['total_network_publications'],2160)
+        for account in trial.ACCOUNTS:
+            rows=[r for r in plan['slots'] if r['account']==account]
+            self.assertEqual(len(rows),180)
+            hours=Counter(int(r['local_time'][:2]) for r in rows)
+            self.assertEqual(set(hours),set(range(24)))
+            self.assertTrue(all(7<=count<=8 for count in hours.values()))
+        self.assertFalse(any('brainana' in r['account'].lower() for r in plan['slots']))
 
 
 if __name__=='__main__':
