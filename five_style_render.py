@@ -146,6 +146,16 @@ class Renderer:
             else:
                 # Brainrot figures carry their own avatar colours per particle.
                 from brainrot import geometry
+                if "partner" in p:
+                    # A duo: each figure is fitted into its own half of a wider
+                    # panel and spins on its own axis, a quarter turn apart.
+                    self.figures = []
+                    for i, character in enumerate((p["character"], p["partner"])):
+                        pts, rgb = geometry(self.rng, character)
+                        fit = min(.336/np.abs(pts[:, 1]).max(), .23/np.hypot(pts[:, 0], pts[:, 2]).max())
+                        self.figures.append((pts*fit, rgb, (i-.5)*.5, i*math.pi/2))
+                    self.point_colors = np.vstack([f[1] for f in self.figures])
+                    return
                 points, self.point_colors = geometry(self.rng, p["character"])
             self.points = points
             self.bound = np.linalg.norm(points, axis=1).max()
@@ -244,11 +254,19 @@ class Renderer:
         image = Image.new("RGB", (w, h), (245, 245, 245) if light else (0, 0, 0))
         if mode in ("bistable_spin", "brainrot_spin"):
             from bistable_spin import project
-            xy = project(self.points, 2*math.pi*p["turns"]*t/self.seconds, p["tilt"])
-            # Smaller field than the other modes so the whole object stays above
-            # the Reels/Shorts caption overlay (bottom ~35% of the frame).
-            size = round(w*.80)*2
-            panel = splat(xy*[1, -1]/(2.25*self.bound), self.point_colors, size, 3.4, w/360)
+            angle = 2*math.pi*p["turns"]*t/self.seconds
+            if mode == "brainrot_spin" and "partner" in p:
+                # Figures are already in panel units; the wider panel keeps the
+                # same height as a single figure, so text and safe zone are unchanged.
+                xy = np.vstack([project(pts, angle+phase, p["tilt"])+[x, 0] for pts, _, x, phase in self.figures])
+                size = round(w*.98)*2
+                panel = splat(xy*[1, -1], self.point_colors, size, 3.4, w/360)
+            else:
+                xy = project(self.points, angle, p["tilt"])
+                # Smaller field than the other modes so the whole object stays above
+                # the Reels/Shorts caption overlay (bottom ~35% of the frame).
+                size = round(w*.80)*2
+                panel = splat(xy*[1, -1]/(2.25*self.bound), self.point_colors, size, 3.4, w/360)
             panel = panel.resize((size//2, size//2), Image.Resampling.LANCZOS)
             self._panel(image, panel, round(h*.445-panel.height/2))
         elif mode == "tilted_pair":

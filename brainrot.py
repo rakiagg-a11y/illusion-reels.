@@ -7,6 +7,7 @@ are scattered on the resulting surface. That gives joined, anatomical shapes
 rendering stays additive and occlusion-free, so the figure still reads as
 spinning either way under orthographic projection.
 """
+import itertools
 import math
 from pathlib import Path
 
@@ -22,7 +23,9 @@ NAMES = {
     "trippi_troppi": "Trippi Troppi", "boneca_ambalabu": "Boneca Ambalabu",
     "la_vaca_saturno_saturnita": "La Vaca Saturno Saturnita", "udin_din_din_dun": "Udin Din Din Dun",
     "frigo_camelo": "Frigo Camelo", "bobrito_bandito": "Bobrito Bandito",
-    "tric_trac_baraboom": "Tric Trac Baraboom", "mario": "Mario", "tom": "Tom", "jerry": "Jerry",
+    "mario": "Mario", "tom": "Tom", "jerry": "Jerry",
+    # New characters go at the end, so existing hooks (indexed by order) stay put.
+    "tric_trac_baraboom": "Tric Trac Baraboom",
 }
 TILTS = (0, 6, 12)
 
@@ -355,7 +358,15 @@ ASSETS = Path(__file__).resolve().parent/"assets"/"brainrot"
 CHARACTERS = tuple(c for c in NAMES if c in BUILDERS or (ASSETS/f"{c}.png").is_file())
 
 
-def hook(character):
+# Duos: two characters side by side, each spinning on its own axis. Every pair
+# is one concept (fixed view and speed), so a pair is never repeated.
+PAIRS = tuple(itertools.combinations(CHARACTERS, 2))
+DUO_TILT, DUO_TURNS = 6, 2
+
+
+def hook(character, partner=None):
+    if partner is not None:
+        return "Are they spinning the same way?"
     return f"Which way is {NAMES[character]} {'turning' if CHARACTERS.index(character) % 2 else 'spinning'}?"
 
 

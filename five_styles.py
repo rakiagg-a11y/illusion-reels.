@@ -149,8 +149,10 @@ def validate_account(row):
 def parameters_for(mode):
     if mode == "brainrot_spin":
         from brainrot import CHARACTERS, TILTS
+        from brainrot import PAIRS, DUO_TILT, DUO_TURNS
         return [dict(character=c, tilt=tilt, turns=turns)
-                for c, tilt, turns in itertools.product(CHARACTERS, TILTS, (2, 3))]
+                for c, tilt, turns in itertools.product(CHARACTERS, TILTS, (2, 3))]+[
+                dict(character=a, partner=b, tilt=DUO_TILT, turns=DUO_TURNS) for a, b in PAIRS]
     if mode == "bistable_spin":
         from bistable_spin import SHAPES, TILTS
         return [dict(shape=shape, tilt=tilt, turns=turns)
@@ -233,7 +235,7 @@ def caption(mode, parameters=None):
         hook = SPIN_HOOKS[parameters["shape"]]
     if mode == "brainrot_spin" and parameters:
         from brainrot import hook as brainrot_hook
-        hook = brainrot_hook(parameters["character"])
+        hook = brainrot_hook(parameters["character"], parameters.get("partner"))
     return dict(hook=hook, instruction=instruction, physical_control=control,
         full_caption=f"{hook}\n\n{instruction}\n\n#opticalillusion #perception #generativeart",
         perception_claim="May be perceived differently by different viewers; human review required.")
