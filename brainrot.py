@@ -26,6 +26,19 @@ NAMES = {
     "mario": "Mario", "tom": "Tom", "jerry": "Jerry",
     # New characters go at the end, so existing hooks (indexed by order) stay put.
     "tric_trac_baraboom": "Tric Trac Baraboom",
+    "glorbo_fruttodrillo": "Glorbo Fruttodrillo",
+    "trulimero_trulicina": "Trulimero Trulicina",
+    "bombombini_gusini": "Bombombini Gusini",
+    "girafa_celestre": "Girafa Celestre",
+    "il_cacto_hipopotamo": "Il Cacto Hipopotamo",
+    "ta_ta_ta_sahur": "Ta Ta Ta Ta Sahur",
+    "orangutini_ananasini": "Orangutini Ananasini",
+    "blueberrinni_octopussini": "Blueberrinni Octopussini",
+    "svinino_bombondino": "Svinino Bombondino",
+    "tigrrullini_watermellini": "Tigrrullini Watermellini",
+    "zibra_zubra_zibralini": "Zibra Zubra Zibralini",
+    "spioniro_golubiro": "Spioniro Golubiro",
+    "burbaloni_luliloli": "Burbaloni Luliloli",
 }
 TILTS = (0, 6, 12)
 

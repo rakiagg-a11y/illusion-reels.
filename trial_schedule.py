@@ -2,6 +2,8 @@
 
   python3 trial_schedule.py payloads --queue DIR/queue.json --allocation allocation.json --base RAW_URL_PREFIX
   python3 trial_schedule.py record --queue DIR/queue.json --slot SLOT --network instagram --post-id ID [--audio ID --audio-title T]
+  python3 trial_schedule.py live --queue DIR/queue.json --slot SLOT --network instagram --published ISO --network-post-id ID --url URL
+  python3 trial_schedule.py observed --queue DIR/queue.json --slot SLOT --network instagram --age 72
 
 Each video becomes two posts at the plan time: Instagram with the silent file
 and a library sound attached, and Facebook + YouTube with our own music burned
@@ -46,7 +48,7 @@ def payloads(queue, allocation, base):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("command", choices=("payloads", "record"))
+    ap.add_argument("command", choices=("payloads", "record", "live", "observed"))
     ap.add_argument("--queue", required=True)
     ap.add_argument("--base")
     ap.add_argument("--allocation")
@@ -55,6 +57,10 @@ def main():
     ap.add_argument("--post-id")
     ap.add_argument("--audio")
     ap.add_argument("--audio-title")
+    ap.add_argument("--published")
+    ap.add_argument("--network-post-id")
+    ap.add_argument("--url")
+    ap.add_argument("--age", type=int)
     a = ap.parse_args()
     queue = json.loads(Path(a.queue).read_text(encoding="utf-8"))
     if a.command == "payloads":
@@ -63,6 +69,15 @@ def main():
         return
     row = next(r for r in queue["slots"] if r["slot_id"] == a.slot)
     posts = row.setdefault("posts", {})
+    if a.command == "live":
+        # Only a permalink or public URL proves that a post went live.
+        posts[a.network].update(actual_published_at_utc=a.published, network_post_id=a.network_post_id, url=a.url)
+        atomic_json(a.queue, queue)
+        return
+    if a.command == "observed":
+        posts[a.network].setdefault("observed_ages", []).append(a.age)
+        atomic_json(a.queue, queue)
+        return
     posts[a.network] = dict(provider="metricool", provider_post_id=a.post_id, network_post_id=None,
                             scheduled_local=f"{row['local_date']}T{row['local_time']}",
                             actual_published_at_utc=None,

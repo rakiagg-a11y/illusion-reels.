@@ -16,6 +16,19 @@ LOOKS = {
     "la_vaca_saturno_saturnita": "the Saturn cow", "udin_din_din_dun": "",
     "frigo_camelo": "the fridge camel", "bobrito_bandito": "the gangster beaver",
     "mario": "the plumber in the red cap", "tom": "the cat", "jerry": "the mouse",
+    "glorbo_fruttodrillo": "the crocodile with a watermelon body",
+    "trulimero_trulicina": "the cat-headed fish on human legs",
+    "bombombini_gusini": "the flying goose with jet engines on its wings",
+    "girafa_celestre": "the round green giraffe in boots",
+    "il_cacto_hipopotamo": "the hippo-headed cactus in sandals",
+    "ta_ta_ta_sahur": "the googly-eyed teapot on long legs",
+    "orangutini_ananasini": "the orangutan with a pineapple belly and crown",
+    "blueberrinni_octopussini": "the blueberry-headed baby octopus",
+    "svinino_bombondino": "the pig with a hand-grenade body",
+    "tigrrullini_watermellini": "the tiger with a watermelon body",
+    "zibra_zubra_zibralini": "the zebra with a watermelon body",
+    "spioniro_golubiro": "the spy pigeon in a trench coat and fedora",
+    "burbaloni_luliloli": "the capybara inside a coconut shell",
 }
 FRANCHISE = {"mario": "#supermario #mario", "tom": "#tomandjerry #cartoon", "jerry": "#tomandjerry #cartoon"}
 PROFILES = dict(classical="classic", soft="soft", angular="sharp", aquiline="long-nosed")
