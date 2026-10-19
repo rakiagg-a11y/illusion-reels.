@@ -1,0 +1,344 @@
+{
+  "kind": "account_review_examples",
+  "version": 1,
+  "local_only": true,
+  "publishing_allowed": false,
+  "briefs": [
+    {
+      "kind": "account_production_brief",
+      "version": 1,
+      "account": "hypnotorium",
+      "handle": "@hypnotorium",
+      "mode": "color_echo",
+      "generator": "ColorEcho",
+      "parameters": {
+        "scene": "terrace",
+        "composition": 0,
+        "layers": 4,
+        "landmark": 0
+      },
+      "seed": 420,
+      "id": "528d9d3fd9cc9a3f",
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 24
+      },
+      "mechanism": {
+        "mechanism": "chromatic adaptation / complementary afterimage",
+        "artwork": "original procedural geometric scene",
+        "timing": {
+          "adapter_seconds": 18,
+          "achromatic_test_seconds": 6,
+          "adapter_static": true,
+          "test_static": true
+        },
+        "fixation": "Keep looking at the central cross through the transition.",
+        "physical_control": "The six-second test has R=G=B at every pixel. The adapter and test share exactly the same scene geometry.",
+        "comparison_control": "control_frame(t) presents the grayscale scene for the entire clip, removing the coloured adaptation phase.",
+        "perceptual_qa": "Human fixation/adaptation review is required; perceived colour is not encoded."
+      },
+      "caption": {
+        "hook": "Can your eyes bring back the color?",
+        "instruction": "Keep looking at the center dot.",
+        "text": "Can your eyes bring back the color?\nKeep looking at the center dot.\n18 seconds of color, then grayscale.\n@hypnotorium",
+        "hashtags": [
+          "#OpticalIllusion",
+          "#VisualPerception",
+          "#ColorEcho"
+        ]
+      },
+      "evaluation": {
+        "basis": "Engineering checklist; human perception not automatically verified. Not a performance prediction.",
+        "scores": {
+          "python_feasibility": 5,
+          "mechanism_controls": 5,
+          "original_assets": 5,
+          "perceptual_validation": 3
+        },
+        "total": 18,
+        "maximum": 20,
+        "requires_visual_approval": true
+      },
+      "reference": {
+        "reel": "C-MtvEAx5mF",
+        "likes_display": "2.4M",
+        "comments_display": "18.8K",
+        "shares": null,
+        "measured_date": "2026-10-19",
+        "url": "https://www.instagram.com/biologistmichael/reel/C-MtvEAx5mF/",
+        "interpretation": "Inspiration and rounded public counters only; original procedural analogue, no media copied. No shares ranking or causal prediction."
+      },
+      "legacy_brief": null,
+      "local_only": true,
+      "publishing_allowed": false,
+      "review_status": "pending_visual_approval"
+    },
+    {
+      "kind": "account_production_brief",
+      "version": 1,
+      "account": "hypnotorium",
+      "handle": "@hypnotorium",
+      "mode": "face_flash",
+      "generator": "FaceFlash",
+      "parameters": {
+        "jaw_family": 0,
+        "nose_family": 0,
+        "hair_family": 2
+      },
+      "seed": 421,
+      "id": "a99a6391d3c59f76",
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 12
+      },
+      "mechanism": {
+        "mechanism": "flashed face distortion stimulus",
+        "artwork": "original illustrated identities; perceptual strength with illustrations requires human review",
+        "timing": {
+          "identity_interval_seconds": 0.25,
+          "pairs_per_second": 4,
+          "seconds": 12,
+          "blank_or_flash_frames": false
+        },
+        "fixation": "Look at the central cross, leaving the faces in peripheral vision.",
+        "physical_control": "Every identity has the same eye anchors and stays geometrically static for 250 ms. Ordinary faces alternate without warping or a brightness strobe.",
+        "comparison_control": "control_frame(t) inserts a 250 ms neutral gap after each 250 ms pair. This is a separate temporal comparison, not part of the main stimulus.",
+        "perceptual_qa": "Do not label the result a verified illusion until a human has viewed the actual reel."
+      },
+      "caption": {
+        "hook": "Keep your eyes on the center cross",
+        "instruction": "Let the faces stay in your side vision.",
+        "text": "Keep your eyes on the center cross\nLet the faces stay in your side vision.\nIllustrated faces; the images are not warped.\n@hypnotorium",
+        "hashtags": [
+          "#OpticalIllusion",
+          "#VisualPerception",
+          "#FaceFlash"
+        ]
+      },
+      "evaluation": {
+        "basis": "Engineering checklist; human perception not automatically verified. Not a performance prediction.",
+        "scores": {
+          "python_feasibility": 5,
+          "mechanism_controls": 5,
+          "original_assets": 5,
+          "perceptual_validation": 2
+        },
+        "total": 17,
+        "maximum": 20,
+        "requires_visual_approval": true
+      },
+      "reference": {
+        "reel": "DFrbrWMxBB6",
+        "likes_display": "1.7M",
+        "comments_display": "14.4K",
+        "shares": null,
+        "measured_date": "2026-10-19",
+        "url": "https://www.instagram.com/biologistmichael/reel/DFrbrWMxBB6/",
+        "interpretation": "Inspiration and rounded public counters only; original procedural analogue, no media copied. No shares ranking or causal prediction."
+      },
+      "legacy_brief": null,
+      "local_only": true,
+      "publishing_allowed": false,
+      "review_status": "pending_visual_approval"
+    },
+    {
+      "kind": "account_production_brief",
+      "version": 1,
+      "account": "spiralium_",
+      "handle": "@spiralium_",
+      "mode": "mirror_flip",
+      "generator": "MirrorFlip",
+      "parameters": {
+        "profile": "classical",
+        "throat": 0.08,
+        "rim_width": 0.46
+      },
+      "seed": 422,
+      "id": "0ffa44815ead2ea4",
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "mechanism": {
+        "mechanism": "Rubin figure-ground ambiguity: the same boundary defines a vase and two facing profiles.",
+        "control": "The lower artwork is an exact vertical reflection of the upper artwork; no semantic image morph is encoded.",
+        "instruction": "Find the vase, then the two faces. Compare the reflected image.",
+        "reference_relationship": "Original Rubin-style analogue of semantic reversible art. It does not reproduce Ocampo's artwork or claim the same image-reversal effect.",
+        "perceptual_qa": "Human review required: semantic alternation cannot be certified from pixels alone.",
+        "reference_url": "https://www.instagram.com/biologistmichael/reel/DKanwbnS2JR/",
+        "physical_motion": false
+      },
+      "caption": {
+        "hook": "Two faces, or one vase?",
+        "instruction": "Switch between the light and dark shapes.",
+        "text": "Two faces, or one vase?\nSwitch between the light and dark shapes.\nAn original figure / ground illusion.\n@spiralium_",
+        "hashtags": [
+          "#OpticalIllusion",
+          "#VisualPerception",
+          "#MirrorFlip"
+        ]
+      },
+      "evaluation": {
+        "basis": "Engineering checklist; human perception not automatically verified. Not a performance prediction.",
+        "scores": {
+          "python_feasibility": 5,
+          "mechanism_controls": 5,
+          "original_assets": 5,
+          "perceptual_validation": 3
+        },
+        "total": 18,
+        "maximum": 20,
+        "requires_visual_approval": true
+      },
+      "reference": {
+        "reel": "DKanwbnS2JR",
+        "likes_display": "3.5M",
+        "comments_display": "12.2K",
+        "shares": null,
+        "measured_date": "2026-10-19",
+        "url": "https://www.instagram.com/biologistmichael/reel/DKanwbnS2JR/",
+        "interpretation": "Inspiration and rounded public counters only; original procedural analogue, no media copied. No shares ranking or causal prediction."
+      },
+      "legacy_brief": null,
+      "local_only": true,
+      "publishing_allowed": false,
+      "review_status": "pending_visual_approval"
+    },
+    {
+      "kind": "account_production_brief",
+      "version": 1,
+      "account": "spiralium_",
+      "handle": "@spiralium_",
+      "mode": "still_wobble",
+      "generator": "StillWobble",
+      "parameters": {
+        "element_length": 18,
+        "aspect_ratio": 3,
+        "surround_angle": 0,
+        "centre_radius": 0.29
+      },
+      "seed": 423,
+      "id": "c5f4fb300461fdc8",
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 15
+      },
+      "mechanism": {
+        "mechanism": "Ouchi-inspired relative-motion illusion: orthogonal elongated checker elements bias perceived motion of centre and surround during small viewer/image movements.",
+        "control": "control_frame() uses the surround orientation throughout, while retaining the same palette, cell size, phase and centre region.",
+        "instruction": "Look near the centre and gently move the phone. Does the centre seem to slide?",
+        "reference_relationship": "Original Ouchi-inspired analogue of the static-motion family. The exact mechanism of the truffle/foil reference is not established here.",
+        "perceptual_qa": "Human review required at normal phone size; strength varies with display and viewing motion.",
+        "reference_url": "https://www.instagram.com/biologistmichael/reel/DNEnh7iScpb/",
+        "mechanism_source": "https://www.sciencedirect.com/science/article/pii/S0042698999001625",
+        "physical_motion": false
+      },
+      "caption": {
+        "hook": "Does the center seem to move?",
+        "instruction": "Gently move your phone a little.",
+        "text": "Does the center seem to move?\nGently move your phone a little.\nEvery frame of this pattern is identical.\n@spiralium_",
+        "hashtags": [
+          "#OpticalIllusion",
+          "#VisualPerception",
+          "#StillWobble"
+        ]
+      },
+      "evaluation": {
+        "basis": "Engineering checklist; human perception not automatically verified. Not a performance prediction.",
+        "scores": {
+          "python_feasibility": 5,
+          "mechanism_controls": 5,
+          "original_assets": 5,
+          "perceptual_validation": 3
+        },
+        "total": 18,
+        "maximum": 20,
+        "requires_visual_approval": true
+      },
+      "reference": {
+        "reel": "DNEnh7iScpb",
+        "likes_display": "551.6K",
+        "comments_display": "5.3K",
+        "shares": null,
+        "measured_date": "2026-10-19",
+        "url": "https://www.instagram.com/biologistmichael/reel/DNEnh7iScpb/",
+        "interpretation": "Inspiration and rounded public counters only; original procedural analogue, no media copied. No shares ranking or causal prediction."
+      },
+      "legacy_brief": null,
+      "local_only": true,
+      "publishing_allowed": false,
+      "review_status": "pending_visual_approval"
+    },
+    {
+      "kind": "account_production_brief",
+      "version": 1,
+      "account": "opticpop",
+      "handle": "@opticpop",
+      "mode": "depth_flip",
+      "generator": "DepthFlip",
+      "parameters": {
+        "ribs": 7,
+        "rings": 5,
+        "opening": 210,
+        "tilt": 36
+      },
+      "seed": 424,
+      "id": "85e184a4a9bb00b3",
+      "render": {
+        "width": 1080,
+        "height": 1920,
+        "fps": 30,
+        "seconds": 12
+      },
+      "mechanism": {
+        "mechanism": "orthographic depth and rotation ambiguity in an open transparent shell",
+        "control": "depth-reflected geometry with opposite rotation and tilt has identical 2D coordinates",
+        "animation": "one continuous rotation, no programmed reversal; additive lines without occlusion",
+        "human_review": "Check whether both concave/convex or spin readings can be perceived."
+      },
+      "caption": {
+        "hook": "Inside a bowl, or outside a sphere?",
+        "instruction": "Can you reverse the depth in your mind?",
+        "text": "Inside a bowl, or outside a sphere?\nCan you reverse the depth in your mind?\nOne continuous turn. No direction switch.\n@opticpop",
+        "hashtags": [
+          "#OpticalIllusion",
+          "#VisualPerception",
+          "#DepthFlip"
+        ]
+      },
+      "evaluation": {
+        "basis": "Engineering checklist; human perception not automatically verified. Not a performance prediction.",
+        "scores": {
+          "python_feasibility": 5,
+          "mechanism_controls": 5,
+          "original_assets": 5,
+          "perceptual_validation": 3
+        },
+        "total": 18,
+        "maximum": 20,
+        "requires_visual_approval": true
+      },
+      "reference": {
+        "reel": "DebEtM_uAdj",
+        "likes_display": "3.9M",
+        "comments_display": "29.5K",
+        "shares": null,
+        "measured_date": "2026-10-19",
+        "url": "https://www.instagram.com/biologistmichael/reel/DebEtM_uAdj/",
+        "interpretation": "Inspiration and rounded public counters only; original procedural analogue, no media copied. No shares ranking or causal prediction."
+      },
+      "legacy_brief": null,
+      "local_only": true,
+      "publishing_allowed": false,
+      "review_status": "pending_visual_approval"
+    }
+  ]
+}
