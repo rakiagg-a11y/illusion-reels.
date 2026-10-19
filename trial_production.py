@@ -115,13 +115,17 @@ def _brainrot_order(rows, used, spent, rng):
                 if "partner" in p and _work("brainrot_spin", p) not in spent and _key(TRUST, "brainrot_spin", p) not in used]
     rng.shuffle(single_pool)
     rng.shuffle(duo_pool)
-    total = len(single_pool)+len(duo_pool)
+    # One single figure a day (at a random one of that day's slots) while
+    # singles last; pairs fill the other slots.
+    days = {}
+    for row in rows:
+        days.setdefault(row["day"], []).append(row["slot_id"])
+    solo = {rng.choice(ids) for ids in days.values()}
     picks, by_day = [], {}
-    for i, row in enumerate(rows):
+    for row in rows:
         if not single_pool and not duo_pool:
             break
-        # Spread the single figures evenly through the month.
-        want_single = single_pool and (not duo_pool or len(single_pool)/max(1, total-i) >= rng.random())
+        want_single = single_pool and (row["slot_id"] in solo or not duo_pool)
         pool = single_pool if want_single else duo_pool
         today = by_day.setdefault(row["day"], set())
         # Avoid showing the same character twice on one day when there is a choice.
