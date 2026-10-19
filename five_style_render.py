@@ -138,12 +138,22 @@ class Renderer:
 
     def _prepare(self):
         p, mode = self.p, self.mode
-        if mode == "bistable_spin":
-            from bistable_spin import geometry
-            points, weights, layers = geometry(self.rng, p["shape"])
+        if mode in ("bistable_spin", "brainrot_spin"):
+            if mode == "bistable_spin":
+                from bistable_spin import geometry
+                points, weights, layers = geometry(self.rng, p["shape"])
+                self.point_colors = weights[:, None]*np.array(self.colors)[layers]/255
+            else:
+                # Brainrot figures carry their own avatar colours per particle.
+                from brainrot import geometry
+                points, self.point_colors = geometry(self.rng, p["character"])
             self.points = points
-            self.point_colors = weights[:, None]*np.array(self.colors)[layers]/255
             self.bound = np.linalg.norm(points, axis=1).max()
+            if mode == "brainrot_spin":
+                # Tall figures spin about y: size them by height and turning radius,
+                # not the 3D diagonal, so they fill the frame like the reference.
+                self.bound = max(np.abs(points[:, 1]).max(),
+                                 np.hypot(points[:, 0], points[:, 2]).max())*1.08
         elif mode == "tilted_pair":
             from relational_scene import geometry, orientation_matrix
             self.layers, bound = [], 0.
@@ -232,7 +242,7 @@ class Renderer:
         w, h, p, mode = self.w, self.h, self.p, self.mode
         light = mode in ("munker_white", "muller_lyer", "troxler", "cafe_wall")
         image = Image.new("RGB", (w, h), (245, 245, 245) if light else (0, 0, 0))
-        if mode == "bistable_spin":
+        if mode in ("bistable_spin", "brainrot_spin"):
             from bistable_spin import project
             xy = project(self.points, 2*math.pi*p["turns"]*t/self.seconds, p["tilt"])
             # Smaller field than the other modes so the whole object stays above

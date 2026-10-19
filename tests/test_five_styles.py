@@ -31,12 +31,13 @@ class FiveStyleContractTests(unittest.TestCase):
         self.assertEqual(d.make_brief(account, "troxler", d.parameters_for("troxler")[0], 1)["account"], account)
 
     def test_plan_is_deterministic_and_mode_diverse(self):
-        a = d.plan(d.default_accounts(), 52, 5)
-        self.assertEqual(a, d.plan(d.default_accounts(), 52, 5))
-        self.assertEqual(len(a["briefs"]), 25)
+        per = max(len(modes) for modes in d.MODES.values())
+        a = d.plan(d.default_accounts(), 52, per)
+        self.assertEqual(a, d.plan(d.default_accounts(), 52, per))
+        self.assertEqual(len(a["briefs"]), 5*per)
         for style in d.STYLES:
             self.assertEqual({b["mode"] for b in a["briefs"] if b["style"] == style}, set(d.MODES[style]))
-        self.assertEqual(len({b["id"] for b in a["briefs"]}), 25)
+        self.assertEqual(len({b["id"] for b in a["briefs"]}), 5*per)
 
     def test_history_avoids_structural_repeats_across_accounts(self):
         a = d.plan(d.default_accounts(), 42, 3)

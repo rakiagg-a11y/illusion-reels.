@@ -27,11 +27,13 @@ MODES = {
     "hidden_stereogram": ("hidden_relief",),
     "binocular_worlds": ("orbital_rings", "helix", "constellation"),
     "motion_paradox": ("motion_form", "infinite_regress", "footsteps"),
-    "perception_lab": ("munker_white", "muller_lyer", "afterimage", "troxler", "cafe_wall"),
+    "perception_lab": ("brainrot_spin", "munker_white", "muller_lyer", "afterimage", "troxler", "cafe_wall"),
 }
 # The generator a page runs when no --mode is given (Rakia, 2026-10-18: opticpop
 # should produce shapes that can be seen spinning either way).
-PRIMARY_MODES = {"reversible_depth": "bistable_spin"}
+PRIMARY_MODES = {"reversible_depth": "bistable_spin",
+                 # Rakia, 2026-10-19: trustyoureyes_ becomes a brainrot particle-spin page.
+                 "perception_lab": "brainrot_spin"}
 SPIN_HOOKS = {
     "planet_wedge": "Which way is the planet spinning?",
     "necker_cube": "Which way is the cube turning?",
@@ -50,6 +52,8 @@ REFERENCES = {
     "perception_lab": "https://www.instagram.com/biologistmichael/p/DU2P5ERDg-3/",
 }
 COPY = {
+    "brainrot_spin": ("Reverse the spin with your mind", "Blink, then look again. Can you make it switch direction?",
+                      "Orthographic projection; additive transparent particles; no occlusion or depth shading."),
     "bistable_spin": ("Which way is it spinning?", "Blink, then look again. Can you make it switch direction?",
                       "Orthographic projection; additive transparent particles; no occlusion or depth shading."),
     "tilted_pair": ("Which object is in front?", "Follow one object through the overlap.",
@@ -143,6 +147,10 @@ def validate_account(row):
 
 
 def parameters_for(mode):
+    if mode == "brainrot_spin":
+        from brainrot import CHARACTERS, TILTS
+        return [dict(character=c, tilt=tilt, turns=turns)
+                for c, tilt, turns in itertools.product(CHARACTERS, TILTS, (2, 3))]
     if mode == "bistable_spin":
         from bistable_spin import SHAPES, TILTS
         return [dict(shape=shape, tilt=tilt, turns=turns)
@@ -223,6 +231,9 @@ def caption(mode, parameters=None):
     hook, instruction, control = COPY[mode]
     if mode == "bistable_spin" and parameters:
         hook = SPIN_HOOKS[parameters["shape"]]
+    if mode == "brainrot_spin" and parameters:
+        from brainrot import hook as brainrot_hook
+        hook = brainrot_hook(parameters["character"])
     return dict(hook=hook, instruction=instruction, physical_control=control,
         full_caption=f"{hook}\n\n{instruction}\n\n#opticalillusion #perception #generativeart",
         perception_claim="May be perceived differently by different viewers; human review required.")

@@ -33,3 +33,18 @@ class BistableSpinTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BrainrotSpinTests(unittest.TestCase):
+    def test_brainrot_figures_also_fit_the_opposite_spin(self):
+        import brainrot
+        for character in brainrot.CHARACTERS:
+            points, _ = brainrot.geometry(np.random.default_rng(1), character, total=4000)
+            a = b.project(points, .9, 14)
+            mirrored = b._rx(b._ry(points*[1, 1, -1], -math.degrees(.9)-30), -14)[:, :2]
+            np.testing.assert_allclose(a, mirrored, atol=1e-9)
+
+    def test_trustyoureyes_defaults_to_brainrot_with_character_hook(self):
+        brief = choose_brief("perception_lab", 3, dict(entries=[]))
+        self.assertEqual(brief["mode"], "brainrot_spin")
+        self.assertEqual(brief["caption"]["hook"], __import__("brainrot").hook(brief["parameters"]["character"]))
