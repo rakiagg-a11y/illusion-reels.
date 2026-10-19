@@ -23,6 +23,13 @@ historical briefs, not configuring these new account routes. No publishing is ac
 
 ## Styles
 
+The [monthly timing experiment guide](MONTH_TRIAL_HE.md) defines six Instagram
+Reels/day for each of the four accounts, balanced style/time allocation, dated
+timezone conversions, local production tasks and age-matched measurement.
+`experiment_trial.py` creates plans and reports only; it does not schedule or publish.
+The [Claude production handoff](MONTH_TRIAL_CLAUDE_HE.md) records the remaining
+asset, Brainrot-capacity, audio and metrics-collection work.
+
 - `dancer`: a 3D silhouette (ballerina, cat, flamingo, T-rex, shark, butterfly) that can be seen spinning either way.
 - `dots`: a dot cloud (sphere, cylinder, torus, helix) that can be seen spinning either way.
 - `stereogram`: a Magic Eye picture with a hidden 3D shape, plus an answer reveal.
